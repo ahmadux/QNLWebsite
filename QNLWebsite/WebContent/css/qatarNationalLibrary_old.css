@@ -1,0 +1,191 @@
+.fullpage
+{
+	width:100%;
+	
+}
+
+.page
+{
+	width:100%;
+	background-image: url(../images/large/main3.jpg);
+	background-position:left top;
+	background-repeat: no-repeat; 
+	margin-top: -20px;
+	position:relative;
+}
+
+.newsLine
+{
+	background-color: rgba(255,255,255,0.5);
+	height: 100px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+
+.darkgrey
+{
+	background-color: #362a34;
+}
+
+.darkgrey
+{
+	background-color: #362a34;
+}
+
+.bordered
+{
+	border:solid 1px #bdbec0;
+}
+
+.lightgrey
+{
+	background-color: #e7e8ea;	
+}
+
+.thinline
+{
+	height:7px;
+	width:100%;
+	margin-bottom:2px;
+}
+
+.thickline
+{
+	height:30px;
+	width:100%;
+}
+
+.logo
+{
+	height:100px;
+	margin:auto;	
+	background-color: #eeeeee;
+}
+
+.shadowed
+{
+	box-shadow: 0px 0px 2px 1px #888888;
+}
+
+.shadowedLight
+{
+	box-shadow: 0px 0px 2px 1px #bdbec0;
+}
+
+.separatedTop
+{
+	margin-top:5px
+}
+
+.separatedBottom
+{
+	margin-bottom:2px
+}
+
+.carouselHolder
+{	
+	height: 250px;
+}
+
+.leftHolder
+{
+	width:335px;
+	height:235px;
+	margin-left:20px;
+	float:left;
+}
+
+.rightHolder
+{
+	float:right;
+	width: 535px;
+	height: 235px;
+	margin-right: 20px;	
+}
+
+.rightTopHolder
+{
+	width: 95%;
+	height: 125px;	
+	margin:auto;
+	margin-top: 5px;
+}
+
+.gradient
+{
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+}
+
+.carouselControl
+{
+	width:15px;
+	float:left;
+}
+
+.column1-3
+{
+	width:250px;
+	float:left;
+	height:250px;
+	margin-left: 5px;
+}
+
+.column1-3x
+{
+	width:295px;
+	float:left;
+	height:250px;
+	margin-left: 5px;
+}
+
+.column2-3
+{
+	width:600px;
+	float:left;
+	height:250px;
+	
+}
+
+.bottomBar
+{
+	bottom:0;
+	position:absolute;
+	width:100%;
+	background-color: #222;
+	height:50px;
+}
+
+.bottomLinks
+{
+	text-align: right;	
+}
+
+.bottomLinks a:visited, .bottomLinks a 
+{
+	color: #999;
+	text-decoration: none;
+	margin-right: 10px;	
+}
+
+.bottomLinks a:hover 
+{
+	color: #fff;
+	text-decoration: none;
+	margin-right: 10px;	
+}
+
+.copyrights
+{
+	text-align: left;
+	color: #999;
+}

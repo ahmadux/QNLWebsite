@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="QNLWebsite">
+	
+		
+		<class>com.qnl.core.LibMenu</class>
+		<class>com.qnl.core.LibPage</class>
+		<class>com.qnl.core.LibImage</class>
+		<class>com.qnl.core.LibTemplate</class>
+		<class>com.qnl.core.NewsCategory</class>
+		<class>com.qnl.core.NewsItem</class>
+		<class>com.qnl.core.Role</class>
+		<class>com.qnl.core.UserRole</class>
+		<class>com.qnl.core.User</class>
+		<class>com.qnl.core.Attachment</class>
+		<class>com.qnl.core.CustomUrl</class>
+		<class>com.qnl.core.DbaseNCollect</class>
+		<class>com.qnl.core.Subscribe</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.21.81.172:3306/qnl"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
+			<property name="hibernate.ejb.cfgfile" value="/hibernate.cfg.xml"/>			
+		</properties>
+	</persistence-unit>
+</persistence>

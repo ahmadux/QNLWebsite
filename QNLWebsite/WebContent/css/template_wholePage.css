@@ -1,0 +1,171 @@
+body
+{
+	background-color: #ffffff;
+	font-family: Tahoma, Verdana, Arial;
+	font-size: 11px;
+	color: #000000;
+}
+
+h5
+{
+	color: orange;
+}
+
+div.centerPage
+{
+	width:100%;
+	height:100%;
+	text-align: center;
+}
+
+div.webPage
+{
+	width: 1016px;
+	height: 760px;
+	background-color: #efefef;
+	float:left;
+	
+}
+
+div.pageTop
+{
+	width:100%;
+	height:100px;
+	float:left;
+	/*border:solid 1px black;*/	
+}
+
+div.logo
+{
+	width:50%;
+	height:100%;
+	float:left;
+	background-color: red;
+}
+
+div.topLinks
+{
+	width:50%;
+	height:100%;
+	float:left;
+	background-color: green;
+}
+
+div.pageMenu
+{
+	width:100%;
+	height:34px;
+	float:left;
+	/*border:solid 1px black;*/
+}
+
+div.topMenu
+{
+	width:100%;
+	height:32px;
+	float:left;
+	background-color: #f6f5f1;
+	border:solid 1px #899caa;
+	font-family:"Trebuchet MS", sans-serif;
+	font-size: 15px;
+}
+
+
+div.pageBreadCrumbs
+{
+	width:100%;
+	height:15px;
+	float:left;
+	/*border: solid 1px black;*/
+}
+
+div.breadCrumbs
+{
+	width:100%;
+	height:100%;
+	float:left;
+	background-color: #dcdcdc;
+}
+
+div.pageBody
+{
+	width:100%;
+	height:80%;
+	float:left;
+	/*border: solid 1px black;*/
+}
+
+div.leftMenu
+{
+	width:10%;
+	height:100%;
+	float:left;
+	background-color: #666666;
+	/*border: solid 1px black;*/
+}
+
+div.heading
+{
+	color:orange;
+	font-size:15px;
+	width:60%;
+	height:20px;
+	float:left;
+}
+
+div.body
+{
+	color:#666666;
+	size:11px;
+	width:60%;
+	height:100%;
+	float:left;
+}
+
+div.rightMenu
+{
+	width:30%;
+	height:100%;
+	float:right;
+	background-color: #666666;
+	/*border: solid 1px black;*/
+}
+
+div.bottomMenu
+{
+	width:100%;	
+	float:left;
+	background-color: orange;
+	/*border: solid 1px black;*/
+}
+
+div.cc3
+{
+	width:33%;
+	float:left;
+	
+	
+}
+
+div.copyRights
+{
+	width:100%;	
+	float:left;
+	background-color: #efefef;
+	/*border: solid 1px black;*/
+}
+
+
+/***************************************/
+
+.miniServicesContainer
+{
+	width:99%;
+	padding:1px;
+}
+
+.miniServices h3
+{
+	font-family:"Trebuchet MS", sans-serif;
+	font-size: 15px;
+}
