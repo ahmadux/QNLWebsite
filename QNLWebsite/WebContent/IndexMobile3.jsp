@@ -74,6 +74,7 @@
 				        </li>								
 						<li><a href="">Collections</a></li>
 						<li><a href="">Children's Section</a></li>
+						<li><a href="javascript:pageSlide(5,false,'');">Teen Section</a></li>
 						<li><a href="">Heritage	Collection</a></li>
 						<li><a href="">Programs &amp; Services</a></li>
 						<li><a href="">Online Resources</a></li>
@@ -269,7 +270,9 @@
 			<!-- 3: Subscribe -->
 			<div data-slidr="terms" id="terms" style="width: 100%">											
 			</div>
-			<!-- 4: Terms -->				
+			<!-- 4: TeenSection -->
+			<div data-slidr="teenSection" id="teenSection" style="width: 100%">											
+			</div>				
 		</div>
 		</div>
 			<!-- Page Slider -->
@@ -307,7 +310,7 @@
 var newsSlider;
 
 var eventSlider;
-var pages = [ 'landing', 'discover','subscribe','terms'];
+var pages = [ 'landing', 'discover','subscribe','terms','teenSection'];
 var desktop = false;
 var wheight = ($(window).height() - 214);
 
