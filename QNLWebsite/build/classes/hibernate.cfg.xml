@@ -5,7 +5,7 @@
  <session-factory>
   <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
   <property name="hibernate.connection.password">root</property>
-  <property name="hibernate.connection.url">jdbc:mysql://10.21.81.172/qnl</property>
+  <property name="hibernate.connection.url">jdbc:mysql://10.21.82.5/qnl</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.default_catalog">qnl</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
