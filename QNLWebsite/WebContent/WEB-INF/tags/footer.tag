@@ -1,5 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<footer class="darkmaroon">
+<footer class="darkmaroon navbar navbar-fixed-bottom">
 	<div class="bottomLinks col-xs-12">
 		<span class="linkRow"><a href="javascript:pageSlide(4,true,'Terms of Use');">Terms of use</a> <a
 			href="#">Sitemap</a> <a href="#">Contact Us</a></span> <a href="#"><i

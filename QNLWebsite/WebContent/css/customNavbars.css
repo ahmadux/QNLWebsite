@@ -139,7 +139,9 @@
 
 
 /********************************* MAROON **********************************/
-
+.navbar-brandingMaroon{
+	padding-top:10px;
+}
 .navbar-brandingMaroon, .navbar-brandingMaroon .navbar-nav .dropdown-menu  {
     background-color: #6c0022;
     border-color: #8a1538;       
