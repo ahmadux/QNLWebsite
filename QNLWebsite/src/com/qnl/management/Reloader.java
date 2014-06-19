@@ -42,7 +42,7 @@ public class Reloader extends HttpServlet {
 	{
 		// TODO Auto-generated method stub
 		String p,x = request.getParameter("o");
-		
+		LibMenuFacade lmf = null;
 		//request.getServletContext().setAttribute("FileStoragePath",request.getServletContext().getRealPath(""));
 		
 		String[] mx = x.split(",");
@@ -52,8 +52,8 @@ public class Reloader extends HttpServlet {
 			switch(p=mx[c])
 			{
 				case"LibMenu":
-					((LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade")).refresh();
-					
+					(lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade")).refresh();
+					request.getServletContext().setAttribute("completeMenu",lmf.getCompleteMenu(LibMenuFacade.STATUS_APPROVED));
 					break;
 				case "LibPage":
 					((LibPageFacade)request.getServletContext().getAttribute("LibPageFacade")).refresh();				

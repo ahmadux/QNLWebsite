@@ -3,8 +3,7 @@ package com.qnl.core;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import java.util.List;
-
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -32,7 +31,7 @@ public class LibMenu implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(unique=true, nullable=false)
+	@Column(unique=true, nullable=false)	
 	private int id;
 
 	private byte approved;
@@ -41,6 +40,9 @@ public class LibMenu implements Serializable {
 	private Timestamp createDate;
 
 	private String extra2;
+
+	@Column(name="MENU_TYPE")
+	private String menuType;
 
 	@Column(name="`ORDER`")
 	private int order;
@@ -56,19 +58,19 @@ public class LibMenu implements Serializable {
 	private String textAr;
 
 	//bi-directional many-to-one association to CustomUrl
-	@ManyToOne
+    @ManyToOne
 	private CustomUrl customUrl;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
+    @ManyToOne
 	private User user;
 
 	//bi-directional many-to-one association to LibPage
 	@OneToMany(mappedBy="libMenu")
-	private List<LibPage> libPages;
+	private Set<LibPage> libPages;
 
-	public LibMenu() {
-	}
+    public LibMenu() {
+    }
 
 	public int getId() {
 		return this.id;
@@ -100,6 +102,14 @@ public class LibMenu implements Serializable {
 
 	public void setExtra2(String extra2) {
 		this.extra2 = extra2;
+	}
+
+	public String getMenuType() {
+		return this.menuType;
+	}
+
+	public void setMenuType(String menuType) {
+		this.menuType = menuType;
 	}
 
 	public int getOrder() {
@@ -149,7 +159,7 @@ public class LibMenu implements Serializable {
 	public void setCustomUrl(CustomUrl customUrl) {
 		this.customUrl = customUrl;
 	}
-
+	
 	public User getUser() {
 		return this.user;
 	}
@@ -157,12 +167,12 @@ public class LibMenu implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public List<LibPage> getLibPages() {
+	
+	public Set<LibPage> getLibPages() {
 		return this.libPages;
 	}
 
-	public void setLibPages(List<LibPage> libPages) {
+	public void setLibPages(Set<LibPage> libPages) {
 		this.libPages = libPages;
 	}
 	

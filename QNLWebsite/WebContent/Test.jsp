@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,com.qnl.core.LibMenu, com.qnl.facade.LibMenuFacade" %>
+	pageEncoding="UTF-8" %>
 <html >
 <head>
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
@@ -35,17 +35,6 @@ th
     </tr>
 </table>
 </div>
-
-
-<%
-	
-	
-%>
-
-
-
-
-
 </body>
 <script>
 var jObj;

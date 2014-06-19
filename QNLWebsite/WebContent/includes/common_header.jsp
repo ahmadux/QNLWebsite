@@ -7,7 +7,7 @@
 <title>Qatar National Library - Home Page</title>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <customTags:script alsoInclude="bootstrap, slidr"/>
-<customTags:linkCSS alsoInclude="bootstrap, fontawesome,weather" />
+<customTags:linkCSS alsoInclude="fontawesome,weather" />
 </head>
 <body class="en">
 	<div class="fullpage">

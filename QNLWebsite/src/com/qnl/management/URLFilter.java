@@ -42,8 +42,6 @@ public class URLFilter implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-		request.getServletContext().setAttribute("BaseServerPath",  request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getServletContext().getContextPath());
-		
 		System.out.println("Filtering...");
 		if(((HttpServletRequest)request).getRequestURI().toString().contains("/management/"))
 				if(((HttpServletRequest)request).getSession().getAttribute("loggedInUser")==null)

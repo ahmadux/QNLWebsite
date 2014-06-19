@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="includes/common_header.jsp" />
-			<div class="body_slider active  col-xs-12 landing">
+			<div class="body_slider active  col-xs-12 landing pull-left ">
 			<div id="main_content">
-				<div class="background_full" style="background-image: url(${BaseServerPath}/images/large/main4.jpg);"></div>
+				<div class="background_full" style="background-image: url(http://localhost:8080/LocalQNLWebsite/images/large/main4.jpg);"></div>
 				<div class="content">
 				<div class="col-xs-12 col-md-2 col-md-offset-1 highSpaceTop pull-left semitransparent img-rounded">
 					<h4 class="textOutlined">
@@ -14,15 +14,15 @@
 					<div id="newsSlidr">
 						<div data-slidr="one" class="newsSlidr">
 
-							<span class="newsImage img" data-Image="${BaseServerPath}/images/news1.jpg"></span>
-							<span class="newsHeading textOutlined">Qatar National Library opens it's door in 2015</span>
+							<span class="newsImage img" data-Image="images/news1.jpg"></span>
+							<span class="newsHeading textOutlined">Qatar National Library unveils new building</span>
 							<span class="newsDate">25 January	2014</span>
 							<span class="readmore archive"><a href="#">Read More</a></span>
 
 						</div>
 						<div data-slidr="two" class="newsSlidr">
 
-							<span class="newsImage img" data-Image="${BaseServerPath}/images/news2.jpg"></span>
+							<span class="newsImage img" data-Image="images/news2.jpg"></span>
 							<span class="newsHeading textOutlined">QNL as a center says Qatar Foundation</span>
 							<span class="newsDate">25 January 2014</span>
 							<span class="readmore archive"><a href="#">Read More</a></span>
@@ -30,7 +30,7 @@
 						</div>
 						<div data-slidr="three" class="newsSlidr">
 
-							<span class="newsImage img" data-Image="${BaseServerPath}/images/news3.jpg"></span>								
+							<span class="newsImage img" data-Image="images/news3.jpg"></span>								
 							<span class="newsHeading textOutlined">Vision and Mission of Qatar National Library</span>
 							<span class="newsDate">25 January 2014</span>
 							<span class="readmore archive"><a href="#">Read More</a></span>								
@@ -57,7 +57,7 @@
 											QNL Building<br />When: 8 PM - 10 PM
 										</span>
 									</div>
-									<div class="img" data-Image="${BaseServerPath}/images/events-carsafety.jpg">
+									<div class="img" data-Image="images/events-carsafety.jpg">
 									</div>
 								</div>
 							</div>
@@ -76,7 +76,7 @@
 											QNL Building<br />When: 8 PM - 10 PM
 										</span>
 									</div>
-									<div class="img" data-Image="${BaseServerPath}/images/events-galadinner.jpg">
+									<div class="img" data-Image="images/events-galadinner.jpg">
 									</div>
 								</div>
 							</div>
@@ -95,7 +95,7 @@
 											QNL Building<br />When: 8 PM - 10 PM
 										</span>
 									</div>
-									<div class="img" data-Image="${BaseServerPath}/images/events-FIREWORKS.jpg">
+									<div class="img" data-Image="images/events-FIREWORKS.jpg">
 									</div>
 								</div>
 							</div>

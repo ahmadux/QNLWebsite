@@ -16,7 +16,7 @@
 							<div class="bottom">
 								<button class="btn brandingButton">
 									<span class="hidden-xs">Accessibility</span><span
-										class="visible-xs"><img src="${BaseServerPath}/images/accessibility.png"
+										class="visible-xs"><img src="images/accessibility.png"
 										alt="" title="" width="16px" /></span>
 								</button>
 								&nbsp;
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#landing">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
@@ -36,14 +36,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/home.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
-					
-					
+					<li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/home.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
 					<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Discover QNL<b class="caret"></b></a>
 			          <ul class="dropdown-menu">
-			            <li><a class="load_and_slide_left" href="${BaseServerPath}/pages/about.jsp">About QNL</a></li>
-						<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Vision and Mission</a></li>
+			            <li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/about.jsp">About QNL</a></li>
+						<li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/discover.jsp">Vision and Mission</a></li>
 			          </ul>
 			        </li>								
 					<li><a class="load_and_slide_left" href="">Collections</a></li>
