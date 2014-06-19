@@ -2,7 +2,7 @@
 <jsp:include page="includes/common_header.jsp" />
 			<div class="body_slider active  col-xs-12 landing pull-left ">
 			<div id="main_content">
-				<div class="background_full" style="background-image: url(http://localhost:8080/LocalQNLWebsite/images/large/main4.jpg);"></div>
+				<div class="background_full" style="background-image: url(${BaseServerPath}/images/large/main4.jpg);"></div>
 				<div class="content">
 				<div class="col-xs-12 col-md-2 col-md-offset-1 highSpaceTop pull-left semitransparent img-rounded">
 					<h4 class="textOutlined">
