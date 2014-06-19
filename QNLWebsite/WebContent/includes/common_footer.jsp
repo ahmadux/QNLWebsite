@@ -193,7 +193,7 @@ function resetSize(b) {
 function loadImages(pName) {	
 	if(desktop) {
 		$('#' + pName + " .img").each( function() {		
-			$(this).html("<img src='http://localhost:8080/LocalQNLWebsite/" + $(this).attr("data-Image") + "' alt='' title='' />");
+			$(this).html("<img src='http://localhost:8080/QNLWebsite/" + $(this).attr("data-Image") + "' alt='' title='' />");
 		});
 	}
 }
@@ -201,7 +201,7 @@ function loadImages(pName) {
 function loadImagesStr(htmlSource){	
 	if(desktop){
 		var tree = $("<div>" + htmlSource + "</div>");
-		tree.find('.img').html(function(){ return "<img src='http://localhost:8080/LocalQNLWebsite/" + $(this).attr("data-Image") + "' />"; } );
+		tree.find('.img').html(function(){ return "<img src='http://localhost:8080/QNLWebsite/" + $(this).attr("data-Image") + "' />"; } );
 		htmlSource = tree.html();
 	}
 	return htmlSource;
