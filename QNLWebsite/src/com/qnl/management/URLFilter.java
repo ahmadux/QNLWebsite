@@ -40,7 +40,10 @@ public class URLFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-
+		
+		
+		
+		request.getServletContext().setAttribute("BaseServerPath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getServletContext().getContextPath());
 		// pass the request along the filter chain
 		System.out.println("Filtering...");
 		if(((HttpServletRequest)request).getRequestURI().toString().contains("/management/"))
