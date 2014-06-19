@@ -16,73 +16,60 @@
 	  </div>
 	</div>
 </body>
-<script>
+<script type="text/javascript">
 var newsSlider;
-
 var eventSlider;
-var pages = [ 'landing', 'discover','subscribe','terms'];
+
 var desktop = false;
 var wheight = ($(window).height() - 214);
 
-function pageSlideDir(dir) {
-	pageSlider.slide(dir);
-}
-
-function pageSlide(x,asFormOnDesktop,formTitle) {		
-	
-	if(x >= 2)
-		setPage(pages[x-1],x,asFormOnDesktop,formTitle);	
-	
-	if((desktop)&&(asFormOnDesktop))
-	{	
-		$('#myModal').modal({
-			  backdrop: 'static',
-			  show: true,
-			  keyboard: true		  
-		});
-	}	
-	else
-	{
-		pageSlider.slide(pages[x-1]);	
-		
-	}
-}
+// TODO : Use this logic inside the function
+// if((desktop)&&(asFormOnDesktop))
+// {	
+// 	$('#myModal').modal({
+// 		  backdrop: 'static',
+// 		  show: true,
+// 		  keyboard: true		  
+// 	});
+// }	
 
 
-function setPage(pName,x, asFormOnDesktop, formTitle)
-{	
-	$.ajax(
-	{
-		url: "pages/" + pName + ".jsp",
-		type: "GET",
-		dataType: "html",
-		success: function(pData)
-			{					
-				if((desktop)&&(asFormOnDesktop))
-				{
-					$("#modal-title").text(formTitle);
-					$("#modal-body").html(loadImagesStr(pData));					
-				}
-				else
-				{
-					$("#" + pName).html(loadImagesStr(pData));				
-					var loc = window.location.href;
-					if(loc.indexOf("#") > 0)
-						loc = (loc.replace(loc.substr(loc.indexOf('#'), loc.length),""));
-					loc += ("#" + x);
-					window.location.href = loc;
-				}
-			},
-		complete: function(){ if(!asFormOnDesktop)resetSize(false);}
+// TODO: Remove this function
+// function setPage(pName,x, asFormOnDesktop, formTitle)
+// {	
+// 	$.ajax(
+// 	{
+// 		url: "pages/" + pName + ".jsp",
+// 		type: "GET",
+// 		dataType: "html",
+// 		success: function(pData)
+// 			{					
+// 				if((desktop)&&(asFormOnDesktop))
+// 				{
+// 					$("#modal-title").text(formTitle);
+// 					$("#modal-body").html(loadImagesStr(pData));					
+// 				}
+// 				else
+// 				{
+// 					$("#" + pName).html(loadImagesStr(pData));				
+// 					var loc = window.location.href;
+// 					if(loc.indexOf("#") > 0)
+// 						loc = (loc.replace(loc.substr(loc.indexOf('#'), loc.length),""));
+// 					loc += ("#" + x);
+// 					window.location.href = loc;
+// 				}
+// 			},
+// 		complete: function(){ if(!asFormOnDesktop)resetSize(false);}
 			
-	});		
-}
+// 	});		
+// }
 
 
-function startSlide(optBC, slidrID, t, dir, slides, optFDir, opTheme,
-		ovFlow, optCntrls,auto) {
+/** 
+ *  This function is taken from slidr.js
+ */
+function startSlide(optBC, slidrID, t, dir, slides, optFDir, opTheme, ovFlow, optCntrls,auto) {
 	var trans = (dir == 'h' ? 'linear' : 'linear');
-
 	var sl1 = slidr.create(slidrID, {
 		breadcrumbs : optBC,
 		controls : optCntrls,
@@ -97,33 +84,30 @@ function startSlide(optBC, slidrID, t, dir, slides, optFDir, opTheme,
 		touch : true
 	}).start();
 	sl1.add(dir, slides);
-	
 	if(auto)
 		sl1.auto(t, optFDir);
-	
 	return sl1;
 }
 
 $(document).ready(function() {
 	if(history.state==null || history.state.location==undefined)
-	history.replaceState({'location':window.location.href},document.title,window.location.href);
+		history.replaceState({'location':window.location.href},document.title,window.location.href);
 	
+	// Checking whether the window height is greater that 481, then assuming that we are on desktop.
 	if((wheight + 214) > 481)
 		desktop = true;
 	
+	// load the images if required from the server parsing dataImage attribyte of elements with .img class
 	loadImages("olfir");
+	// reset size is called to enable the 
 	resetSize(true);
 	
 	$("#newsSlidr").hover(function(){ newsSlider.stop(); },function(){ newsSlider.auto(); });
 	$("#eventSlidr").hover(function(){ eventSlider.stop(); },function(){ eventSlider.auto(); });
 	
-	//serverTime = new Date($('.time').attr('data-serverTime')).getTime();
-	//updateTime();
-	
 	window.onresize = function(e) {
 		resetSize(true);
 	};
-	//insertWeatherIcon();
 	
 	$(document).on("click",".load_and_slide_left",function(e){
 		e.preventDefault();
@@ -135,8 +119,10 @@ $(document).ready(function() {
 	
 });
 
+/**
+ *  Capture the event when the user clicks on back button or forward button
+ */
 window.onpopstate = function(event){
-	
 	if(event.state!=null || event.state.location!='undefned' || event.state.location!=''){
 	  loadAndSlideRight(event.state.location);
 	}
@@ -187,39 +173,33 @@ function loadAndSlideRight(url_to_navigate){
 					}
 				}); 
 				$(slider_to_activate).animate({left: "0px"},{duration:600,queue:false,easing:'linear'});
-				//history.pushState({'location':url_to_navigate},document.title,url_to_navigate);
+				history.pushState({'location':url_to_navigate},document.title,url_to_navigate);
 			},
 		complete: function(){  resetSize(true); }
 	});		
 }
 
 function resetSize(b) {
-	
-	if(desktop)
-	//	$(".home").height($(window).height() - 214);
-	
-	if(b)
-	{
+	if(b){
 		newsSlider = startSlide(false, 'newsSlidr', 5000, 'h', [ 'one', 'two', 'three', 'one' ], 'right', '#fff', true, (desktop)?'corner':'corner',true);
 		eventSlider = startSlide(false, 'eventSlidr', 5000, 'cube', [ 'one', 'two', 'three', 'one' ], 'up', '#fff', true, 'none',true);
 	}
+	alert($(window).height());
+	wheight = ($(window).height() - 214);
+	if((wheight + 214) > 481)
+		desktop = true;
 }
 
-function loadImages(pName)
-{	
-	if(desktop)
-	{
+function loadImages(pName) {	
+	if(desktop) {
 		$('#' + pName + " .img").each( function() {		
 			$(this).html("<img src='http://localhost:8080/LocalQNLWebsite/" + $(this).attr("data-Image") + "' alt='' title='' />");
 		});
 	}
-	
 }
 
-function loadImagesStr(htmlSource)
-{	
-	if(desktop)
-	{
+function loadImagesStr(htmlSource){	
+	if(desktop){
 		var tree = $("<div>" + htmlSource + "</div>");
 		tree.find('.img').html(function(){ return "<img src='http://localhost:8080/LocalQNLWebsite/" + $(this).attr("data-Image") + "' />"; } );
 		htmlSource = tree.html();
