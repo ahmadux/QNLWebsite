@@ -184,7 +184,7 @@ function resetSize(b) {
 		newsSlider = startSlide(false, 'newsSlidr', 5000, 'h', [ 'one', 'two', 'three', 'one' ], 'right', '#fff', true, (desktop)?'corner':'corner',true);
 		eventSlider = startSlide(false, 'eventSlidr', 5000, 'cube', [ 'one', 'two', 'three', 'one' ], 'up', '#fff', true, 'none',true);
 	}
-	alert($(window).height());
+	
 	wheight = ($(window).height() - 214);
 	if((wheight + 214) > 481)
 		desktop = true;

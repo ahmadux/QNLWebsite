@@ -36,12 +36,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/home.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
+					<li><a class="load_and_slide_left" href="http://localhost:8080/QNLWebsite/pages/home.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
 					<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Discover QNL<b class="caret"></b></a>
 			          <ul class="dropdown-menu">
-			            <li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/about.jsp">About QNL</a></li>
-						<li><a class="load_and_slide_left" href="http://localhost:8080/LocalQNLWebsite/pages/discover.jsp">Vision and Mission</a></li>
+			            <li><a class="load_and_slide_left" href="http://localhost:8080/QNLWebsite/pages/about.jsp">About QNL</a></li>
+						<li><a class="load_and_slide_left" href="http://localhost:8080/QNLWebsite/pages/discover.jsp">Vision and Mission</a></li>
 			          </ul>
 			        </li>								
 					<li><a class="load_and_slide_left" href="">Collections</a></li>
