@@ -17,7 +17,7 @@
 </head>
 <body>
   
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
   <script src="../scripts/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -191,8 +191,8 @@
     
   function selectValue(val)
   {
-  	var sel = $("select[id='setMenuType']");
-  	sel.val(val).attr("selected");
+  	//var sel = $("select[id='setMenuType']");
+  	//sel.val(val).attr("selected");
   }
   
   function checkValue(v)
@@ -218,7 +218,7 @@
 	$("input[id='objCustomUrl']").val('');
 	$("input[id='setParentId']").val(parentID);
 	checkValue(false);
-	selectValue("topMenu");
+	
 	
 	$("#deleteButton").hide();
 	$("#subMenuButton").hide();
@@ -248,7 +248,7 @@
 		
 		<ol id="menuList">
 			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"])}'>
-		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemType="${m.menuType}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
+		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
 		  	</c:forEach>
 		</ol>
 	 </div>
@@ -290,7 +290,7 @@
   			</label>
 		</div>
 	</div>
-	
+	<!-- 
 	<div class="control-group">	
 		<label class="control-label" for="setMenuType">Menu Type</label>	
 		<div class="controls">
@@ -301,7 +301,7 @@
 			</select>
 		</div>
 	</div>
-	
+	-->
 	<div class="control-group">	
 		<label class="control-label" for="setExtra2">External URL</label>	
 		<div class="controls">

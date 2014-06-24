@@ -41,9 +41,6 @@ public class LibMenu implements Serializable {
 
 	private String extra2;
 
-	@Column(name="MENU_TYPE")
-	private String menuType;
-
 	@Column(name="`ORDER`")
 	private int order;
 
@@ -102,14 +99,6 @@ public class LibMenu implements Serializable {
 
 	public void setExtra2(String extra2) {
 		this.extra2 = extra2;
-	}
-
-	public String getMenuType() {
-		return this.menuType;
-	}
-
-	public void setMenuType(String menuType) {
-		this.menuType = menuType;
 	}
 
 	public int getOrder() {
