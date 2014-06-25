@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.qnl.core.LibMenu;
 import com.qnl.facade.AttachmentFacade;
 import com.qnl.facade.CustomUrlFacade;
 import com.qnl.facade.LibMenuFacade;
@@ -51,9 +52,20 @@ public class Reloader extends HttpServlet {
 		{
 			switch(p=mx[c])
 			{
-				case"LibMenu":
-					(lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade")).refresh();
-					request.getServletContext().setAttribute("completeMenu",lmf.getCompleteMenu(LibMenuFacade.STATUS_APPROVED));
+				case "SaveMenuOrder":
+					lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade");
+					
+					String[] menuIds = request.getParameter("mIs").split(",");
+					
+					for(int i=0; i<menuIds.length; i++)
+					{
+						LibMenu lm = lmf.findByID(Integer.parseInt(menuIds[i]));
+						lm.setOrder(i);
+						lmf.update(lm, null, null, null);
+					}
+					
+				case"LibMenu":					
+					(lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade")).refresh();					
 					break;
 				case "LibPage":
 					((LibPageFacade)request.getServletContext().getAttribute("LibPageFacade")).refresh();				
