@@ -18,6 +18,7 @@ public class TimeService {
 	
 	private Request request;
 	private Time_zone time_zone;
+	
 	private static TimeService t = null;
 	
 	protected TimeService()
@@ -45,6 +46,7 @@ public class TimeService {
 	public static TimeService getInstance() throws ServiceException
 	{
 		try {
+	
 			URL fileURL = new URL("http://api.worldweatheronline.com/free/v1/tz.ashx?q=Doha&format=xml&key=6g3f78wazyu6pdd8jndwgkqj");
 			JAXBContext jc = JAXBContext.newInstance(TimeService.class);
 			Unmarshaller u = jc.createUnmarshaller();
@@ -107,7 +109,7 @@ public class TimeService {
 	
 	public String getFormattedTime(String format)
 	{
-		return new SimpleDateFormat(format).format(time_zone.currentTime);
+		return new SimpleDateFormat(format).format(new Date(time_zone.currentTime.getTime() + (new Date().getTime() - time_zone.currentTime.getTime())));
 	}
 	
 	public Date getCurrentDateTime()

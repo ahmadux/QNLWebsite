@@ -90,6 +90,13 @@ function startSlide(optBC, slidrID, t, dir, slides, optFDir, opTheme, ovFlow, op
 }
 
 $(document).ready(function() {
+	
+	//Set time and Weather
+	serverTime = new Date($('.time').attr('data-serverTime')).getTime();
+	updateTime();
+	setInterval(updateTime,10000);
+	insertWeatherIcon();
+	
 	if(history.state==null || history.state.location==undefined)
 		history.replaceState({'location':window.location.href},document.title,window.location.href);
 	
@@ -105,8 +112,13 @@ $(document).ready(function() {
 	$("#newsSlidr").hover(function(){ newsSlider.stop(); },function(){ newsSlider.auto(); });
 	$("#eventSlidr").hover(function(){ eventSlider.stop(); },function(){ eventSlider.auto(); });
 	
+	
 	window.onresize = function(e) {
 		resetSize(true);
+		
+
+		
+		
 	};
 	
 	$(document).on("click",".load_and_slide_left",function(e){
@@ -182,7 +194,8 @@ function loadAndSlideRight(url_to_navigate){
 function resetSize(b) {
 	if(b){
 		newsSlider = startSlide(false, 'newsSlidr', 5000, 'h', [ 'one', 'two', 'three', 'one' ], 'right', '#fff', true, (desktop)?'corner':'corner',true);
-		eventSlider = startSlide(false, 'eventSlidr', 5000, 'cube', [ 'one', 'two', 'three', 'one' ], 'up', '#fff', true, 'none',true);
+		eventSlider = startSlide(false, 'eventSlidr', 4000, 'cube', [ 'one', 'two', 'three', 'one' ], 'up', '#fff', true, 'none',true);
+		var salahSlider =  startSlide(false, 'salahSlidr', 6000, 'cube', [ 'one', 'two', 'three', 'four', 'five', 'one' ], 'down', '#fff', false, 'none',true);
 	}
 	
 	wheight = ($(window).height() - 214);
@@ -193,7 +206,7 @@ function resetSize(b) {
 function loadImages(pName) {	
 	if(desktop) {
 		$('#' + pName + " .img").each( function() {		
-			$(this).html("<img src='http://localhost:8080/QNLWebsite/" + $(this).attr("data-Image") + "' alt='' title='' />");
+			$(this).html("<img src='" + $(this).attr("data-Image") + "' alt='' title='' />");
 		});
 	}
 }
@@ -201,11 +214,65 @@ function loadImages(pName) {
 function loadImagesStr(htmlSource){	
 	if(desktop){
 		var tree = $("<div>" + htmlSource + "</div>");
-		tree.find('.img').html(function(){ return "<img src='http://localhost:8080/QNLWebsite/" + $(this).attr("data-Image") + "' />"; } );
+		tree.find('.img').html(function(){ return "<img src='" + $(this).attr("data-Image") + "' />"; } );
 		htmlSource = tree.html();
 	}
 	return htmlSource;
 }
 
+var clientTime = new Date().getTime();
+var serverTime;
+
+function updateTime()
+{
+	
+	var newTime = new Date().getTime();
+	var diff = newTime - clientTime;
+	var dt = new Date(diff + serverTime);
+	
+	$('.time').text((dt.getHours()<10?"0" + dt.getHours():dt.getHours()) + ":" + (dt.getMinutes()<10?"0" + dt.getMinutes():dt.getMinutes()));
+	
+}
+
+function insertWeatherIcon() {
+	$('.weather').each(function() {
+		switch ($(this).text()) {
+		case '308':
+		case '356':
+		case '353':
+		case '305':
+		case '302':
+		case '299':
+		case '293':
+		case '200':
+		case '176':
+			$(this).text('U');
+			break;
+
+		case '386':
+			$(this).text('S');
+			break;
+
+		case '248':
+		case '143':
+			$(this).text('G');
+			break;
+
+		case '116':
+		case '122':
+		case '119':
+			$(this).text('C');
+			break;
+
+		case '113':
+			$(this).text('A');
+			break;
+
+		default:
+			$(this).text('A');
+			break;
+		}
+	});
+}
 </script>
 </html>

@@ -16,10 +16,10 @@ import javax.servlet.ServletContextListener;
 
 import com.qnl.facade.*;
 //import com.qnl.services.RSSAtomFeedService;
-//import com.qnl.services.SalahService;
+import com.qnl.services.SalahService;
 //import com.qnl.services.ServiceException;
-//import com.qnl.services.TimeService;
-//import com.qnl.services.WeatherService;
+import com.qnl.services.TimeService;
+import com.qnl.services.WeatherService;
 //import com.sun.syndication.feed.synd.SyndFeed;
 
 public class Initializer implements ServletContextListener {
@@ -51,6 +51,7 @@ public class Initializer implements ServletContextListener {
 			}
 		}
 		
+		
 		try{
 			Thread.sleep(1000);
 		}catch(InterruptedException iex)
@@ -68,14 +69,14 @@ public class Initializer implements ServletContextListener {
 		System.out.println("**************** Start Init");
 		try
 		{
-			//WeatherService ws = WeatherService.getInstance();
-			//SalahService ss = SalahService.getInstance();
-			//TimeService ts = TimeService.getInstance();
+			WeatherService ws = WeatherService.getInstance();
+			SalahService ss = SalahService.getInstance();
+			TimeService ts = TimeService.getInstance();
 			//SyndFeed feeds = RSSAtomFeedService.readFeed("http://cs.gulf-times.com/GulfTimesNewsWebsite/rss.aspx?PortalName=Gulftimes&SectionName=Qatar&NewsCat=178"); 
 			
-			//sce.getServletContext().setAttribute("WeatherService",ws);			
-			//sce.getServletContext().setAttribute("SalahService",ss);			
-			//sce.getServletContext().setAttribute("TimeService",ts);			
+			sce.getServletContext().setAttribute("WeatherService",ws);			
+			sce.getServletContext().setAttribute("SalahService",ss);			
+			sce.getServletContext().setAttribute("TimeService",ts);			
 			//sce.getServletContext().setAttribute("GulfTimesNewsFeeds",feeds);
 				
 			//lif.loadImages("images");

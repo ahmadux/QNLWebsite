@@ -189,46 +189,45 @@ body
 	font-size: 1em;
 }
 
-.time, .date, .salah
+.time, .date, .salahTime
 {
-	padding-top: 15px;
-}
-
-.time, .date, .temp, .salah
-{
-		
+	color: #fff;	
 	text-align: center;	
+	overflow: hidden;
+	font-size: 2em;	
+}
+
+.time, .salahTime
+{
+	color: orange;
 	
-	height:70px;
-	overflow: hidden;		
 }
 
-.time,  .temp .tempNow, .salah
+.service1, .service2, .service3
 {
-	font-size: 2.3333em;
+	height: 50px;
 }
 
-
-.temp .tempLimit
+.service1, .service2
 {
-	display:block;
-	font-size: 1.0833em;
-	width:50%;
-	float:right;
-	text-align:left;
+	border-right: solid 1px #fff;	
 }
 
-.temp .tempNow
+ .salahName, .greg, .hijri
 {
-	display:block;
-	width:50%;	
-	float:right;
-	text-align:left;
+	color: #fff;
+	font-size: 0.8em;
+	display: block;
 }
 
-.salahName
+.greg, .salahName
 {
-	padding-right: 10px;
+	margin-bottom: -12px;
+}
+
+.hijri
+{
+	margin-top: -12px;
 }
 
 .weather
@@ -236,12 +235,14 @@ body
 	font-family: 'Weather Font';
 	font-weight: bold;
 	color: orange;
-	font-size: 3em;
-	padding-left: 22px;
-	padding-right: 22px;
-	width:50%;
-	float:left;
+	font-size: 2em;
+	
 	text-align:right;
+}
+
+.temp
+{
+	color: #fff;
 }
 
 .helpLinks
@@ -563,13 +564,14 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 .addthisevent .date .mon
 {
 	display: block;
-	color:orange;	
+	color:orange;
+	font-size: 1em;	
 }
 
 .addthisevent .date .day
 {
 	display: block;
-	font-size: 2.5em;
+	font-size: 1.8em;
 	margin-top: -10px;	
 }
 
