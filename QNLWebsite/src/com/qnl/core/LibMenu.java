@@ -14,19 +14,13 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQueries({
-	@NamedQuery(name="LibMenu.findByID",query="SELECT lm FROM LibMenu lm WHERE lm.id = :lmID"),
-	@NamedQuery(name="LibMenu.findAllMenuParents",query="SELECT lm FROM LibMenu lm WHERE lm.parentId = -1 AND lm.approved = 1 ORDER BY lm.order"),
-	@NamedQuery(name="LibMenu.findAllMenuChildren",query="SELECT lm FROM LibMenu lm WHERE lm.parentId = :lm_pID AND lm.approved = 1 ORDER BY lm.order"),
+@NamedQueries({	
 	@NamedQuery(name="LibMenu.findAll",query="SELECT lm FROM LibMenu lm ORDER BY lm.parentId, lm.order")
 })
 
 @Table(name="lib_menu")
 public class LibMenu implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public static final String findByID = "LibMenu.findByID";
-	public static final String findAllMenuParents = "LibMenu.findAllMenuParents";
-	public static final String findAllMenuChildren = "LibMenu.findAllMenuChildren";
 	public static final String findAll = "LibMenu.findAll";
 	
 	@Id
@@ -40,6 +34,9 @@ public class LibMenu implements Serializable {
 	private Timestamp createDate;
 
 	private String extra2;
+	
+	@Column(name="EXTRA2_AR")
+	private String extra2Ar;
 
 	@Column(name="`ORDER`")
 	private int order;
@@ -53,6 +50,12 @@ public class LibMenu implements Serializable {
 
 	@Column(name="TEXT_AR")
 	private String textAr;
+	
+	@Column(name="MENU_TYPE")
+	private String menuType;
+	
+	@Column(name="CSS_CLASS")
+	private String cssClass;	
 
 	//bi-directional many-to-one association to CustomUrl
     @ManyToOne
@@ -99,6 +102,30 @@ public class LibMenu implements Serializable {
 
 	public void setExtra2(String extra2) {
 		this.extra2 = extra2;
+	}
+	
+	public String getExtra2Ar() {
+		return this.extra2Ar;
+	}
+
+	public void setExtra2Ar(String extra2Ar) {
+		this.extra2Ar = extra2Ar;
+	}
+	
+	public void setMenuType(String mType) {
+		this.menuType = mType;
+	}
+	
+	public String getMenuType() {
+		return this.menuType;
+	}
+	
+	public void setCSSClass(String css) {
+		this.cssClass = css;
+	}
+	
+	public String getCSSClass() {
+		return this.cssClass;
 	}
 
 	public int getOrder() {

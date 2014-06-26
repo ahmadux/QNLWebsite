@@ -36,7 +36,7 @@
 	
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse">
-					${LibMenuFacade.getCompleteMenu(1) }
+					${LibMenuFacade.getCompleteMenu(1, "MENU") }
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-4 col-lg-2 services">

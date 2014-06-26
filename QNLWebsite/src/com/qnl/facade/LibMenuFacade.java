@@ -63,14 +63,44 @@ public class LibMenuFacade implements IUserInteractionFacade
 		return retVal;
 	}
 	
-	public String getCompleteMenu() 
+	public String getCompleteMenu(String menuTyp) 
 	{
 		StringBuilder retVal = new StringBuilder("");		
 		List<LibMenu> childMenuList;
 		
-		for (LibMenu pm: getAllParentMenuItems())
+		for (LibMenu pm: getAllParentMenuItems(menuTyp))
 		{			
-			childMenuList = getAllChildMenuItems(pm.getId());
+			childMenuList = getAllChildMenuItems(pm.getId(),menuTyp);
+			if(childMenuList.size() > 0)
+			{
+				retVal.append("<li class='dropdown'><a href='" + getURL(pm) + "' class='dropdown-toggle' data-toggle='dropdown'>" + pm.getText() + "<b class='caret'></b></a>");
+				retVal.append("<ul class='dropdown-menu'>");
+				
+				for( LibMenu m: childMenuList)
+					retVal.append("<li><a class='" + m.getCSSClass() +"' href='" + getURL(m) + "'>" + m.getText() + "</a></li>");	
+				
+					retVal.append("</ul></li>");
+			}
+			else
+			{
+				if(pm.getText().equals("Home"))
+					retVal.append("<li><a class='" + pm.getCSSClass() + "' href='" + getURL(pm) + "'><span class='glyphicon glyphicon-home'></span></a></li>");
+				else
+					retVal.append("<li><a class='" + pm.getCSSClass() + "' href='" + getURL(pm) + "'>" + pm.getText() + "</a></li>");
+			}
+		}
+				
+		return  "<ul class='nav navbar-nav'>" + retVal.toString() + "</ul>";
+	}
+	
+	public String getCompleteMenu(byte approvalStatus, String menuTyp) 
+	{
+		StringBuilder retVal = new StringBuilder("");		
+		List<LibMenu> childMenuList;
+		
+		for (LibMenu pm: getAllParentMenuItems(approvalStatus, menuTyp))
+		{			
+			childMenuList = getAllChildMenuItems(pm.getId(),approvalStatus, menuTyp);
 			if(childMenuList.size() > 0)
 			{
 				retVal.append("<li class='dropdown'><a href='" + getURL(pm) + "' class='dropdown-toggle' data-toggle='dropdown'>" + pm.getText() + "<b class='caret'></b></a>");
@@ -92,39 +122,9 @@ public class LibMenuFacade implements IUserInteractionFacade
 				
 		return  "<ul class='nav navbar-nav'>" + retVal.toString() + "</ul>";
 	}
-	
-	public String getCompleteMenu(byte approvalStatus) 
-	{
-		StringBuilder retVal = new StringBuilder("");		
-		List<LibMenu> childMenuList;
-		
-		for (LibMenu pm: getAllParentMenuItems(approvalStatus))
-		{			
-			childMenuList = getAllChildMenuItems(pm.getId(),approvalStatus);
-			if(childMenuList.size() > 0)
-			{
-				retVal.append("<li class='dropdown'><a href='" + getURL(pm) + "' class='dropdown-toggle' data-toggle='dropdown'>" + pm.getText() + "<b class='caret'></b></a>");
-				retVal.append("<ul class='dropdown-menu'>");
-				
-				for( LibMenu m: childMenuList)
-					retVal.append("<li><a class='load_and_slide_left' href='" + getURL(m) + "'>" + m.getText() + "</a></li>");	
-				
-					retVal.append("</ul></li>");
-			}
-			else
-			{
-				if(pm.getText().equals("Home"))
-					retVal.append("<li><a class='load_and_slide_left' href='" + getURL(pm) + "'><span class='glyphicon glyphicon-home'></span></a></li>");
-				else
-					retVal.append("<li><a class='load_and_slide_left' href='" + getURL(pm) + "'>" + pm.getText() + "</a></li>");
-			}
-		}
-				
-		return  "<ul class='nav navbar-nav'>" + retVal.toString() + "</ul>";
-	}
 		
 	
-	public String getCompleteBottomMenu(byte approvalStatus) {
+	public String getCompleteBottomMenu(byte approvalStatus, String menuTyp) {
 		return null;
 	}
 
@@ -141,7 +141,7 @@ public class LibMenuFacade implements IUserInteractionFacade
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List<LibMenu> getAllParentMenuItems()
+	public List<LibMenu> getAllParentMenuItems(String menuTyp)
 	{
 		List<LibMenu> parentMenus = new ArrayList<LibMenu>();
 		
@@ -149,7 +149,7 @@ public class LibMenuFacade implements IUserInteractionFacade
 	    while (it.hasNext()) {
 	        
 			Map.Entry pairs = (Map.Entry)it.next();
-			if(((LibMenu)pairs.getValue()).getParentId() == -1)				
+			if((((LibMenu)pairs.getValue()).getParentId() == -1)&&(((LibMenu)pairs.getValue()).getMenuType().contains(menuTyp)))				
 				parentMenus.add((LibMenu)pairs.getValue());
 	    }	
 	    
@@ -166,7 +166,7 @@ public class LibMenuFacade implements IUserInteractionFacade
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List<LibMenu> getAllParentMenuItems(byte approvalStatus)
+	public List<LibMenu> getAllParentMenuItems(byte approvalStatus, String menuTyp)
 	{
 		List<LibMenu> parentMenus = new ArrayList<LibMenu>();
 		
@@ -174,7 +174,7 @@ public class LibMenuFacade implements IUserInteractionFacade
 	    while (it.hasNext()) {
 	        
 			Map.Entry pairs = (Map.Entry)it.next();
-			if((((LibMenu)pairs.getValue()).getParentId() == -1)&&(((LibMenu)pairs.getValue()).getApproved() == approvalStatus))				
+			if((((LibMenu)pairs.getValue()).getParentId() == -1)&&(((LibMenu)pairs.getValue()).getApproved() == approvalStatus)&&(((LibMenu)pairs.getValue()).getMenuType().contains(menuTyp)))				
 				parentMenus.add((LibMenu)pairs.getValue());
 	    }	
 	    
@@ -190,14 +190,14 @@ public class LibMenuFacade implements IUserInteractionFacade
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List<LibMenu> getAllChildMenuItems(int mid)
+	public List<LibMenu> getAllChildMenuItems(int mid, String menuTyp)
 	{
 		List<LibMenu> childMenus = new ArrayList<LibMenu>();
 		Iterator it = libMenus.entrySet().iterator();
 	    while (it.hasNext()) {
 	        
 			Map.Entry pairs = (Map.Entry)it.next();
-			if(((LibMenu)pairs.getValue()).getParentId() == mid)				
+			if((((LibMenu)pairs.getValue()).getParentId() == mid)&&(((LibMenu)pairs.getValue()).getMenuType().contains(menuTyp)))				
 				childMenus.add((LibMenu)pairs.getValue());
 	    }	
 	    
@@ -214,14 +214,14 @@ public class LibMenuFacade implements IUserInteractionFacade
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public List<LibMenu> getAllChildMenuItems(int mid,byte approvalStatus)
+	public List<LibMenu> getAllChildMenuItems(int mid,byte approvalStatus, String menuTyp)
 	{
 		List<LibMenu> childMenus = new ArrayList<LibMenu>();
 		Iterator it = libMenus.entrySet().iterator();
 	    while (it.hasNext()) {
 	        
 			Map.Entry pairs = (Map.Entry)it.next();
-			if((((LibMenu)pairs.getValue()).getParentId() == mid)&&(((LibMenu)pairs.getValue()).getApproved() == approvalStatus))				
+			if((((LibMenu)pairs.getValue()).getParentId() == mid)&&(((LibMenu)pairs.getValue()).getApproved() == approvalStatus)&&(((LibMenu)pairs.getValue()).getMenuType().contains(menuTyp)))				
 				childMenus.add((LibMenu)pairs.getValue());
 	    }	
 	    

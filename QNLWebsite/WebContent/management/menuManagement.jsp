@@ -18,21 +18,13 @@
   body{font-size: 12px; font-family:Trebuchet MS }
   #menuList .ui-selecting { background: #FECA40; }
   #menuList .ui-selected { background: #F39814; color: white; }
-  #menuList { list-style-type: none; margin: 0; padding: 0px; width: 100%; }
-  #menuList li { margin: 3px; padding: 0.4em; height: 18px; cursor:pointer }  
-  input.text { padding: 2px; }  
+  #menuList , #sitemapOnlyList { list-style-type: none; margin: 0; padding: 0px; width: 100%; }
+  #menuList li, #sitemapOnlyList li { margin: 3px; padding: 0.4em; height: 18px; cursor:pointer }  
+   
   </style>
 <title>Manage Menu</title>
-
 </head>
-<body>
-  
-  
-  
- 
-
-  
-  <script>
+<script>
   var parentID = -1;
   
   function createMenuItem()
@@ -125,15 +117,7 @@
   
   $(function() {
 	
-	$("#subsite").change(function() {
-		alert();
-		location.href = "menuManagement.jsp?subsite=" +  $("#subsite").val();
-	});  
 	
-	
-	  
-	//alert(parentID);
-    //$("input[type='button']").button();
     if(($("input[id='btn_BTP']").attr("menuPID") == "-1")||($("input[id='btn_BTP']").attr("menuPID") == ""))    
     	$("div[id='div_BTP']").hide();    	
     else
@@ -141,7 +125,7 @@
     		parentID = $("input[id='btn_BTP']").attr("menuPID");
     		$("div[id='div_BTP']").show();
     	}
-  	//alert(parentID);
+  	
     $("#menuList li").dblclick(function() {
     	if($(this).attr("class") == "ui-state-default")
     	{
@@ -156,15 +140,53 @@
     		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
     		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
     		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
     		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
     		
+    		
     		checkValue($(this).attr("itemApproved") == "1");
+    		selectValue('setMenuType',$(this).attr('itemMenuType'));
     		
     		$("#deleteButton").show();
-    		$("#deleteButton").click(function() {deleteMenuItem(IDD)});
+    		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
     		$("#subMenuButton").show();    		
-    		$("#subMenuButton").click(function() {getSubMenu(IDD)});
-    		$("#okButton").click(function() {updateMenuItem()});
+    		$("#subMenuButton").click(function() {getSubMenu(IDD);});
+    		$("#okButton").click(function() {updateMenuItem();});
+    		
+    		$("#modalForm").modal('show');
+    	}
+    	else
+    		$(this).attr("class","ui-state-default");
+    });
+    
+    $("#sitemapOnlyList li").dblclick(function() {
+    	if($(this).attr("class") == "ui-state-default")
+    	{
+    		$("#myModalLabel").text('Edit Menu Item');
+    		var IDD = $(this).attr('itemID');
+    		$(this).attr("class","ui-state-highlight");    		
+    		$(this).siblings().attr("class","ui-state-default");
+    		
+    		$("input[id='id']").val(IDD); 
+    		$("input[id='setParentId']").val(parentID);
+    		$("input[id='setText']").val($(this).attr('itemText'));
+    		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
+    		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
+    		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
+    		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
+    		
+    		
+    		checkValue($(this).attr("itemApproved") == "1");
+    		selectValue('setMenuType',$(this).attr('itemMenuType'));
+    		
+    		$("#deleteButton").show();
+    		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
+    		$("#subMenuButton").show();    		
+    		$("#subMenuButton").click(function() {getSubMenu(IDD);});
+    		$("#okButton").click(function() {updateMenuItem();});
     		
     		$("#modalForm").modal('show');
     	}
@@ -187,10 +209,10 @@
 	  $.ajax({ url: "../Reloader.do?o=SaveMenuOrder&mIs=" + mis, success: function(){ alert("New menu positions have been saved!"); }});	  	  
   }
     
-  function selectValue(val)
+  function selectValue(iName,val)
   {
-  	//var sel = $("select[id='setMenuType']");
-  	//sel.val(val).attr("selected");
+  	var sel = $("select[id='" + iName + "']");
+  	sel.val(val).attr("selected");
   }
   
   function checkValue(v)
@@ -214,19 +236,21 @@
 	$("input[id='setExtra2Ar']").val('');
 	$("input[id='~setApproved']").val('');
 	$("input[id='objCustomUrl']").val('');
+	$("input[id='setCSSClass']").val('');
 	$("input[id='setParentId']").val(parentID);
+	$("input[id='setOrder']").val(0);
 	checkValue(false);
-	
+	//selectValue('setMenuType','MENU, STIEMAP');
 	
 	$("#deleteButton").hide();
 	$("#subMenuButton").hide();
-	$("#okButton").click(function() {createMenuItem()});
+	$("#okButton").click(function() {createMenuItem();});
 	$("#modalForm").modal('show');
  }
  
 
   </script>
-</head>
+
 <body>
 	<div id="div_BTP">
 	<input type="button" id="btn_BTP" menuPID='${param["pID"]}' class="btn btn-success" value="Back To Parent" onclick="location.href='menuManagement.jsp?pId=' + $(this).attr('menuPID');" />
@@ -235,10 +259,16 @@
 	</div>	
 	<div class="clearfix"></div>
 	<div style="width:300px;border:solid 2px orange;" id="menuListHolder">
-		
+		<h3>Menu Items</h3>
 		<ol id="menuList">
-			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"])}'>
-		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
+			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"],"MENU")}'>
+		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCSSClass="${m.getCSSClass()}"  itemMenuType="${m.menuType}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
+		  	</c:forEach>
+		</ol>
+		<h3>Other Items</h3>
+		<ol id="sitemapOnlyList">
+			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"],"SITEMAP ONLY")}'>
+		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCSSClass="${m.getCSSClass()}"  itemMenuType="${m.menuType}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
 		  	</c:forEach>
 		</ol>
 	 </div>
@@ -259,7 +289,7 @@
 				<input type="hidden" name="oName" id="oName" value="LibMenu" />
 				<input type="hidden" name="objUser" id="objUser" value="11" />
 				<input type="hidden" name="setParentId" id="setParentId" />
-				<input type="hidden" name="setOrder" id="setOrder" value="0" />
+				<input type="hidden" name="setOrder" id="setOrder" value="" />
 				
 				<input type="hidden" name="objCustomUrl" id="objCustomUrl" />
 				<input type="hidden" name="~setApproved" id="~setApproved" />	
@@ -279,6 +309,18 @@
 					</div>
 				</div>
 				
+				<div class="control-group">
+					<label class="control-label" for="setMenuType">Menu Type<font
+						color="red">*</font></label>
+					<div class="controls">
+						<select id="setMenuType" name="setMenuType" class="form-control">
+							<option value='MENU, SITEMAP'>MENU + SITEMAP (Both)</option>
+							<option value='MENU ONLY'>MENU Only</option>
+							<option value='SITEMAP ONLY'>SITEMAP Only</option>
+						</select> 
+					</div>
+				</div>
+				
 				<div class="control-group">		
 					<div class="controls">
 						<label class="checkbox">
@@ -286,6 +328,13 @@
 			  			</label>
 					</div>
 				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="cssClass">CSS Class</label>
+					<div class="controls">
+						<input type="text" name="setCSSClass" id="setCSSClass" class="form-control" maxlength="50" /> 
+					</div>
+				</div>	
 				
 				<div class="control-group">	
 					<label class="control-label" for="setExtra2">External URL</label>	
