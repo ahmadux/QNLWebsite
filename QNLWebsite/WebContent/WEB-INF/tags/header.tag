@@ -51,6 +51,13 @@
 					<li><a class="load_and_slide_left" href="">Online Resources</a></li>
 					<li><a class="load_and_slide_left" href="">Ask QNL</a></li>
 				</ul>
+				
+				<ul class="nav navbar-right">
+					<li><span class="time_display">12:40:25</span></li>
+					<li><span class="temp_display">33 <sup>o</sup> C</span></li>
+				</ul>
 			</div>
+			
+			
 		</nav>
 	</div>
