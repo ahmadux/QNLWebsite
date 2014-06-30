@@ -4,28 +4,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+
+
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-  <style>  
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+<style>  
   body{font-size: 12px; font-family:Trebuchet MS }
   #menuList .ui-selecting { background: #FECA40; }
   #menuList .ui-selected { background: #F39814; color: white; }
-  #menuList { list-style-type: none; margin: 0; padding: 0px; width: 100%; }
-  #menuList li { margin: 3px; padding: 0.4em; height: 18px; cursor:pointer }  
-  input.text { padding: 2px; }  
+  #menuList , #sitemapOnlyList { list-style-type: none; margin: 0; padding: 0px; width: 100%; }
+  #menuList li, #sitemapOnlyList li { margin: 3px; padding: 0.4em; height: 18px; cursor:pointer }  
+   
   </style>
 <title>Manage Menu</title>
 </head>
-<body>
-  
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-  <script src="../scripts/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/bootstrap.min.css" />
-  
- 
-
-  
-  <script>
+<script>
   var parentID = -1;
   
   function createMenuItem()
@@ -118,15 +117,7 @@
   
   $(function() {
 	
-	$("#subsite").change(function() {
-		alert();
-		location.href = "menuManagement.jsp?subsite=" +  $("#subsite").val();
-	});  
 	
-	
-	  
-	//alert(parentID);
-    //$("input[type='button']").button();
     if(($("input[id='btn_BTP']").attr("menuPID") == "-1")||($("input[id='btn_BTP']").attr("menuPID") == ""))    
     	$("div[id='div_BTP']").hide();    	
     else
@@ -134,7 +125,7 @@
     		parentID = $("input[id='btn_BTP']").attr("menuPID");
     		$("div[id='div_BTP']").show();
     	}
-  	//alert(parentID);
+  	
     $("#menuList li").dblclick(function() {
     	if($(this).attr("class") == "ui-state-default")
     	{
@@ -149,15 +140,53 @@
     		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
     		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
     		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
     		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
-    		selectValue($(this).attr('itemType'));
+    		
+    		
     		checkValue($(this).attr("itemApproved") == "1");
+    		selectValue('setMenuType',$(this).attr('itemMenuType'));
     		
     		$("#deleteButton").show();
-    		$("#deleteButton").click(function() {deleteMenuItem(IDD)});
+    		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
     		$("#subMenuButton").show();    		
-    		$("#subMenuButton").click(function() {getSubMenu(IDD)});
-    		$("#okButton").click(function() {updateMenuItem()});
+    		$("#subMenuButton").click(function() {getSubMenu(IDD);});
+    		$("#okButton").click(function() {updateMenuItem();});
+    		
+    		$("#modalForm").modal('show');
+    	}
+    	else
+    		$(this).attr("class","ui-state-default");
+    });
+    
+    $("#sitemapOnlyList li").dblclick(function() {
+    	if($(this).attr("class") == "ui-state-default")
+    	{
+    		$("#myModalLabel").text('Edit Menu Item');
+    		var IDD = $(this).attr('itemID');
+    		$(this).attr("class","ui-state-highlight");    		
+    		$(this).siblings().attr("class","ui-state-default");
+    		
+    		$("input[id='id']").val(IDD); 
+    		$("input[id='setParentId']").val(parentID);
+    		$("input[id='setText']").val($(this).attr('itemText'));
+    		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
+    		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
+    		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
+    		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
+    		
+    		
+    		checkValue($(this).attr("itemApproved") == "1");
+    		selectValue('setMenuType',$(this).attr('itemMenuType'));
+    		
+    		$("#deleteButton").show();
+    		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
+    		$("#subMenuButton").show();    		
+    		$("#subMenuButton").click(function() {getSubMenu(IDD);});
+    		$("#okButton").click(function() {updateMenuItem();});
     		
     		$("#modalForm").modal('show');
     	}
@@ -171,27 +200,18 @@
   
   function setNewPositions()
   {
-	  var i = 0;
+	  var mis = "";
 	  $("#menuList").children().each(function(){
 		var m = $(this);
-		$.ajax("../AjaxToDB.do?id=" + m.attr("itemID") + "&setOrder=" + (i++) + "&oName=LibMenu&objUser=11");
-		//alert(m.attr("itemID") + ": " + i++)
+		mis += (mis!=""?",":"") + m.attr("itemID");
 	  });
-	  $.ajax("../Reloader.do?o=LibMenu");
-	  $( "#dialog-message" ).dialog({
-	      modal: true,
-	      buttons: {
-	        Ok: function() {
-	          $( this ).dialog( "close" );
-	        }
-	      }
-	    });
-	  
+	  //alert(mis);
+	  $.ajax({ url: "../Reloader.do?o=SaveMenuOrder&mIs=" + mis, success: function(){ alert("New menu positions have been saved!"); }});	  	  
   }
     
-  function selectValue(val)
+  function selectValue(iName,val)
   {
-  	var sel = $("select[id='setMenuType']");
+  	var sel = $("select[id='" + iName + "']");
   	sel.val(val).attr("selected");
   }
   
@@ -216,119 +236,130 @@
 	$("input[id='setExtra2Ar']").val('');
 	$("input[id='~setApproved']").val('');
 	$("input[id='objCustomUrl']").val('');
+	$("input[id='setCSSClass']").val('');
 	$("input[id='setParentId']").val(parentID);
+	$("input[id='setOrder']").val(0);
 	checkValue(false);
-	selectValue("topMenu");
+	//selectValue('setMenuType','MENU, STIEMAP');
 	
 	$("#deleteButton").hide();
 	$("#subMenuButton").hide();
-	$("#okButton").click(function() {createMenuItem()});
+	$("#okButton").click(function() {createMenuItem();});
 	$("#modalForm").modal('show');
  }
  
 
   </script>
-</head>
+
 <body>
 	<div id="div_BTP">
 	<input type="button" id="btn_BTP" menuPID='${param["pID"]}' class="btn btn-success" value="Back To Parent" onclick="location.href='menuManagement.jsp?pId=' + $(this).attr('menuPID');" />
 	<br />
 	<br />
-	</div>
-	<div class="pull-left">	
-		<select name="subsite" id="subsite">
-		<c:forEach var="s" items="${loggedInUser.getAllSubsites()}">
-			<option value="${s.id}" ${empty param.subsite?"":" selected"}>${s.name}</option>
-		</c:forEach>			
-		</select>
-	</div>
-	<br /><br />
+	</div>	
 	<div class="clearfix"></div>
 	<div style="width:300px;border:solid 2px orange;" id="menuListHolder">
-		
+		<h3>Menu Items</h3>
 		<ol id="menuList">
-			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"])}'>
-		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemType="${m.menuType}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
+			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"],"MENU")}'>
+		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCSSClass="${m.getCSSClass()}"  itemMenuType="${m.menuType}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
+		  	</c:forEach>
+		</ol>
+		<h3>Other Items</h3>
+		<ol id="sitemapOnlyList">
+			<c:forEach var="m" items='${LibMenuFacade.getAllChildMenuItems(param["pID"]==null?-1:param["pID"],"SITEMAP ONLY")}'>
+		  	<li itemID="${m.id}" itemText="${m.text}" itemTextAR="${m.textAr}" itemOrder="${m.order}" itemCSSClass="${m.getCSSClass()}"  itemMenuType="${m.menuType}" itemCUrlID="${m.customUrl.id}" itemApproved="${m.approved}" itemExtra2Ar="${m.customUrl.urlAr}" itemExtra2="${m.customUrl.url}" class="ui-state-default" style="height:30px">${m.text}</li>
 		  	</c:forEach>
 		</ol>
 	 </div>
 
-<form id="mnu" name="mnu">
-<input type="hidden" name="id" id="id" />
-<input type="hidden" name="oName" id="oName" value="LibMenu" />
-<input type="hidden" name="objUser" id="objUser" value="11" />
-<input type="hidden" name="setParentId" id="setParentId" />
-<input type="hidden" name="setOrder" id="setOrder" value="0" />
 
-<input type="hidden" name="objCustomUrl" id="objCustomUrl" />
-<input type="hidden" name="~setApproved" id="~setApproved" />
 
-<div id="modalForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding:12px">
-	<h3 id="myModalLabel">New Menu Item</h3>
-	<div class="control-group">
-		<label class="control-label" for="setText">Title<font
-			color="red">*</font></label>
-		<div class="controls">
-			<input type="text" name="setText" id="setText" class="text" maxlength="50" size="27" placeHolder="Menu Text" pattern="[A-Za-z]([0-9]|[A-Za-z]|\s)*" required="required" /> <span
-				class="help-inline">The title of the menu item.</span>
-		</div>
-	</div>
 
-	<div class="control-group">
-		<label class="control-label" for="textAr">Title (Arabic)<font
-			color="red">*</font></label>
-		<div class="controls">
-			<input type="text" name="setTextAr" id="setTextAr" class="text" maxlength="50" size="27"  dir="rtl" required="required" /> <span
-				class="help-inline">The title of the menu item in Arabic.</span>
+  <div id="modalForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 3px">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	      <div class="modal-header">
+	      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">New Menu Item</h4>        
+	      </div>
+	      <div class="modal-body">
+	      <form id="mnu" name="mnu" class="form-horizontal">
+				<input type="hidden" name="id" id="id" />
+				<input type="hidden" name="oName" id="oName" value="LibMenu" />
+				<input type="hidden" name="objUser" id="objUser" value="11" />
+				<input type="hidden" name="setParentId" id="setParentId" />
+				<input type="hidden" name="setOrder" id="setOrder" value="" />
+				
+				<input type="hidden" name="objCustomUrl" id="objCustomUrl" />
+				<input type="hidden" name="~setApproved" id="~setApproved" />	
+				<div class="control-group">
+					<label class="control-label" for="setText">Title<font
+						color="red">*</font></label>
+					<div class="controls">
+						<input type="text" name="setText" id="setText" class="form-control" maxlength="50"  placeHolder="Menu Text" pattern="[A-Za-z]([0-9]|[A-Za-z]|\s)*" required="required" />
+					</div>
+				</div>
+			
+				<div class="control-group">
+					<label class="control-label" for="textAr">Title (Arabic)<font
+						color="red">*</font></label>
+					<div class="controls">
+						<input type="text" name="setTextAr" id="setTextAr" class="form-control" maxlength="50"   dir="rtl" required="required" /> 
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="setMenuType">Menu Type<font
+						color="red">*</font></label>
+					<div class="controls">
+						<select id="setMenuType" name="setMenuType" class="form-control">
+							<option value='MENU, SITEMAP'>MENU + SITEMAP (Both)</option>
+							<option value='MENU ONLY'>MENU Only</option>
+							<option value='SITEMAP ONLY'>SITEMAP Only</option>
+						</select> 
+					</div>
+				</div>
+				
+				<div class="control-group">		
+					<div class="controls">
+						<label class="checkbox">
+			  				<input type="checkbox" value="" name="approved" id="approved">Is Approved?
+			  			</label>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="cssClass">CSS Class</label>
+					<div class="controls">
+						<input type="text" name="setCSSClass" id="setCSSClass" class="form-control" maxlength="50" /> 
+					</div>
+				</div>	
+				
+				<div class="control-group">	
+					<label class="control-label" for="setExtra2">External URL</label>	
+					<div class="controls">
+						<input type="text" name="setExtra2" id="setExtra2" value="" class="form-control"  maxlength="500" />
+					</div>
+				</div>	
+				
+				<div class="control-group">	
+					<label class="control-label" for="setExtra2">External URL (Arabic)</label>	
+					<div class="controls">
+						<input type="text" name="setExtra2Ar" id="setExtra2Ar" value="" class="form-control"  maxlength="500" />
+					</div>
+				</div>
+		</form>
+		</div>
+		<div class="modal-footer">
+			<input id="okButton" type="button" class="btn btn-primary" aria-hidden="true" value="Ok " />
+			<button id="deleteButton" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Delete</button>
+			<button id="subMenuButton" class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Sub Menu</button>
+			<button id="closeButton" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
 		</div>
 	</div>
-	
-	<div class="control-group">		
-		<div class="controls">
-			<label class="checkbox">
-  				<input type="checkbox" value="" name="approved" id="approved">Is Approved?
-  			</label>
-		</div>
 	</div>
-	
-	<div class="control-group">	
-		<label class="control-label" for="setMenuType">Menu Type</label>	
-		<div class="controls">
-			<select name="setMenuType" id="setMenuType">
-			    	<option value="leftMenu">Left-hand Menu</option>
-			    	<option value="topMenu">Top Menu</option>
-			    	<option value="rightMenu">Right-hand Menu</option>
-			</select>
-		</div>
-	</div>
-	
-	<div class="control-group">	
-		<label class="control-label" for="setExtra2">External URL</label>	
-		<div class="controls">
-			<input type="text" name="setExtra2" id="setExtra2" value="" class="text" size="27" maxlength="500" />
-		</div>
-	</div>	
-	
-	<div class="control-group">	
-		<label class="control-label" for="setExtra2">External URL (Arabic)</label>	
-		<div class="controls">
-			<input type="text" name="setExtra2Ar" id="setExtra2Ar" value="" class="text" size="27" maxlength="500" />
-		</div>
-	</div>
-	
-	<input id="okButton" type="button" class="btn btn-primary" aria-hidden="true" value="Ok " />
-	<button id="deleteButton" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Delete</button>
-	<button id="subMenuButton" class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Sub Menu</button>
-	<button id="closeButton" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-</div>
-</form>
-
- <div id="dialog-message" title="Menu Order" style="display: none">
-  <p>
-    <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
-    	New menu item positions have been saved.
-  </p>
-</div>
  
  <br />
  <input type="button" class="btn btn-primary" value="New Menu Item" onclick="newMenuItem();" />

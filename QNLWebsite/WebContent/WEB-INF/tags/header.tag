@@ -56,8 +56,10 @@
 					<li><span class="time_display">12:40:25</span></li>
 					<li><span class="temp_display">33 <sup>o</sup> C</span></li>
 				</ul>
+				${LibMenuFacade.getCompleteMenu(1) }
 			</div>
 			
 			
 		</nav>
 	</div>
+	
