@@ -35,8 +35,31 @@
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/home.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Discover QNL<b class="caret"></b></a>
+			          <ul class="dropdown-menu">
+			            <li><a class="load_and_slide_left" href="${BaseServerPath}/pages/about.jsp">About QNL</a></li>
+						<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Vision and Mission</a></li>
+			          </ul>
+			        </li>								
+					<li><a class="load_and_slide_left" href="">Collections</a></li>
+					<li><a class="load_and_slide_left" href="">Children's Section</a></li>
+					<li><a class="load_and_slide_left" href="">Heritage	Collection</a></li>
+					<li><a class="load_and_slide_left" href="">Programs &amp; Services</a></li>
+					<li><a class="load_and_slide_left" href="">Online Resources</a></li>
+					<li><a class="load_and_slide_left" href="">Ask QNL</a></li>
+				</ul>
+				
+				<ul class="nav navbar-right">
+					<li><span class="time_display">12:40:25</span></li>
+					<li><span class="temp_display">33 <sup>o</sup> C</span></li>
+				</ul>
 				${LibMenuFacade.getCompleteMenu(1) }
 			</div>
+			
+			
 		</nav>
 	</div>
 	
