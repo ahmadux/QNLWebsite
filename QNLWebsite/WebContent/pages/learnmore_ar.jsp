@@ -1,1 +1,0 @@
-LMATL Arabic page.

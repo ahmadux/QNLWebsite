@@ -22,7 +22,7 @@ public class LibRegistration implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private String id;
+	private int id;
 
 	@Column(nullable=false)
 	private byte approved;
@@ -137,11 +137,11 @@ public class LibRegistration implements Serializable {
     public LibRegistration() {
     }
 
-	public String getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

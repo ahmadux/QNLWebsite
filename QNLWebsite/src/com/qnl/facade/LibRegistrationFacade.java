@@ -44,7 +44,7 @@ public class LibRegistrationFacade implements IUserInteractionFacade {
 		lRegDAO.closeTransaction();
 
 		for (int i = 0; i < lRegs.size(); i++)
-			libRegs.put(lRegs.get(i).getId().toString(), lRegs.get(i));
+			libRegs.put(lRegs.get(i).getId() + "", lRegs.get(i));
 	}
 
 	public List<LibRegistration> getLibRegs() {
@@ -52,12 +52,12 @@ public class LibRegistrationFacade implements IUserInteractionFacade {
 	}
 
 
-	public LibRegistration findByID(String id) {
+	public LibRegistration findByID(int id) {
 		// Attachment a = null;
 		// aDAO.beginTransaction();
 		// a = aDAO.findByID(id);
 		// aDAO.closeTransaction();
-		return libRegs.get(id);
+		return libRegs.get(id + "");
 	}
 	
 	public List<LibRegistration> getLibraryRegistrationsSortedByName()

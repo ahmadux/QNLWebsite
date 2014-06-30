@@ -272,11 +272,7 @@
 		  	</c:forEach>
 		</ol>
 	 </div>
-
-
-
-
-  <div id="modalForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 3px">
+<div id="modalForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding: 3px">
   <div class="modal-dialog">
     <div class="modal-content">
 	      <div class="modal-header">

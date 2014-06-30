@@ -13,7 +13,7 @@ public class testMe
 	
 	public static void main(String[] args)
 	{
-		testMe t = new testMe();
+		
 	}
 	
 	

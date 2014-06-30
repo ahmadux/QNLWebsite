@@ -256,7 +256,7 @@
 							color="red">*</font></label>
 						<div class="controls">
 							<input required="required" type="text" id="setTitle"
-								class="input-xxlarge" name="setTitle" maxlength="255"
+								class="form-control" name="setTitle" maxlength="255"
 								placeholder="Title of the page" value="${lp.title}"
 								pattern="[A-Za-z]+([0-9]|\s|'|[A-Za-z])*" />
 						</div>
@@ -268,22 +268,22 @@
 						</label>
 						<div class="controls">
 							<input required="required" type="text" id="setTitleAr"
-								class="input-xxlarge" value="${lp.titleAr}" name="setTitleAr"
+								class="form-control" value="${lp.titleAr}" name="setTitleAr"
 								maxlength="255" dir="rtl" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="setFriendlyName">Friendly
-							Name</label>
+							Name<font color="red">*</font></label>
 						<div class="controls">
 							<input required="required" type="text" id="setFriendlyName"
-								class="input-large" name="setFriendlyName" maxlength="100"
+								class="form-control" name="setFriendlyName" maxlength="100"
 								value="${lp.libMenu.customUrl.friendlyName}"
-								placeholder="Use alphabet, numbers or '-' sign"
+								placeholder=""
 								pattern="[A-Za-z]+([0-9]|-}[A-Za-z])*" />
 						</div>
 					</div>
-					<div class="control-group">
+					<!--<div class="control-group">
 						<label class="control-label" for="objLibTemplate">Template<font
 							color="red">*</font></label>
 						<div class="controls">
@@ -300,17 +300,17 @@
 								template for the page.
 							</span>
 						</div>
-					</div>
+					</div>-->
 					<div class="control-group">
 						<label class="control-label" for="objLibMenu">Menu</label>
 						<div class="controls">
 							<select id="objLibMenu" name="objLibMenu" style="width: 200px">
 								<c:forEach var="m"
-									items="${LibMenuFacade.getAllParentMenuItems()}">
+									items="${LibMenuFacade.getAllParentMenuItems(1,'MENU')}">
 									<option value="${m.id}" data-cUrlID="${m.customUrl.id}"
 										${(lp.libMenu.id == m.id)?"selected":""}>${m.text}</option>
 									<c:forEach var="m2"
-										items="${LibMenuFacade.getAllChildMenuItems(m.id)}">
+										items="${LibMenuFacade.getAllChildMenuItems(m.id,'MENU')}">
 										<option value="${m2.id}" data-cUrlID="${m2.customUrl.id}"
 											${(lp.libMenu.id == m2.id)?"selected":""}>--
 											${m2.text}</option>
