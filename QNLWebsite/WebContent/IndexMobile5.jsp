@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="includes/common_header2.jsp" />
+<jsp:include page="includes/common_header2.jsp"><jsp:param value="Home" name="title"/></jsp:include>
 			<div class="body_slider active  col-xs-12 landing pull-left ">
 			<div id="main_content">
 				<div class="background_full" style="background-image: url(${BaseServerPath}/images/large/main4.jpg);"></div>
