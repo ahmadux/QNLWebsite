@@ -59,10 +59,6 @@ public class LibPage implements Serializable {
 	@JoinColumn(name="MENU_ID")
 	private LibMenu libMenu;
 
-	//bi-directional many-to-one association to LibTemplate
-    @ManyToOne
-	@JoinColumn(name="TEMPLATE_ID")
-	private LibTemplate libTemplate;
 
 	//bi-directional many-to-one association to User
     @ManyToOne
@@ -174,14 +170,7 @@ public class LibPage implements Serializable {
 	public void setLibMenu(LibMenu libMenu) {
 		this.libMenu = libMenu;
 	}
-	
-	public LibTemplate getLibTemplate() {
-		return this.libTemplate;
-	}
-
-	public void setLibTemplate(LibTemplate libTemplate) {
-		this.libTemplate = libTemplate;
-	}
+		
 	
 	public User getUser() {
 		return this.user;

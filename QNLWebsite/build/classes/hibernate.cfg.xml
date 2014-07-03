@@ -30,5 +30,6 @@
   <mapping class="com.qnl.core.CustomUrl"/>
   <mapping class="com.qnl.core.DbaseNCollect"/>
   <mapping class="com.qnl.core.LibRegistration"/>
+  <mapping class="com.qnl.core.ResInstitute"/>
  </session-factory>
 </hibernate-configuration>

@@ -45,7 +45,7 @@ public class JSPToDB extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest sReq, HttpServletResponse sResp) throws ServletException, IOException {
 		
-		IUserInteractionFacade iU = null;
+		/*IUserInteractionFacade iU = null;
 		Object o = null;
 		Object o2 = null;
 		String x = null;
@@ -129,6 +129,7 @@ public class JSPToDB extends HttpServlet {
 		}
 		
 		sResp.sendRedirect(sReq.getParameter("nURL"));
+		*/
 		
 	}
 

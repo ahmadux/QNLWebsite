@@ -46,8 +46,8 @@ public class LibTemplate implements Serializable {
 	private String remarks;
 
 	//bi-directional many-to-one association to LibPage
-	@OneToMany(mappedBy="libTemplate")
-	private Set<LibPage> libPages;
+	//@OneToMany(mappedBy="libTemplate")
+	//private Set<LibPage> libPages;
 
 	//bi-directional many-to-one association to User
     @ManyToOne
@@ -120,13 +120,13 @@ public class LibTemplate implements Serializable {
 		this.remarks = remarks;
 	}
 
-	public Set<LibPage> getLibPages() {
-		return this.libPages;
-	}
+	//public Set<LibPage> getLibPages() {
+	//	return this.libPages;
+	//}
 
-	public void setLibPages(Set<LibPage> libPages) {
-		this.libPages = libPages;
-	}
+	//public void setLibPages(Set<LibPage> libPages) {
+	//	this.libPages = libPages;
+	//}
 	
 
 	

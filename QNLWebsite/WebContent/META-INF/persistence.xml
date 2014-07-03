@@ -16,6 +16,7 @@
 		<class>com.qnl.core.CustomUrl</class>
 		<class>com.qnl.core.DbaseNCollect</class>
 		<class>com.qnl.core.Subscribe</class>
+		<class>com.qnl.core.ResInstitute</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.21.82.5:3306/qnl"/>

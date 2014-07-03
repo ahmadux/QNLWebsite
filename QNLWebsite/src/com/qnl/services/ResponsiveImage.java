@@ -38,24 +38,48 @@ public class ResponsiveImage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		double factor = 0;
+		int wReq = 1;
+		int yReq = 1;
+		int wOff = 0;
+		int yOff = 0;
+		
+		String fParams = "";
+		String fParamsOff = "";
 		
 		String fileName = request.getParameter("f").toString();
 		String fPath = request.getServletContext().getAttribute("FileStoragePath") + File.separator  + "images" + File.separator + "backgrounds";
-		int wReq = Integer.parseInt(request.getParameter("dimX").toString());
-		int yReq = Integer.parseInt(request.getParameter("dimY").toString());
-		String fParams = request.getParameter("dimX").toString() + "x" + request.getParameter("dimY").toString();
 		String fExt = ".jpg";
+		
+		if(request.getParameter("dimX") != null)
+		{
+			wReq = Integer.parseInt(request.getParameter("dimX").toString());
+			yReq = Integer.parseInt(request.getParameter("dimY").toString());
+			fParams = "_" + wReq + "x" + yReq;			
+			
+		}	
+		
+		if(request.getParameter("offX") != null)
+			wOff = Integer.parseInt(request.getParameter("offX").toString());
+		
+		if(request.getParameter("offY") != null)
+			yOff = Integer.parseInt(request.getParameter("offY").toString());
+		
+		if((wOff  > 0)||(yOff > 0))
+			fParamsOff = "-" + wOff + "x" + yOff;			
+			
+		
 		//Check for Image generated
 		System.out.println("Fetching Image...");
-		File f = new File(fPath + File.separator +  fileName + fParams + fExt);
+		File f = new File(fPath + File.separator +  fileName + fParams  + fParamsOff+ fExt);
+		
 		if(!f.exists())
 		{
 			System.out.println("Not Found. Building Image...");
 			Image img = ImageLoader.fromFile(new File(fPath + File.separator +  fileName + fExt));
-			//TO DO:Resize the Image as necessary
+			//TO DO:Resize the Image as necessary			
 			//Save it for future use			
-			factor = (double)yReq/(double)img.getHeight();
-			f = img.getResizedToWidth(Integer.parseInt("" + Math.round(img.getWidth() * factor))).crop(0, 0, wReq, yReq).writeToFile(new File(fPath + File.separator +  fileName + fParams + fExt));
+			factor = ((double)yReq/(double)img.getHeight()) + 0.01;			
+			f = img.crop(wOff,yOff,img.getWidth(),img.getHeight()).getResizedToWidth(Integer.parseInt("" + Math.round(img.getWidth() * factor))).crop(0, 0, wReq, yReq).writeToFile(new File(fPath + File.separator +  fileName + fParams + fParamsOff +   fExt));
 			
 			img.dispose();
 		}
