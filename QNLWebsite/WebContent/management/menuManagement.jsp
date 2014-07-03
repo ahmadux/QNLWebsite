@@ -99,7 +99,7 @@
   {
 	  if(confirm("Are you sure you want to DELETE this menu item? It's children will not be deleted.")) { 
   	$.ajax({
-			url: "../AjaxToDB.do?id=" + IDD + "&delete=true&oName=LibMenu",
+			url: "../AjaxToDB.do?id=" + IDD + "&delete=true&oName=QLibMenu&action=delete",
 			success: function(){
 				$.ajax({
 					url: "../AjaxToDB.do?id=" + $("input[id='objCustomUrl']").val() + "&delete=true&oName=CustomUrl",
