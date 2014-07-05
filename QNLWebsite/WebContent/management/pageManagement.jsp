@@ -8,8 +8,8 @@
 				.getAttribute("LibPageFacade")).findByID(Integer
 				.parseInt(request.getParameter("id")));
 		pageContext.setAttribute("lp", lp);
-		pageContext.setAttribute("lpContent", HelperFunctions.readFile(	request.getServletContext().getAttribute("FileStoragePath").toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + lp.getContentFile()));
-		pageContext.setAttribute("lpContentAr", HelperFunctions.readFile(request.getServletContext().getAttribute("FileStoragePath").toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + lp.getContentFileAr()));
+		pageContext.setAttribute("lpContent", HelperFunctions.readFile(	request.getServletContext().getAttribute("FileStoragePath").toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + lp.getContentFile().toLowerCase()));
+		pageContext.setAttribute("lpContentAr", HelperFunctions.readFile(request.getServletContext().getAttribute("FileStoragePath").toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + lp.getContentFileAr().toLowerCase()));
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,18 +19,17 @@
 <title>Manage Page(s)</title>
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 <script src="../scripts/bootstrap.min.js"></script>
-<!--  <script src="../scripts/ajaxfileupload.js"></script> -->
-<script src="../scripts/holder.js"></script>
+
+
 
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
 <script src="../scripts/ckeditor/ckeditor.js"></script>
 <script src="../scripts/select2/select2.min.js"></script>
 
-<!-- <script src="../scripts/ajaxfileupload.js"></script> -->
 
 <script src="../scripts/jquery.validate.min.js"></script>
 <link href="../scripts/select2/select2.css" rel="stylesheet" />
-
+<link href="../css/qnl2.css" rel="stylesheet" />
 </head>
 
 <script>
@@ -48,7 +47,7 @@
 
 	function getFileExt() {
 		var x = $("#imgFile").val();
-		alert(x.substring(x.lastIndexOf(".") + 1));
+		//alert(x.substring(x.lastIndexOf(".") + 1));
 	}
 
 	$(function() {
@@ -81,6 +80,7 @@
 	});
 
 	function createPage() {
+		//alert("Creating");
 		$("#x").val(getHTML("editor_EN"));
 		$("#xAR").val(getHTML("editor_AR"));
 
@@ -100,6 +100,7 @@
 					async : false,
 					success : function(objID, status) {
 						//alert("Page ID: " + objID);
+						var oid = objID;
 						$.ajax({
 									type : "POST",
 									url : "../AjaxToDB.do",
@@ -108,15 +109,14 @@
 										oName : "CustomUrl",
 										id : $("#objLibMenu option:selected")
 												.attr('data-cUrlID'),
-										setFriendlyName : $("#setFriendlyName")
-												.val(),
-										setUrl : "PageSetupController.do?pgID="
-												+ objID,
-										setUrlAr : "PageSetupController.do?pgID="
-												+ objID + "&lang=AR",
+										setFriendlyName : $("#setFriendlyName").val(),
+										setUrl : "pages/"+ $("#setContentFile").val(),
+										setUrlAr : "pages/" + $("#setContentFileAr").val(),
 										objUser : $("#objUser").val()
 									},
+									async: false,
 									success : function(objID, status) {
+										
 										$.ajax({
 													type : "POST",
 													url : "../AjaxToDB.do",
@@ -129,43 +129,39 @@
 														objUser : $("#objUser")
 																.val()
 													},
+													async: false,
 													success : function() {
-														//if non-empty load it up
-														if ($("#myFile").val() != "") {
-															ajaxFileUpload("_libPage_"
-																	+ objID);
-															$("#setImage")
-																	.val(
-																			"_libPage_"
-																					+ objID
-																					+ "."
-																					+ getFileExt());
+														if($("input[type=file]").val() != "")
+														{
+															$("#rPath").val(location);
+															$("#imageFile").attr("action","../FileUpload.do?fid=" + oid);
+															$("#imageFile").submit();
 														}
-
+														
 														$.ajax({
 																	url : "../Reloader.do?o=LibMenu,LibPage,CustomUrl",
 																	success : function() {
-																		location
-																				.reload();
+																		
 																	}
 																});
+														//alert("New Page created!");
 													}
-												});
+												});										
 
 									},
 									error : function() {
-										alert("Error in  saving Friendly Name");
+										alert("Error in  saving Friendly Name while creating");
 									}
 								});
 					},
 					error : function() {
-						alert("Error in saving Page data");
+						alert("Error in saving Page data while creating");
 					}
 				});
 	}
 
 	function updatePage() {
-		alert($("#setFriendlyName").val());
+		//alert("Updating");
 		$("#x").val(getHTML("editor_EN"));
 		$("#xAR").val(getHTML("editor_AR"));
 
@@ -176,7 +172,9 @@
 
 		$("#setContentFile").val($("#setFriendlyName").val() + ".jsp");
 		$("#setContentFileAr").val($("#setFriendlyName").val() + "_ar.jsp");
-
+		
+		var oid;
+		
 		$.ajax({
 			type : "POST",
 			url : "../AjaxToDB.do",
@@ -184,7 +182,7 @@
 			dataType : "text",
 			async : false,
 			success : function(objID, status) {
-				alert($("#setFriendlyName").val());
+				oid = objID;
 				$.ajax({
 					type : "POST",
 					url : "../AjaxToDB.do",
@@ -194,17 +192,19 @@
 						id : $("#objLibMenu option:selected").attr(
 								'data-cUrlID'),
 						setFriendlyName : $("#setFriendlyName").val(),
-						setUrl : "PageSetupController.do?pgID=" + objID,
-						setUrlAr : "PageSetupController.do?pgID=" + objID,
+						setUrl : "pages/"+ $("#setContentFile").val(),
+						setUrlAr : "pages/" + $("#setContentFileAr").val(),
 						objUser : $("#objUser").val()
 					},
-					success : function(objID, status) {
-						if ($("#myFile").val() != "") {
-							ajaxFileUpload("_libPage_" + objID);
-							$("#setImage").val(
-									"_libPage_" + objID + "." + getFileExt());
+					async: false,
+					success : function() {	
+						if($("input[type=file]").val() != "")
+						{
+							$("#rPath").val(location);
+							$("#imageFile").attr("action","../FileUpload.do?fid=" + oid);
+							$("#imageFile").submit();
 						}
-
+						
 						$.ajax({
 							url : "../Reloader.do?o=CustomUrl,LibMenu,LibPage",
 							async : false,
@@ -212,45 +212,70 @@
 								location.reload();
 							}
 						});
+						//alert("Page Data updated!");
 					},
 					error : function() {
-						alert("Error in  saving Friendly Name");
+						alert("Error in  saving Friendly Name while updating");
 					}
 				});
 			},
 			error : function() {
-				alert("Error in saving Page data");
+				alert("Error in saving Page data while updating");
 			}
 		});
 	}
 
-	function getHTML(editorName) {
-		var objEditor = CKEDITOR.instances[editorName];
-		return objEditor.getData();
-	}
-
-	function setHTML(editorName, strHtml) {
-		var objEditor = CKEDITOR.instances[editorName];
-		return objEditor.setData(strHtml);
+	
+	function updateOrCreate()
+	{
+		if($('input[id=id]').val() == "")
+			createPage();
+		else
+			updatePage();
 	}
 </script>
 <body>
-	<div style="width: 18%; padding: 3px; float: left; height: 100%; background: #eaeaea">
+	<div class="col-xs-12 col-md-3 img-rounded semitransparent pull-left small_menu">
 		<c:forEach var="pg" items="${LibPageFacade.libPages}">
 			<a href="javascript:editPage(${pg.id});">${pg.title.length() > 33?pg.title.substring(0,33):pg.title}</a>
 			<br />
 		</c:forEach>
 	</div>
-	<div style="width: 80%; border-left: solid 1px #666666; padding: 3px; float: left">
-		<form id="pg" name="pg" enctype="multipart/form-data">
+	<div class="col-xs-12 col-md-9 pull-left">
+		<form method="POST" enctype="multipart/form-data" id="imageFile" name="imageFile" role="form">
+			<input type="hidden" value="backgroundImage" id="type" name="type" />
+			<input type="hidden" value="" id="rPath" name="rPath" />
+			
+			<div class="control-group col-xs-12">
+				<c:choose>			
+				<c:when test="${(lp.image != null)}">
+					
+						<img src="${lp.image}&dimX=320&dimY=480" alt="Background Image" title="Background Image" width="100px" /><br />
+					
+				</c:when>
+				<c:otherwise>
+					
+						<label class="control-label" for="file">Background&nbsp;Image</label>		
+					
+				</c:otherwise>			
+				</c:choose>
+				<br />
+				<div ${lp != null?"":"class='disabled'"}>					
+					<input type="file" name="file" data-filename-placement="inside">
+				</div>		
+			</div>
+		</form>
+		<form id="pg" name="pg" enctype="multipart/form-data" role="form">
 			<ul id="tabs" class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#tabs-1">Settings</a></li>
 				<li><a data-toggle="tab" href="#tabs-2">Optional Settings</a></li>
 			</ul>
-			<div class="tab-content">
+			<div class="tab-content  black-form">
 				<!-- Tab Number 1 -->
 				<div id="tabs-1" class="tab-pane fade in active">
 					<input type="hidden" name="id" id="id" value="${lp.id}">
+					<input type="hidden" name="rPath" id="rPath" value="">
+					<input type="hidden" name="imageFile" id="imageFile" value="${lp.image}">
 					<div class="control-group">
 						<label class="control-label" for="setTitle">Title<font
 							color="red">*</font></label>
@@ -282,8 +307,8 @@
 								placeholder=""
 								pattern="[A-Za-z]+([0-9]|-}[A-Za-z])*" />
 						</div>
-					</div>
-					<!--<div class="control-group">
+					</div>					
+					<!-- <div class="control-group">
 						<label class="control-label" for="objLibTemplate">Template<font
 							color="red">*</font></label>
 						<div class="controls">
@@ -300,7 +325,8 @@
 								template for the page.
 							</span>
 						</div>
-					</div>-->
+					</div>
+					-->
 					<div class="control-group">
 						<label class="control-label" for="objLibMenu">Menu</label>
 						<div class="controls">
@@ -321,24 +347,18 @@
 							</span>
 						</div>
 					</div>
-					<!-- 
-					<div class="control-group">
-						<label class="control-label" for="setImageFile">Image for the Page (Optional)</label>
-						<div class="controls">
-							<input type="file" id="imgFile" name="imgFile" />
-							<span class="help-inline">An optional iamge for the page.</span>
-						</div>
-					</div>
-					-->
+					
 					<div class="control-group">
 						<label class="control-label" for="editor_EN">Content
 							(English)</label>
 						<div class="controls">
 							<textarea class="ckeditor" cols="80" name="editor_EN"
-								id="editor_EN" rows="10" tabindex="1">${lpContent}</textarea><br />
-							<a data-toggle="modal" href="#imagesModal" class="btn">Insert Image(s)</a>
+								id="editor_EN" rows="10" tabindex="1">${lpContent}</textarea>							
 						</div>
 					</div>
+					<a data-toggle="modal" href="javascript:openObjectSelectionModal('images','multiple','editor_AR','selectedFiles');" class="btn btn-primary">Insert Image(s)</a>
+					<a data-toggle="modal" href="javascript:openObjectSelectionModal('documents','multiple','editor_AR','selectedFiles');" class="btn btn-primary">Insert Document(s)</a>
+					
 					<div class="control-group">
 						<label class="control-label" for="editor_Ar">Content
 							(Arabic)</label>
@@ -347,9 +367,12 @@
 								id="editor_AR" rows="10" tabindex="1">${lpContentAr}</textarea>
 						</div>
 					</div>
+						<a data-toggle="modal" href="javascript:openObjectSelectionModal('images','multiple','editor_AR','selectedFiles');" class="btn btn-primary">Insert Image(s)</a>
+						<a data-toggle="modal" href="javascript:openObjectSelectionModal('documents','multiple','editor_AR','selectedFiles');" class="btn btn-primary">Insert Document(s)</a>
+					
 				</div>
 				<!-- Tab Number 2 -->
-				<div id="tabs-2" class="tab-pane fade">
+				<div id="tabs-2" class="tab-pane fade  black-form">
 
 					<div class="control-group">
 						<label class="control-label" for="pg_Summary">Summary
@@ -389,7 +412,7 @@
 			</div>
 			<br />
 			<div id="form-actions">
-				<input type="submit" value="Ok" class="btn btn-primary"> <input
+				<input type="button" value="Ok" class="btn btn-primary" onclick="updateOrCreate();"> <input
 					type="button" value="Delete" class="btn btn-danger"> <input
 					type="button" value="Cancel" class="btn">
 			</div>
@@ -402,52 +425,18 @@
 				type="hidden" name="setKeywords" id="setKeywords" /> <input
 				type="hidden" name="setKeywordsAr" id="setKeywordsAr" /> <input
 				type="hidden" name="objUser" id="objUser" value="11" /> <input
-				type="hidden" name="oName" value="LibPage" id="oName" /> <input
-				type="hidden" name="setImage" id="setImage" />
+				type="hidden" name="oName" value="LibPage" id="oName" /> 
+				
+				<input type="hidden" id="selectedFiles" name="selectedFiles" />
 		</form>
 	</div>
-	<div class="modal fade span8" id="imagesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">		
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Select Image(s)</h4>
-					</div>
-					<div class="modal-body">
-						<input type="hidden" id="selectedImages" name="selectedImages" />
-						<input type="hidden" value="" id="folderName" name="folderName" />							
-						<a href="javascript:clearImageList()" class="btn btn-default">Clear List</a>
-						<div id="folderUp"></div>						
-						<br />
-						<div class="span6" id="loadedImages"></div>
-					</div>
-					<div class="modal-footer">	
-					<div class="pull-left" style="text-align:center;margin-right:20px">		
-							<b>Alignment</b>	
-							<br />									  
-						    <input type="radio" name="alignment" value="Left" checked>Left							  
-						    <input type="radio" name="alignment" value="Middle" >Middle
-						    <input type="radio" name="alignment" value="Right" >Right
-					</div>							  
-					<div class="pull-left" style="text-align:center">					
-							<b>Display As</b>					
-							<br />													
-							<select id="displayAs">
-								<option value="HList">Horizontal List</option>
-								<option value="VList">Vertical List</option>
-								<option value="Carousel">Carousel</option>
-							</select>
-					</div>
-					<div class="pull-right">			
-						<button type="button" class="btn btn-primary">Ok</button>
-						<button type="button" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
+	
+	<!--  Image and Doc Management Modals -->
+	
+	<jsp:include page="/includes/common_imageDocManagement.jsp" />
+	
+	
+   
 </body>
 <script type="text/javascript">
 	(function($, W, D) {
@@ -483,143 +472,14 @@
 
 	})(jQuery, window, document);
 
-	function selectImage(x, obj) {
-		if (obj.checked) {
-			if ($("#selectedImages").val() == "")
-				$("#selectedImages").val(x);
-			else
-				$("#selectedImages").val($("#selectedImages").val() + "," + x);
-		} else {
-			$("#selectedImages").val(
-					$("#selectedImages").val().replace("," + x, ""));
-			$("#selectedImages").val(
-					$("#selectedImages").val().replace(x + ",", ""));
-			$("#selectedImages").val($("#selectedImages").val().replace(x, ""));
-		}
-		if ($("#selectedImages").val() == "")
-			$("#btn_Delete").addClass("disabled");
-		else
-			$("#btn_Delete").removeClass("disabled");
-	}
+	
 
-	function clearImageList() {
-		alert($('input[name=alignment]:checked').val());
-		$("input[type=checkbox]").removeAttr('checked');
-		$("#selectedImages").val("");
-		$("#btn_Delete").addClass("disabled");
-	}
 
-	$(document).ready(function() {
-		var imageArray;
-		
-		getImages(loadImagesInFolder, 'images');
-	});
+</script> 
+  <script language="javascript" type="text/javascript" src="../scripts/ckEditorInit.js"></script>
+  <script language="javascript" type="text/javascript">
+		$(function(){ initCKEDITOR('editor_EN','min');initCKEDITOR('editor_AR','min','ar');});
+  </script>
 
-	function loadFolderUp(fldr) {
-		var theHTML = "";
-		if ((fldr == "images") || (fldr == ""))
-			theHTML += "<b>Folder:</b><small>&nbsp;images</small>";
-		else {
-			theHTML += "<b>Folder:</b><small>&nbsp;" + fldr + "</small>";
-			theHTML += "<br />";
-			theHTML += "<div class='span2'>";
-			theHTML += "<div class='thumbnail img-rounded' style='text-align:center;height:160px;width:160px;padding:2px'>";
-			theHTML += "<div class='caption' style='text-align:left;border-bottom:solid 1px #fff;margin-bottom:3px;padding-bottom:2px;background-color:#cccccc'>";
-			theHTML += "<label>";
-			theHTML += "<a href='javascript:folderUp(\"" + fldr
-					+ "\");'>Folder Up</a>";
-			theHTML += "</label>";
-			theHTML += "</div>";
-			theHTML += "<img src='' alt='...' title=''>";
-			theHTML += "</div>";
-			theHTML += "</div>";
-		}
-		$("#folderUp").html(theHTML);
-	}
 
-	function loadImagesInFolder() {
-		var theHTML = "";
-
-		for ( var i = 0; i < imageArray.length; i++) {
-			if ((i % 3) == 0)
-				theHTML += "<div class='row'  style='padding-top:30px;'>";
-
-			theHTML += "<div class='span2'><div class='thumbnail img-rounded' style='text-align:center;height:160px;width:160px;padding:2px'>";
-
-			if (imageArray[i].height == 0) {
-				theHTML += "<div class='caption' style='text-align:left;border-bottom:solid 1px #fff;margin-bottom:3px;padding-bottom:2px;background-color:#cccccc'>";
-				theHTML += "<label><a href=\"javascript:getImages(loadImagesInFolder,'"
-						+ imageArray[i].location
-						+ "/"
-						+ imageArray[i].name
-						+ "')\">" + imageArray[i].name + "</a>";
-				//images.jsp?f=" + imageArray[i].location + "/" + imageArray[i].name + "'>" + imageArray[i].name + "</a>";
-				theHTML += "</label>";
-				theHTML += "</div>";
-				theHTML += "<img src='' alt='...' title=''>";
-			} else {
-				theHTML += "<div style='overflow:hidden;height:100%;width:100%'>";
-				theHTML += "<div class='caption' style='text-align:left;border-bottom:solid 1px #fff;margin-bottom:3px;padding-bottom:2px;background-color:#cccccc'>";
-				theHTML += "<div class='checkbox'>";
-				theHTML += "<label>";
-				theHTML += "<input type='checkbox' onclick=\"selectImage('/"
-						+ imageArray[i].location + "/" + imageArray[i].name
-						+ "',this);\">";
-				theHTML += imageArray[i].name;
-				theHTML += "</label>";
-				theHTML += "</div>";
-				theHTML += "<small>";
-				theHTML += "<span class='text-muted'>";
-				theHTML += imageArray[i].width + "x" + imageArray[i].height;
-				theHTML += "</span>";
-				theHTML += "</small>";
-				theHTML += "</div>";
-				theHTML += "<div style='overflow: hidden;height:100%;width:100%;text-align:center;vertical-align:middle'>";
-				theHTML += "<a target='_blank' href='../" + imageArray[i].location + "/" + imageArray[i].name + "' ><img src='../" + imageArray[i].location + "/" + imageArray[i].name + "' alt='...' title='''></a>";
-				theHTML += "</div>";
-				theHTML += "</div>";
-			}
-			theHTML += "</div></div>";
-			if ((i % 3) == 2)
-				theHTML += "</div>";
-		}
-		;
-		$("#loadedImages").html(theHTML);
-	};
-
-	function getImages(callback, fldr) {
-		imageArray = new Array();
-
-		$.ajax({
-			type : 'GET',
-			url : '_imageArray.jsp?f=' + fldr,
-			dataType : 'json',
-			success : function(data) {
-
-				var image;
-				var i = 0;
-				$.each(data, function(j, itemData) {
-					image = new Object();
-					image.name = j;
-					image.height = itemData.height;
-					image.width = itemData.width;
-					image.location = itemData.location;
-					imageArray[i++] = image;
-				});
-				loadFolderUp(fldr);
-				callback(imageArray);
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("An error has occured: " + errorThrown);
-			}
-		});
-	}
-
-	function folderUp(f) {
-		//alert(f);
-		var slashPos = f.lastIndexOf("/");
-		getImages(loadImagesInFolder, f.substring(0, slashPos));
-
-	}
-</script>
 </html>

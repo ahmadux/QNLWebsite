@@ -41,7 +41,7 @@ public class PageSetupController extends HttpServlet {
 	protected void doPost(HttpServletRequest sReq, HttpServletResponse sResp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-
+/*
 			LibPageFacade lpf = (LibPageFacade) sReq.getServletContext().getAttribute("LibPageFacade");
 			int pgID = ((sReq.getParameter("pgID")!=null)&&(sReq.getParameter("pgID").trim().length() > 0))?Integer.parseInt(sReq.getParameter("pgID").toString()):2;
 
@@ -64,6 +64,7 @@ public class PageSetupController extends HttpServlet {
 			
 			
 			sReq.getRequestDispatcher("pages/renderPage.jsp").forward(sReq, sResp);
+		*/
 	}
 	
 

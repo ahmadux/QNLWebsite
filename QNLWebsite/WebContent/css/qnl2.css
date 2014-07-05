@@ -6,13 +6,18 @@
 }
 
 @font-face {
-	font-family:"GE SS Text Light";
+	font-family: "ArabicLight";
 	src:url("../fonts/GE_SS_Text_Light.eot?") format("eot"),url("../fonts/GE_SS_Text_Light.woff") format("woff"),url("../fonts/GE_SS_Text_Light.ttf") format("truetype"),url("../fonts/GE_SS_Text_Light.svg#GESSTextLight-Light") format("svg");
 }
 
 @font-face {
-	font-family:"GE SS Text Medium";
+	font-family: "ArabicMedium";
 	src:url("../fonts/GE_SS_Text_Medium.eot?") format("eot"),url("../fonts/GE_SS_Text_Medium.woff") format("woff"),url("../fonts/GE_SS_Text_Medium.ttf") format("truetype"),url("../fonts/GE_SS_Text_Medium.svg#GESSTextMedium-Medium") format("svg");
+}
+
+@font-face {
+	font-family: "Arabic";
+	src:url("../fonts/GE_SS_Two_Medium.otf") format("opentype");
 }
 
 body
@@ -30,9 +35,9 @@ body
 
 .ar
 {	
-	font-family: 'GE SS Text Light';
+	font-family: 'Arabic';
 	direction: rtl;
-	text-align: left;	
+	text-align: right;	
 }
 
 .disabled
@@ -741,7 +746,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	padding: 15px;
 	float: left; 
 	margin-top:5px;
-	width: 300px;
+	font-size: .8em;
 	
 	-webkit-transition: all 2s ease;  
     -moz-transition: all 2s ease;  

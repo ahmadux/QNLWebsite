@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.qnl.core.LibPage;
 import com.qnl.core.NewsItem;
+import com.qnl.facade.LibPageFacade;
 import com.qnl.facade.NewsItemFacade;
 
 
@@ -48,6 +50,10 @@ public class FileUpload extends HttpServlet {
 		// TODO Auto-generated method stub
 		String fType = request.getParameter("type").toString();		
 		String msg = "";
+		
+		Part filePart;
+		Image image;
+		
 		String fID = request.getParameter("fid").toString();
 		File tmp = null;
 		String path = "";
@@ -58,8 +64,8 @@ public class FileUpload extends HttpServlet {
 			{
 				case "newsItemMainImage":
 											
-					Part filePart = request.getPart("file");					
-					Image image = ImageLoader.fromStream(filePart.getInputStream());
+					filePart = request.getPart("file");					
+					image = ImageLoader.fromStream(filePart.getInputStream());
 					
 					path =  request.getServletContext().getAttribute("FileStoragePath") +   File.separator + "images" + File.separator + "news" + File.separator + fID;
 					tmp = new File(path);
@@ -79,6 +85,36 @@ public class FileUpload extends HttpServlet {
 					
 					nIF.refresh();
 					request.getServletContext().setAttribute("NewsItemFacade", nIF);
+					
+					msg = "File uploaded.";
+					break;
+					
+				case "backgroundImage":
+					
+					filePart = request.getPart("file");					
+					image = ImageLoader.fromStream(filePart.getInputStream());
+					
+					path =  request.getServletContext().getAttribute("FileStoragePath") +   File.separator + "images" + File.separator + "backgrounds" + File.separator + fID;
+					tmp = new File(path);
+					
+					if(!tmp.exists())
+						tmp.mkdir();
+					
+					image.writeToFile(new File(path + File.separator  +  request.getParameter("fid") + ".jpg"));
+					
+					image.crop(0,0,320,480).writeToFile(new File(path + File.separator +  request.getParameter("fid") + "_320x480.jpg"));
+					image.crop(0,0,800,600).writeToFile(new File(path + File.separator +  request.getParameter("fid") + "_800x600.jpg"));
+					
+					image.dispose();
+					
+					
+					LibPageFacade lf = ((LibPageFacade)request.getServletContext().getAttribute("LibPageFacade"));
+					LibPage lp = lf.findByID(Integer.parseInt(request.getParameter("fid")));
+					lp.setImage(request.getServletContext().getAttribute("BaseServerPath").toString() + "/" +  "ResponsiveImage.do?f=" + request.getParameter("fid") + "/" + request.getParameter("fid"));
+					lf.update(lp, null,null, null);
+					
+					//lf.refresh();
+					request.getServletContext().setAttribute("LibPageFacade", lf);
 					
 					msg = "File uploaded.";
 					break;

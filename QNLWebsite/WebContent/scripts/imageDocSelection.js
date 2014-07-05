@@ -226,10 +226,16 @@ function loadObjectsInFolderImgs(ary)
   function openSelectionAttributeModal()
   {
   	var theHTML = "";
-  	var objs = selFields.val().split(",");
+  	var objs = selFields.val()==""?null:selFields.val().split(",");
   	var objLoc = "";
   	var ht = "50px";
   	//alert(imgs.length + ":" + selFields.val());
+  	
+  	if(objs == null )
+  	{
+  		alert("No Objects selected!");
+  		return;
+  	}
   	
   	for(var i=0; i< objs.length; i++)
   	{

@@ -69,9 +69,9 @@ public class Initializer implements ServletContextListener {
 		System.out.println("**************** Start Init");
 		try
 		{
-//			WeatherService ws = WeatherService.getInstance();
-//			SalahService ss = SalahService.getInstance();
-//			TimeService ts = TimeService.getInstance();
+			//WeatherService ws = WeatherService.getInstance();
+			//SalahService ss = SalahService.getInstance();
+			//TimeService ts = TimeService.getInstance();
 			//SyndFeed feeds = RSSAtomFeedService.readFeed("http://cs.gulf-times.com/GulfTimesNewsWebsite/rss.aspx?PortalName=Gulftimes&SectionName=Qatar&NewsCat=178"); 
 			
 			//sce.getServletContext().setAttribute("WeatherService",ws);			
@@ -95,11 +95,11 @@ public class Initializer implements ServletContextListener {
 		//}
 				
 		sce.getServletContext().setAttribute("FileStoragePath",sce.getServletContext().getRealPath(""));
-		sce.getServletContext().setAttribute("LibMenuFacade", new LibMenuFacade());
-		sce.getServletContext().setAttribute("QLibMenuFacade", new QLibMenuFacade());
+		sce.getServletContext().setAttribute("LibMenuFacade", new LibMenuFacade());		
 		sce.getServletContext().setAttribute("LibPageFacade",new LibPageFacade());
 		sce.getServletContext().setAttribute("AttachmentFacade", new AttachmentFacade());
-		sce.getServletContext().setAttribute("LibTemplateFacade",new LibTemplateFacade());
+		//sce.getServletContext().setAttribute("LibTemplateFacade",new LibTemplateFacade());
+		sce.getServletContext().setAttribute("ResInstituteFacade",new ResInstituteFacade());
 		sce.getServletContext().setAttribute("NewsItemFacade",new NewsItemFacade());
 		sce.getServletContext().setAttribute("NewsCategoryFacade",new NewsCategoryFacade());
 		sce.getServletContext().setAttribute("CustomUrlFacade",new CustomUrlFacade());
