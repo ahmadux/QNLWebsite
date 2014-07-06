@@ -15,9 +15,7 @@
 							</div>
 							<div class="bottom">
 								<button class="btn brandingButton">
-									<span class="hidden-xs">Accessibility</span><span
-										class="visible-xs"><img src="images/accessibility.png"
-										alt="" title="" width="16px" /></span>
+									<span class="hidden-xs">Accessibility</span><span class="visible-xs"><img src="images/accessibility.png" alt="" title="" width="16px" /></span>
 								</button>
 								&nbsp;
 								<button class="btn brandingButton ar">ع</button>

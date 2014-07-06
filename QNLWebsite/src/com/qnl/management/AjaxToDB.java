@@ -52,6 +52,7 @@ public class AjaxToDB extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("******************************AjaxToDB -- POST Method (ID: " + request.getParameter("id") + ")");
 		try{
+			
 			Class<?> facadeClass = Class.forName("com.qnl.facade." + request.getParameter("oName") + "Facade");			
 			Class<?> coreClass = Class.forName("com.qnl.core." + request.getParameter("oName"));
 			
@@ -77,16 +78,30 @@ public class AjaxToDB extends HttpServlet {
 			
 			Object theFilePath = request.getServletContext().getAttribute("FileStoragePath");
 			
+			if(request.getParameter("action")!=null){
+				
+				Method router = facadeClass.getMethod("doRoute",HttpServletRequest.class,HttpServletResponse.class);
+				if(router!=null && router.isAccessible()){
+					router.invoke(objectLoadedOnContext,request,response);
+					
+				}else{
+					System.out.println("Cannot find page!");
+					
+				}
+				return;
+			}
+			
 			if((request.getParameter("id") != null) && (request.getParameter("id")!= ""))
 			{
 				Method mFind = facadeClass.getDeclaredMethod("findByID",int.class);
+				
 				actualObject = mFind.invoke(objectLoadedOnContext,Integer.parseInt(request.getParameter("id")));
 				
 				if(request.getParameter("delete") != null)
 				{
 					intentionParametersTypes = new Class<?>[2];
 					intentionParametersTypes[0] = Object.class;
-					intentionParametersTypes[1] = String.class;
+					intentionParametersTypes[1] = Object.class;
 					
 					mIntention = facadeClass.getDeclaredMethod("delete", intentionParametersTypes);
 					System.out.println("Delete " + message);
