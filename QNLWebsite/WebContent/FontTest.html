@@ -1,0 +1,98 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>File Upload AJAX test</title>
+<link rel="stylesheet" href="css/qnl2.css" />
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+</head>
+<body>
+<font style="font-family: 'GESSTwo';font-size: 30px">
+
+<form method="POST" id="fileForm" name="fileForm">
+
+<input type="file" id="file" name="file" />
+	<input type="hidden" value="backgroundImage" id="type" name="type" />
+	<input type="hidden" value="" id="rPath" name="rPath" />
+	<input type="hidden" value="1" id="fid" name="fid" />
+</form>
+<input type="button" value="Submit" onclick="uploadFile()" />
+</font>
+
+
+
+
+</body>
+<script>
+
+
+var files;
+
+//Add events
+$('input[type=file]').on('change', prepareUpload);
+
+//Grab the files and set them to our variable
+function prepareUpload(event)
+{
+	files = event.target.files;
+}
+
+$('form').on('submit', uploadFiles);
+
+//Catch the form submit and upload the files
+
+	function uploadFiles(event) {
+		event.stopPropagation(); // Stop stuff happening
+		event.preventDefault(); // Totally stop stuff happening
+
+		//START A LOADING SPINNER HERE
+
+		//Create a formdata object and add the files
+		var data = new FormData();
+		$.each(files, function(key, value) {
+			data.append(key, value);
+		});
+		$.ajax({
+			url : 'submit.php?files',
+			type : 'POST',
+			data : data,
+			cache : false,
+			dataType : 'json',
+			processData : false, // Don't process the files
+			contentType : false, // Set content type to false as jQuery will tell the server its a query string request
+			success : function(data, textStatus, jqXHR) {
+				if (typeof data.error === 'undefined') {
+					//Success so call function to process the form
+					submitForm(event, data);
+				} else {
+					//Handle errors here
+					console.log('ERRORS: ' + data.error);
+				}
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				//Handle errors here
+				console.log('ERRORS: ' + textStatus);
+				//STOP LOADING SPINNER
+			}
+		});
+	}
+
+	function uploadFile() {
+		console.log($("#fileForm").serialize());
+		$.ajax({
+			url : 'FileUpload.do',
+			type : 'POST',
+			data : $("#fileForm").serialize(),
+
+			processData : false, // Don't process the files
+			contentType : "multipart/form-data",
+			success : function() {
+				alert("File Uploaded!");
+			},
+			error : function() {
+				alert("File NOT Uploaded!");
+			}
+		});
+	}
+</script>
+</html>
