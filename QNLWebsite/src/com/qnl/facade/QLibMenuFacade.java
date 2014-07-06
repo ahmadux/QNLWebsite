@@ -274,6 +274,9 @@ public class QLibMenuFacade extends QBaseFacade {
 				lmDAO.beginTransaction();
 				lmDAO.delete(lm);
 				lmDAO.commit();
+				
+				
+				
 			}
 			else{
 				throw new Exception("Cannot find the Menu Item");
@@ -286,11 +289,7 @@ public class QLibMenuFacade extends QBaseFacade {
 		}
 	}
 	
-	
-	public void doRoute(HttpServletRequest request, HttpServletResponse response) throws NoSuchMethodException,Exception{
-		super.doRoute(request, response);
-	}
-	
+
 	
 	public void preUpdate(Object o,  Object extraInfo) throws IOException
 	{}

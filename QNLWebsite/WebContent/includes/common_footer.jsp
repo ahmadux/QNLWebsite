@@ -70,23 +70,25 @@ var wheight = ($(window).height() - 214);
  */
 function startSlide(optBC, slidrID, t, dir, slides, optFDir, opTheme, ovFlow, optCntrls,auto) {
 	var trans = (dir == 'h' ? 'linear' : 'linear');
-	var sl1 = slidr.create(slidrID, {
-		breadcrumbs : optBC,
-		controls : optCntrls,
-		direction : dir == 'h' ? 'horizontal' : 'vertical',	
-		fade : true,
-		overflow : ovFlow,
-		theme : opTheme,
-		transition: trans,	    
-		timing : {
-			trans : '0.5s ease-in'
-		},
-		touch : true
-	}).start();
-	sl1.add(dir, slides);
-	if(auto)
-		sl1.auto(t, optFDir);
-	return sl1;
+	if($("#"+slidrID)){
+		var sl1 = slidr.create(slidrID, {
+			breadcrumbs : optBC,
+			controls : optCntrls,
+			direction : dir == 'h' ? 'horizontal' : 'vertical',	
+			fade : true,
+			overflow : ovFlow,
+			theme : opTheme,
+			transition: trans,	    
+			timing : {
+				trans : '0.5s ease-in'
+			},
+			touch : true
+		}).start();
+		sl1.add(dir, slides);
+		if(auto)
+			sl1.auto(t, optFDir);
+		return sl1;
+	}
 }
 
 $(document).ready(function() {
@@ -107,27 +109,27 @@ $(document).ready(function() {
 	// load the images if required from the server parsing dataImage attribyte of elements with .img class
 	loadImages("olfir");
 	// reset size is called to enable the 
-	resetSize(true);
+	
 	
 	$("#newsSlidr").hover(function(){ newsSlider.stop(); },function(){ newsSlider.auto(); });
 	$("#eventSlidr").hover(function(){ eventSlider.stop(); },function(){ eventSlider.auto(); });
-	
-	
-	window.onresize = function(e) {
-		resetSize(true);
-		
 
-		
-		
-	};
 	
 	$(document).on("click",".load_and_slide_left",function(e){
+		
 		e.preventDefault();
 		var url_to_navigate = $(this).attr("href");
-		if(url_to_navigate!='#' && url_to_navigate!=''){
+		console.log("loading "+url_to_navigate);
+		if(url_to_navigate!='#' && url_to_navigate!='' && url_to_navigate != window.location.href){
 			loadAndSlideLeft(url_to_navigate);
 		}
 	});
+	
+	resetSize(true);
+	
+	window.onresize = function(e) {
+		resetSize(true);	
+	};
 	
 });
 
@@ -144,7 +146,6 @@ window.onpopstate = function(event){
  *  Method to load the content and slide it across the page.
  */
 function loadAndSlideLeft(url_to_navigate){
-
 	$.ajax({
 		url: url_to_navigate,
 		type: "GET",
@@ -153,10 +154,10 @@ function loadAndSlideLeft(url_to_navigate){
 				var slider_to_deactivate = $(".body_slider.active");
 				var slider_to_activate = $(".body_slider.inactive");
 				var response = $('<html/>').html(pData);
-				 
-				$(slider_to_activate).css("left",$(window).width()).html(loadImagesStr(response.find('.body_slider.active').html()));
 				
-				$(slider_to_deactivate).stop(true,true).animate({left: "-"+$(window).width()}, {duration: 2000, queue:false,easing:'linear', done:function(){ 
+				$(slider_to_activate).css("left",$(window).width()+'px').css("width",($(window).width())+'px').html(loadImagesStr(response.find('.body_slider.active').html()));
+				
+				$(slider_to_deactivate).stop(true,true).animate({left: "-"+$(window).width()+'px'}, {duration: 2000, queue:false,easing:'linear', done:function(){ 
 					$(slider_to_deactivate).removeClass("active").addClass('inactive').css("left","3000px").html(""); 
 					}
 				});
@@ -178,14 +179,14 @@ function loadAndSlideRight(url_to_navigate){
 				var slider_to_activate = $(".body_slider.inactive");
 				var response = $('<html/>').html(pData);
 				
-				$(slider_to_activate).removeClass("inactive").addClass("active").css("left",'-2000px').html(loadImagesStr(response.find('.body_slider.active').html()));
+				$(slider_to_activate).removeClass("inactive").addClass("active").css("left",'-2000px').css("width",($(window).width())+'px').html(loadImagesStr(response.find('.body_slider.active').html()));
 				
 				$(slider_to_deactivate).stop(true,true).animate({left: $(window).width()}, {duration: 600, queue:false,easing:'linear', done:function(){ 
 					$(slider_to_deactivate).removeClass("active").addClass('inactive').css("left","-2000px").html(""); 
 					}
 				}); 
 				$(slider_to_activate).stop(true,true).animate({left: "0px"},{duration:600,queue:false,easing:'linear'});
-				history.pushState({'location':url_to_navigate},document.title,url_to_navigate);
+				//history.pushState({'location':url_to_navigate},document.title,url_to_navigate);
 			},
 		complete: function(){  resetSize(true); }
 	});		
@@ -195,9 +196,8 @@ function resetSize(b) {
 	if(b){
 		newsSlider = startSlide(false, 'newsSlidr', 5000, 'h', [ 'one', 'two', 'three', 'one' ], 'right', '#fff', true, (desktop)?'corner':'corner',true);
 		eventSlider = startSlide(false, 'eventSlidr', 4000, 'cube', [ 'one', 'two', 'three', 'one' ], 'up', '#fff', true, 'none',true);
-		var salahSlider =  startSlide(false, 'salahSlidr', 6000, 'cube', [ 'one', 'two', 'three', 'four', 'five', 'one' ], 'down', '#fff', false, 'none',true);
+		salahSlider =  startSlide(false, 'salahSlidr', 6000, 'cube', [ 'one', 'two', 'three', 'four', 'five', 'one' ], 'down', '#fff', false, 'none',true);
 	}
-	
 	wheight = ($(window).height() - 214);
 	if((wheight + 214) > 481)
 		desktop = true;
@@ -206,15 +206,16 @@ function resetSize(b) {
 function loadImages(pName) {	
 	if(desktop) {
 		$('#' + pName + " .img").each( function() {		
-			$(this).html("<img src='" + $(this).attr("data-Image") + "' alt='' title='' />");
+			$(this).html("<img src='${BaseServerPath}/" + $(this).attr("data-Image") + "' alt='' title='' />");
 		});
+		
 	}
 }
 
 function loadImagesStr(htmlSource){	
 	if(desktop){
 		var tree = $("<div>" + htmlSource + "</div>");
-		tree.find('.img').html(function(){ return "<img src='" + $(this).attr("data-Image") + "' />"; } );
+		tree.find('.img').html(function(){ return "<img src='${BaseServerPath}/" + $(this).attr("data-Image") + "' />"; } );
 		htmlSource = tree.html();
 	}
 	return htmlSource;
