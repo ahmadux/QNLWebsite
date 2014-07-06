@@ -44,12 +44,12 @@
 			          </ul>
 			        </li>								
 					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Collections</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/childrenSection.jsp">Children's Section</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/teenSection.jsp">Teen's Section</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Heritage	Collection</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Programs &amp; Services</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Online Resources</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Ask QNL</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/children.jsp">Children's Section</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/teens.jsp">Teen's Section</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/heritage.jsp">Heritage	Collection</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/programs_services.jsp">Programs &amp; Services</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/online_resources.jsp">Online Resources</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/ask.jsp">Ask QNL</a></li>
 				</ul>
 				<ul class="nav navbar-right">
 					<li><span class="time_display">12:40:25</span></li>

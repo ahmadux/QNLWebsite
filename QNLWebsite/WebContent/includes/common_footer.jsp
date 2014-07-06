@@ -116,7 +116,6 @@ $(document).ready(function() {
 
 	
 	$(document).on("click",".load_and_slide_left",function(e){
-		
 		e.preventDefault();
 		var url_to_navigate = $(this).attr("href");
 		console.log("loading "+url_to_navigate);
@@ -153,15 +152,16 @@ function loadAndSlideLeft(url_to_navigate){
 		success: function(pData){
 				var slider_to_deactivate = $(".body_slider.active");
 				var slider_to_activate = $(".body_slider.inactive");
+				
 				var response = $('<html/>').html(pData);
 				
 				$(slider_to_activate).css("left",$(window).width()+'px').css("width",($(window).width())+'px').html(loadImagesStr(response.find('.body_slider.active').html()));
 				
-				$(slider_to_deactivate).stop(true,true).animate({left: "-"+$(window).width()+'px'}, {duration: 2000, queue:false,easing:'linear', done:function(){ 
+				$(slider_to_deactivate).stop(true,true).animate({left: "-"+$(window).width()+'px'}, {duration: 600, queue:false,easing:'linear', done:function(){ 
 					$(slider_to_deactivate).removeClass("active").addClass('inactive').css("left","3000px").html(""); 
 					}
 				});
-				$(slider_to_activate).removeClass("inactive").addClass("active").stop(true,true).animate({left: "0px"},{duration:2000,queue:false,easing:'linear'});
+				$(slider_to_activate).removeClass("inactive").addClass("active").stop(true,true).animate({left: "0px"},{duration:600,queue:false,easing:'linear'});
 				history.pushState({'location':url_to_navigate},document.title,url_to_navigate);
 			},
 		complete: function(){ resetSize(true); }
@@ -179,10 +179,10 @@ function loadAndSlideRight(url_to_navigate){
 				var slider_to_activate = $(".body_slider.inactive");
 				var response = $('<html/>').html(pData);
 				
-				$(slider_to_activate).removeClass("inactive").addClass("active").css("left",'-2000px').css("width",($(window).width())+'px').html(loadImagesStr(response.find('.body_slider.active').html()));
+				$(slider_to_activate).removeClass("inactive").addClass("active").css("left",'-'+($(window).width())+'px').css("width",($(window).width())+'px').html(loadImagesStr(response.find('.body_slider.active').html()));
 				
 				$(slider_to_deactivate).stop(true,true).animate({left: $(window).width()}, {duration: 600, queue:false,easing:'linear', done:function(){ 
-					$(slider_to_deactivate).removeClass("active").addClass('inactive').css("left","-2000px").html(""); 
+					$(slider_to_deactivate).removeClass("active").addClass('inactive').css("left",'-'+($(window).width())+'px').html(""); 
 					}
 				}); 
 				$(slider_to_activate).stop(true,true).animate({left: "0px"},{duration:600,queue:false,easing:'linear'});
