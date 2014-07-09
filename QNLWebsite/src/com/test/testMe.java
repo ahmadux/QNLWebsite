@@ -1,21 +1,35 @@
 package com.test;
 
-import com.qnl.facade.LibMenuFacade;
 
-public class testMe
+
+
+
+public class testMe extends parent
 {
 	public testMe()
 	{
-		System.out.println(new LibMenuFacade().getCompleteMenu("MENU"));
 		
-		System.out.println(new LibMenuFacade().getCompleteMenu((byte)1, "MENU"));
+	}
+	
+	@Override
+	public String getObject()
+	{
+		return "This is a string!";
 	}
 	
 	public static void main(String[] args)
 	{
-		
+		testMe t = new testMe();
+		parent p = (parent)t;
+		System.out.println(p.getObject());
 	}
 	
+	
+}
+
+class parent
+{
+	public Object getObject(){ return null; }
 	
 }
 

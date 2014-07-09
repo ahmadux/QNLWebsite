@@ -11,7 +11,7 @@ import com.qnl.core.Role;
 
 import com.qnl.dao.RoleDAO;
 
-public class RoleFacade implements IUserInteractionFacade {
+public class RoleFacade extends QBaseFacade {
 
 	RoleDAO rDAO = new RoleDAO();
 	Map<Integer,Role> roles; 
@@ -85,13 +85,15 @@ public class RoleFacade implements IUserInteractionFacade {
 	}
 
 	@Override
-	public void delete(Object o, Object extraInfo) throws IOException {
+	public String delete(Object o, Object extraInfo) throws IOException {
 		// TODO Auto-generated method stub
+		String s = ((Role)o).getId() + "";
 		try
 		{
 			rDAO.beginTransaction();			
 			rDAO.delete((Role)o);
-			rDAO.commit();			
+			rDAO.commit();		
+			return s;
 		}
 		catch(Exception ex)
 		{
@@ -104,6 +106,30 @@ public class RoleFacade implements IUserInteractionFacade {
 	public void preUpdate(Object o, Object extraInfo) throws IOException {
 		// TODO Auto-generated method Object
 
+	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

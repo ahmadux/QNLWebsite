@@ -14,7 +14,7 @@ import com.qnl.core.DbaseNCollect;
 
 import com.qnl.dao.DbaseNCollectDAO;
 
-public class DbaseNCollectFacade implements IUserInteractionFacade {
+public class DbaseNCollectFacade extends QBaseFacade {
 
 	DbaseNCollectDAO dbncDAO = new DbaseNCollectDAO();
 	
@@ -145,12 +145,14 @@ public class DbaseNCollectFacade implements IUserInteractionFacade {
 	}
 
 	@Override
-	public void delete(Object o, Object extraInfo) throws IOException {
-		// DbaseNCollect d = (DbaseNCollect) o;
+	public String delete(Object o, Object extraInfo) throws IOException {
+		String s = ((DbaseNCollect) o).getId() + "";
+		
 		try {
 			dbncDAO.beginTransaction();
 			dbncDAO.delete((DbaseNCollect) o);
 			dbncDAO.commit();			
+			return s;
 		} catch (Exception ex) {
 			dbncDAO.rollback();
 			throw new IOException(
@@ -164,6 +166,30 @@ public class DbaseNCollectFacade implements IUserInteractionFacade {
 	public void preUpdate(Object o, Object extraInfo) throws IOException {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

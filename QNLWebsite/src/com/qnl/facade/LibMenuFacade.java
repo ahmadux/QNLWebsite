@@ -18,7 +18,7 @@ import com.qnl.core.LibMenu;
 
 import com.qnl.dao.LibMenuDAO;
 
-public class LibMenuFacade implements IUserInteractionFacade
+public class LibMenuFacade extends QBaseFacade
 {
 
 	public static final byte STATUS_APPROVED = 1;
@@ -268,13 +268,16 @@ public class LibMenuFacade implements IUserInteractionFacade
 		}
 	}
 	
-	public void delete(Object o,  Object extraInfo) throws IOException
+	public String delete(Object o,  Object extraInfo) throws IOException
 	{
+		String s = ((LibMenu)o).getId() + "";
 		try
 		{
+			
 			lmDAO.beginTransaction();
 			lmDAO.delete((LibMenu)o);
 			lmDAO.commit();
+			return s;
 		}
 		catch(Exception ex)
 		{
@@ -292,6 +295,30 @@ public class LibMenuFacade implements IUserInteractionFacade
 		 if(url == null)
 			 url = "javascript:void(0);";
 		 return url;
+	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return "CustomUrl";
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return "CustomUrl";
 	}
 	
 }

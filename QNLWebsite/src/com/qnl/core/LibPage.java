@@ -63,23 +63,11 @@ public class LibPage implements Serializable {
 	//bi-directional many-to-one association to User
     @ManyToOne
 	private User user;
-    
-    public static int ENGLISH_LANGUAGE = 1;
-    public static int ARABIC_LANGUAGE = 2;
-    
-    private int LANGUAGE_SELECTED = 0;
-
+   
+   
     public LibPage() {
     }
-    public void selectLanguage(int languageToSelect){
-    	if(languageToSelect>=0 && languageToSelect<3){
-    		this.LANGUAGE_SELECTED = languageToSelect;
-    	}
-    }
-    
-    public int getSelectedLanguage(){
-    	return this.LANGUAGE_SELECTED;
-    }
+   
     
     public String getContentFileinSelectedLanguage(int languageToUse){
     	// TODO

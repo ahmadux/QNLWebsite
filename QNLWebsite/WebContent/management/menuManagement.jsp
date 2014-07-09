@@ -29,87 +29,77 @@
   
   function createMenuItem()
   { 		
-	    $("input[id='~setApproved']").val($("input[id='approved']").prop("checked")?"1":"0"); 
-	    //$("input[id='setMenuType']").val($("select[id='menuType']").val());
+	    $("input[id='Menu_~setApproved']").val($("input[id='Menu_approved']").prop("checked")?"1":"0");
+	    $("#CustomUrl_setFriendlyName").val($("#Menu_setText").val());
+	    $("#CustomUrl_setUrl").val($("#Menu_setExtra2").val());
+	    $("#CustomUrl_setUrlAr").val($("#Menu_setExtra2Ar").val());
+	    
+	  	//CustomUrl first then LibMenu
+	    $("#oName").val("CustomUrl");
+	  	
+	    $("#action").val("doRoute_Create");
 	    
  		$.ajax({
  			type: "POST",
- 			url: "../AjaxToDB.do", //?setText=" + $("input[id='text']").val() +"&setTextAr=" + x + "&~setApproved=" + ($("input[id='approved']").prop("checked")?"1":"0")  +  "&setMenuType=" + $("select[id='type']").val() + "&setParentId=" + parentID + "&setExtra2=" + $("input[id='extUrl']").val() + "&setOrder=0&oName=LibMenu&objUser=11",
- 			data:{
- 				oName: "CustomUrl",
- 				setFriendlyName: $("#setText").val(),
- 				setUrl: $("#setExtra2").val()!=""?$("#setExtra2").val():"blank.html",
- 				setUrlAr: $("#setExtra2Ar").val()!=""?$("#setExtra2Ar").val():"blank_AR.html",
- 				objUser: $("#objUser").val()
- 			},  				
+ 			url: "../AjaxToDB.do", 
+ 			data:$("#mnu").serialize(),				
  			dataType : "text",
 			async : false,
  			success: function(objID, status){
- 				$.ajax({url: "../Reloader.do?o=CustomUrl", async: false ,success: function() {
-		 			$("#objCustomUrl").val(objID);
-		 			
-				    $.ajax({
-			 			type: "POST",
-			 			url: "../AjaxToDB.do", //?setText=" + $("input[id='text']").val() +"&setTextAr=" + x + "&~setApproved=" + ($("input[id='approved']").prop("checked")?"1":"0")  +  "&setMenuType=" + $("select[id='type']").val() + "&setParentId=" + parentID + "&setExtra2=" + $("input[id='extUrl']").val() + "&setOrder=0&oName=LibMenu&objUser=11",
-			 			data: $("#mnu").serialize(),
-			 			dataType : "text",
-						async : false		 			           			
-			 		});
- 				}});
-	    	$.ajax({url: "../Reloader.do?o=LibMenu", success: function() {location.reload();}});
-	    	
- 			}            			
+ 				alert("Menu item Created!");
+ 				$("#modalForm").modal('hide');
+ 				location.reload();
+ 			}	
  		}); 
   }
   
   function updateMenuItem()
   { 		
-	    $("input[id='~setApproved']").val($("input[id='approved']").prop("checked")?"1":"0");
+	    $("input[id='Menu_~setApproved']").val($("input[id='Menu_approved']").prop("checked")?"1":"0");
+	    $("#CustomUrl_setFriendlyName").val($("#Menu_setText").val());
+	    $("#CustomUrl_setUrl").val($("#Menu_setExtra2").val());
+	    $("#CustomUrl_setUrlAr").val($("#Menu_setExtra2Ar").val());
+	    
+	  	//CustomUrl first then LibMenu  
+		$("#oName").val("LibMenu");
+	    
+	    $("#action").val("doRoute_Update");
+	    
 	    $.ajax({
  			type: "POST",
- 			url: "../AjaxToDB.do", //?setText=" + $("input[id='text']").val() +"&setTextAr=" + x + "&~setApproved=" + ($("input[id='approved']").prop("checked")?"1":"0")  +  "&setMenuType=" + $("select[id='type']").val() + "&setParentId=" + parentID + "&setExtra2=" + $("input[id='extUrl']").val() + "&setOrder=0&oName=LibMenu&objUser=11",
- 			data:{
- 				id: $("#objCustomUrl").val(),
- 				setFriendlyName: $("#setText").val(),
- 				setUrl: $("#setExtra2").val()!=""?$("#setExtra2").val():"blank.html",
- 				setUrlAr: $("#setExtra2Ar").val()!=""?$("#setExtra2Ar").val():"blank_AR.html",
- 				objUser: $("#objUser").val(),
- 				oName: "CustomUrl"
- 			},  				
- 			dataType : "text",
+ 			url: "../AjaxToDB.do", 
+ 			data:$("#mnu").serialize(),
+			dataType : "text",
 			async : false,
- 			success: function(objID, status){
- 				$.ajax({url: "../Reloader.do?o=CustomUrl", async: false ,success: function() {
-		 			$("#objCustomUrl").val(objID);
-		 			
-				    $.ajax({
-			 			type: "POST",
-			 			url: "../AjaxToDB.do", //?setText=" + $("input[id='text']").val() +"&setTextAr=" + x + "&~setApproved=" + ($("input[id='approved']").prop("checked")?"1":"0")  +  "&setMenuType=" + $("select[id='type']").val() + "&setParentId=" + parentID + "&setExtra2=" + $("input[id='extUrl']").val() + "&setOrder=0&oName=LibMenu&objUser=11",
-			 			data: $("#mnu").serialize(),
-			 			dataType : "text",
-						async : false		 			           			
-			 		});
- 				}});
-	    		$.ajax({url: "../Reloader.do?o=LibMenu", success: function() {location.reload();}});    		
+			success: function(){
+	    		alert("Menu item Updated!");
+	    		$("#modalForm").modal('hide');
+	    		location.reload();
  			}
 	    }); 		
   }
   
   function deleteMenuItem(IDD) 
   {
-	  if(confirm("Are you sure you want to DELETE this menu item? It's children will not be deleted.")) { 
-  	$.ajax({
-			url: "../AjaxToDB.do?id=" + IDD + "&delete=true&oName=QLibMenu&action=delete",
-			success: function(){
-				$.ajax({
-					url: "../AjaxToDB.do?id=" + $("input[id='objCustomUrl']").val() + "&delete=true&oName=CustomUrl",
-					success: function(){
-						$.ajax({url: "../Reloader.do?o=LibMenu,CustomUrl", success: function(){location.reload();}});		
-					}            			
-				});						
-			}            			
-		}); 
-  	};
+	  if(confirm("Are you sure you want to DELETE this menu item? \n(It's children will also be deleted!)")) {
+		  
+		//Delete Menu first and then CustomUrl  
+		$("#oName").val("LibMenu");
+		
+		$("#action").val("doRoute_Delete");
+	  	$.ajax({
+	  			type: "POST",
+				url: "../AjaxToDB.do",
+				data:$("#mnu").serialize(),				
+	 			dataType : "text",
+				async : false,
+				success: function(){
+					alert("Menu item Deleted!");
+					$("#modalForm").modal('hide');
+					location.reload();
+				}            			
+			}); 
+  	  };
   }
   
   function getSubMenu(IDD) { location.href = "menuManagement.jsp?pID=" + IDD; }
@@ -134,19 +124,19 @@
     		$(this).attr("class","ui-state-highlight");    		
     		$(this).siblings().attr("class","ui-state-default");
     		
-    		$("input[id='id']").val(IDD); 
-    		$("input[id='setParentId']").val(parentID);
-    		$("input[id='setText']").val($(this).attr('itemText'));
-    		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
-    		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
-    		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
-    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
-    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
-    		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
+    		$("input[id='Menu_id']").val(IDD); 
+    		$("input[id='Menu_setParentId']").val(parentID);
+    		$("input[id='Menu_setText']").val($(this).attr('itemText'));
+    		$("input[id='Menu_setTextAr']").val($(this).attr('itemTextAR'));
+    		$("input[id='Menu_setExtra2']").val($(this).attr('itemExtra2'));
+    		$("input[id='Menu_setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='Menu_setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='Menu_setOrder']").val($(this).attr('itemOrder'));
+    		$("input[id='CustomUrl_id']").val($(this).attr('itemCUrlID'));
     		
     		
     		checkValue($(this).attr("itemApproved") == "1");
-    		selectValue('setMenuType',$(this).attr('itemMenuType'));
+    		selectValue('Menu_setMenuType',$(this).attr('itemMenuType'));
     		
     		$("#deleteButton").show();
     		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
@@ -168,19 +158,19 @@
     		$(this).attr("class","ui-state-highlight");    		
     		$(this).siblings().attr("class","ui-state-default");
     		
-    		$("input[id='id']").val(IDD); 
-    		$("input[id='setParentId']").val(parentID);
-    		$("input[id='setText']").val($(this).attr('itemText'));
-    		$("input[id='setTextAr']").val($(this).attr('itemTextAR'));
-    		$("input[id='setExtra2']").val($(this).attr('itemExtra2'));
-    		$("input[id='setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
-    		$("input[id='setCSSClass']").val($(this).attr('itemCSSClass'));
-    		$("input[id='setOrder']").val($(this).attr('itemOrder'));
-    		$("input[id='objCustomUrl']").val($(this).attr('itemCUrlID'));
+    		$("input[id='Menu_id']").val(IDD); 
+    		$("input[id='Menu_setParentId']").val(parentID);
+    		$("input[id='Menu_setText']").val($(this).attr('itemText'));
+    		$("input[id='Menu_setTextAr']").val($(this).attr('itemTextAR'));
+    		$("input[id='Menu_setExtra2']").val($(this).attr('itemExtra2'));
+    		$("input[id='Menu_setExtra2Ar']").val($(this).attr('itemExtra2Ar'));
+    		$("input[id='Menu_setCSSClass']").val($(this).attr('itemCSSClass'));
+    		$("input[id='Menu_setOrder']").val($(this).attr('itemOrder'));
+    		$("input[id='CustomUrl_id']").val($(this).attr('itemCUrlID'));
     		
     		
     		checkValue($(this).attr("itemApproved") == "1");
-    		selectValue('setMenuType',$(this).attr('itemMenuType'));
+    		selectValue('Menu_setMenuType',$(this).attr('itemMenuType'));
     		
     		$("#deleteButton").show();
     		$("#deleteButton").click(function() {deleteMenuItem(IDD);});
@@ -211,13 +201,13 @@
     
   function selectValue(iName,val)
   {
-  	var sel = $("select[id='" + iName + "']");
+  	var sel = $("select[id='Menu_" + iName + "']");
   	sel.val(val).attr("selected");
   }
   
   function checkValue(v)
   {
-	  var chk = $("input[id='approved']");	  
+	  var chk = $("input[id='Menu_approved']");	  
 	  chk.prop("checked",v); 
 	  
   }
@@ -229,16 +219,17 @@
 	 });
 	
 	 $("#myModalLabel").text('New Menu Item'); 
-	$("input[id='id']").val(''); 
-	$("input[id='setText']").val('');
-	$("input[id='setTextAr']").val('');
-	$("input[id='setExtra2']").val('');
-	$("input[id='setExtra2Ar']").val('');
-	$("input[id='~setApproved']").val('');
-	$("input[id='objCustomUrl']").val('');
-	$("input[id='setCSSClass']").val('');
-	$("input[id='setParentId']").val(parentID);
-	$("input[id='setOrder']").val(0);
+	$("input[id='Menu_id']").val(''); 
+	$("input[id='Menu_setText']").val('');
+	$("input[id='Menu_setTextAr']").val('');
+	$("input[id='Menu_setExtra2']").val('');
+	$("input[id='Menu_setExtra2Ar']").val('');
+	$("input[id='Menu_~setApproved']").val('');
+	$("input[id='CustomUrl_id']").val('');
+	
+	$("input[id='Menu_setCSSClass']").val('');
+	$("input[id='Menu_setParentId']").val(parentID);
+	$("input[id='Menu_setOrder']").val(0);
 	checkValue(false);
 	//selectValue('setMenuType','MENU, STIEMAP');
 	
@@ -281,19 +272,27 @@
 	      </div>
 	      <div class="modal-body">
 	      <form id="mnu" name="mnu" class="form-horizontal">
-				<input type="hidden" name="id" id="id" />
-				<input type="hidden" name="oName" id="oName" value="LibMenu" />
-				<input type="hidden" name="objUser" id="objUser" value="11" />
-				<input type="hidden" name="setParentId" id="setParentId" />
-				<input type="hidden" name="setOrder" id="setOrder" value="" />
+				<input type="hidden" name="CustomUrl_id" id="CustomUrl_id" />
+				<input type="hidden" name="Menu_id" id="Menu_id" />
 				
-				<input type="hidden" name="objCustomUrl" id="objCustomUrl" />
-				<input type="hidden" name="~setApproved" id="~setApproved" />	
+				<input type="hidden" name="oName" id="oName" value="" />	
+							
+				<input type="hidden" name="CustomUrl_setUrl" id="CustomUrl_setUrl" value="" />
+				<input type="hidden" name="CustomUrl_setUrlAr" id="CustomUrl_setUrlAr" value="" />
+				<input type="hidden" name="CustomUrl_setFriendlyName" id="CustomUrl_setFriendlyName" value="" />				
+				<input type="hidden" name="CustomUrl_objUser" id="CustomUrl_objUser" value="11" />
+				<input type="hidden" name="Menu_objUser" id="Menu_objUser" value="11" />
+				<input type="hidden" name="action" id="action" value="" />
+				
+				<input type="hidden" name="Menu_setParentId" id="Menu_setParentId" />
+				<input type="hidden" name="Menu_setOrder" id="Menu_setOrder" value="" />							
+				<input type="hidden" name="Menu_~setApproved" id="Menu_~setApproved" />
+					
 				<div class="control-group">
 					<label class="control-label" for="setText">Title<font
 						color="red">*</font></label>
 					<div class="controls">
-						<input type="text" name="setText" id="setText" class="form-control" maxlength="50"  placeHolder="Menu Text" pattern="[A-Za-z]([0-9]|[A-Za-z]|\s)*" required="required" />
+						<input type="text" name="Menu_setText" id="Menu_setText" class="form-control" maxlength="50"  placeHolder="Menu Text" pattern="[A-Za-z]([0-9]|[A-Za-z]|\s)*" required="required" />
 					</div>
 				</div>
 			
@@ -301,15 +300,15 @@
 					<label class="control-label" for="textAr">Title (Arabic)<font
 						color="red">*</font></label>
 					<div class="controls">
-						<input type="text" name="setTextAr" id="setTextAr" class="form-control" maxlength="50"   dir="rtl" required="required" /> 
+						<input type="text" name="Menu_setTextAr" id="Menu_setTextAr" class="form-control" maxlength="50"   dir="rtl" required="required" /> 
 					</div>
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="setMenuType">Menu Type<font
+					<label class="control-label" for="Menu_setMenuType">Menu Type<font
 						color="red">*</font></label>
 					<div class="controls">
-						<select id="setMenuType" name="setMenuType" class="form-control">
+						<select id="Menu_setMenuType" name="Menu_setMenuType" class="form-control">
 							<option value='MENU, SITEMAP'>MENU + SITEMAP (Both)</option>
 							<option value='MENU ONLY'>MENU Only</option>
 							<option value='SITEMAP ONLY'>SITEMAP Only</option>
@@ -320,29 +319,29 @@
 				<div class="control-group">		
 					<div class="controls">
 						<label class="checkbox">
-			  				<input type="checkbox" value="" name="approved" id="approved">Is Approved?
+			  				<input type="checkbox" value="" name="Menu_approved" id="Menu_approved">Is Approved?
 			  			</label>
 					</div>
 				</div>
 				
 				<div class="control-group">
-					<label class="control-label" for="cssClass">CSS Class</label>
+					<label class="control-label" for="Menu_cssClass">CSS Class</label>
 					<div class="controls">
-						<input type="text" name="setCSSClass" id="setCSSClass" class="form-control" maxlength="50" /> 
+						<input type="text" name="Menu_setCSSClass" id="Menu_setCSSClass" class="form-control" maxlength="50" /> 
 					</div>
 				</div>	
 				
 				<div class="control-group">	
-					<label class="control-label" for="setExtra2">External URL</label>	
+					<label class="control-label" for="Menu_setExtra2">External URL</label>	
 					<div class="controls">
-						<input type="text" name="setExtra2" id="setExtra2" value="" class="form-control"  maxlength="500" />
+						<input type="text" name="Menu_setExtra2" id="Menu_setExtra2" value="" class="form-control"  maxlength="500" />
 					</div>
 				</div>	
 				
 				<div class="control-group">	
-					<label class="control-label" for="setExtra2">External URL (Arabic)</label>	
+					<label class="control-label" for="Menu_setExtra2">External URL (Arabic)</label>	
 					<div class="controls">
-						<input type="text" name="setExtra2Ar" id="setExtra2Ar" value="" class="form-control"  maxlength="500" />
+						<input type="text" name="Menu_setExtra2Ar" id="Menu_setExtra2Ar" value="" class="form-control"  maxlength="500" />
 					</div>
 				</div>
 		</form>

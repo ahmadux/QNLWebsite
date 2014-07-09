@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="data")
 public class TimeService {
 	
-	private Request request;
+	private ServiceRequest request;
 	private Time_zone time_zone;
 	
 	private static TimeService t = null;
@@ -59,10 +59,10 @@ public class TimeService {
 	}
 			
 	
-	public Request getRequest() {
+	public ServiceRequest getRequest() {
 		return request;
 	}
-	public void setRequest(Request r) {
+	public void setRequest(ServiceRequest r) {
 		this.request = r;
 	}
 	public Time_zone getTime_zone() {

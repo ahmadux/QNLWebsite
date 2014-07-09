@@ -11,7 +11,7 @@ import java.util.Map;
 import com.qnl.core.NewsCategory;
 import com.qnl.dao.NewsCategoryDAO;
 
-public class NewsCategoryFacade implements IUserInteractionFacade 
+public class NewsCategoryFacade extends QBaseFacade
 {
 	NewsCategoryDAO newsCategoryDAO = new NewsCategoryDAO(); 
 	Map<Integer, NewsCategory> newsCategories;
@@ -52,9 +52,35 @@ public class NewsCategoryFacade implements IUserInteractionFacade
 		return null;
 	}
 	
-	public void delete(Object o, Object extraInfo)throws IOException
-	{}
+	public String delete(Object o, Object extraInfo)throws IOException
+	{
+		return null;
+	}
 	
 	public void preUpdate(Object o, Object extraInfo) throws IOException
 	{}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -19,11 +19,7 @@ import java.util.Map;
 import com.qnl.core.LibRegistration;
 import com.qnl.dao.LibRegDAO;
 
-
-
-
-
-public class LibRegistrationFacade implements IUserInteractionFacade {
+public class LibRegistrationFacade extends QBaseFacade {
 
 	
 	LibRegDAO lRegDAO = new LibRegDAO();
@@ -145,13 +141,14 @@ public class LibRegistrationFacade implements IUserInteractionFacade {
 	}
 
 	@Override
-	public void delete(Object o, Object extraInfo) throws IOException {
+	public String delete(Object o, Object extraInfo) throws IOException {
 		LibRegistration reg = (LibRegistration)o;
-		
+		String s = reg.getId() + "";
 		try{
 			lRegDAO.beginTransaction();
 			lRegDAO.delete(reg);
-			lRegDAO.commit();			
+			lRegDAO.commit();		
+			return s;
 			//libPages.remove(pg.getId());
 		}catch(Exception ex)
 		{
@@ -167,5 +164,28 @@ public class LibRegistrationFacade implements IUserInteractionFacade {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

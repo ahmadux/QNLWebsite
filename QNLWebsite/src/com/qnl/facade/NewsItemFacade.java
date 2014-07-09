@@ -19,7 +19,7 @@ import com.qnl.core.User;
 import com.qnl.dao.NewsItemDAO;
 
 
-public class NewsItemFacade implements IUserInteractionFacade 
+public class NewsItemFacade extends QBaseFacade 
 {
 	
 	NewsItemDAO newsItemDAO = new NewsItemDAO(); 
@@ -162,15 +162,41 @@ public class NewsItemFacade implements IUserInteractionFacade
 		return ni.getId() + "";
 	}
 	
-	public void delete(Object o, Object extraInfo)throws IOException
+	public String delete(Object o, Object extraInfo)throws IOException
 	{
-		NewsItem ni = (NewsItem)o;				
+		NewsItem ni = (NewsItem)o;
+		String s = ni.getId() + "";
 		newsItemDAO.beginTransaction();		
 		newsItemDAO.delete(ni);			
 		newsItemDAO.commit();		
+		return s;
 	}
 	
 	public void preUpdate(Object o, Object extraInfo) throws IOException
 	{}
 	
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

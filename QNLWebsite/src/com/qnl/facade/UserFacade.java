@@ -10,7 +10,7 @@ import java.util.Map;
 import com.qnl.dao.*;
 import com.qnl.core.*;
 
-public class UserFacade implements IUserInteractionFacade
+public class UserFacade extends QBaseFacade
 {
 	UserDAO uDAO = new UserDAO();
 	Map<Integer,User> users; 
@@ -124,8 +124,10 @@ public class UserFacade implements IUserInteractionFacade
 		return null;
 	}
 	
-	public void delete(Object o, Object uName) throws IOException 
-	{}
+	public String delete(Object o, Object uName) throws IOException 
+	{
+		return null;
+	}
 	
 	public void preUpdate(Object o, Object uName) throws IOException 
 	{}
@@ -135,5 +137,28 @@ public class UserFacade implements IUserInteractionFacade
 		return new ArrayList<User>(users.values());
 	}
 	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

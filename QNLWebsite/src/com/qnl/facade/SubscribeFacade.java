@@ -12,7 +12,7 @@ import com.qnl.core.Subscribe;
 
 import com.qnl.dao.SubscribeDAO;
 
-public class SubscribeFacade implements IUserInteractionFacade{
+public class SubscribeFacade extends QBaseFacade{
 
 	SubscribeDAO sbcrDAO = new SubscribeDAO();
 	
@@ -83,12 +83,14 @@ public class SubscribeFacade implements IUserInteractionFacade{
 	}
 
 	@Override
-	public void delete(Object o, Object extraInfo) throws IOException {
+	public String delete(Object o, Object extraInfo) throws IOException {
 		// DbaseNCollect d = (DbaseNCollect) o;
+		String s = ((Subscribe)o).getId() + "";
 		try {
 			sbcrDAO.beginTransaction();
 			sbcrDAO.delete((Subscribe) o);
 			sbcrDAO.commit();			
+			return s;
 		} catch (Exception ex) {
 			sbcrDAO.rollback();
 			throw new IOException(
@@ -102,6 +104,30 @@ public class SubscribeFacade implements IUserInteractionFacade{
 	public void preUpdate(Object o, Object extraInfo) throws IOException {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	 
 }

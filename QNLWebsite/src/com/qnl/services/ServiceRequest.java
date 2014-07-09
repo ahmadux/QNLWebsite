@@ -1,13 +1,13 @@
 package com.qnl.services;
 
-class Request
+class ServiceRequest
 {
 	private String type;
 	private String query;
 	String city;
 	String country;
 	
-	public Request(){}
+	public ServiceRequest(){}
 	
 		
 	/***************************** Required by JAXB ***************/
