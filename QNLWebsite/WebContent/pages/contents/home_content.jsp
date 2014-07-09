@@ -1,5 +1,4 @@
-<div id="main_content">
-	<div class="background_full" style="background-image: url(${BaseServerPath}/images/large/main4.jpg);"></div>
+<div id="main_content"  style="background-image:url('${BaseServerPath}/images/large/main4.jpg')">
 	<div class="content">
 	<div class="col-xs-12 col-md-2 col-md-offset-1 highSpaceTop pull-left semitransparent img-rounded">
 		<h4 class="textOutlined">
