@@ -71,13 +71,13 @@
 		
 		<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wrap center">
-		
+			<h2>Featured Books</h2>
 			<div class="scrollbar">
 				<div class="handle"><div class="mousearea"></div></div>
 			</div>
 	
-			<div class="frame" id="centered">
-				<ul class="clearfix">
+			<div class="frame effects" id="centered">
+				<ul class="slidee">
 					<li><div class="slide_book_image"><p class="img" data-Image="images/lion_childres.jpg" /></div></li>
 					<li><div class="slide_book_image"><p class="img" data-Image="images/teen-go-go-cover.jpg" /></div></li>
 					<li><div class="slide_book_image"><p class="img" data-Image="images/TeenConfessions.png" /></div></li>
@@ -97,41 +97,6 @@
 				<button class="btn prev"><i class="glyphicon glyphicon-chevron-left"></i> prev</button>
 				<button class="btn next">next <i class="glyphicon glyphicon-chevron-right"></i></button>
 			</div>
-		
-
-		<script type="text/javascript">
-		jQuery(function($){
-		(function () {
-			var $frame = $('#centered');
-			var $wrap  = $frame.parent();
-
-			// Call Sly on frame
-			$frame.sly({
-				horizontal: 1,
-				itemNav: 'centered',
-				smart: 1,
-				activateOn: 'click',
-				mouseDragging: 1,
-				touchDragging: 1,
-				releaseSwing: 1,
-				startAt: 0,
-				scrollBar: $wrap.find('.scrollbar'),
-				scrollBy: 1,
-				speed: 300,
-				elasticBounds: 1,
-				easing: 'easeOutExpo',
-				dragHandle: 1,
-				dynamicHandle: 1,
-				clickBar: 1,
-
-				// Buttons
-				prev: $wrap.find('.prev'),
-				next: $wrap.find('.next')
-			});
-		}());
-		
-		});
-		</script>		
 		
 		</div>
 		</div>	
@@ -236,51 +201,51 @@
 			
 			
 			
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<!-- 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> -->
 			
-			<div class="flip-container">
-				<div class="flipper">
-					<div class="front review_box" >
-						<div class="review_head">Readers' Pick</div>
-						<div class="review_book_image"><p class="img" data-Image="images/AssessmentCover.jpg" /></div>
-					</div>
-					<div class="back review_box" >
-						<div class="review_head">Staff Pick Reviews</div>
-						<div class="reviews_list">
-							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
-							<p/>
-							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
-							<p/>
-							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
-						</div>
-					</div>
-				</div>
-			</div>
+<!-- 			<div class="flip-container"> -->
+<!-- 				<div class="flipper"> -->
+<!-- 					<div class="front review_box" > -->
+<!-- 						<div class="review_head">Readers' Pick</div> -->
+<!-- 						<div class="review_book_image"><p class="img" data-Image="images/AssessmentCover.jpg" /></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="back review_box" > -->
+<!-- 						<div class="review_head">Staff Pick Reviews</div> -->
+<!-- 						<div class="reviews_list"> -->
+<!-- 							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			
-			</div>
+<!-- 			</div> -->
 			
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<!-- 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> -->
 			
-			<div class="flip-container">
-				<div class="flipper">
-					<div class="front review_box" >
-						<div class="review_head">Staff Pick</div>
-						<div class="review_book_image"><p class="img" data-Image="images/harry_porter.jpg" /></div>
-					</div>
-					<div class="back review_box" >
-						<div class="review_head">Staff Pick Reviews</div>
-						<div class="reviews_list">
-							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
-							<p/>
-							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
-							<p/>
-							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
-						</div>
-					</div>
-				</div>
-			</div>
+<!-- 			<div class="flip-container"> -->
+<!-- 				<div class="flipper"> -->
+<!-- 					<div class="front review_box" > -->
+<!-- 						<div class="review_head">Staff Pick</div> -->
+<!-- 						<div class="review_book_image"><p class="img" data-Image="images/harry_porter.jpg" /></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="back review_box" > -->
+<!-- 						<div class="review_head">Staff Pick Reviews</div> -->
+<!-- 						<div class="reviews_list"> -->
+<!-- 							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			
-			</div>
+<!-- 			</div> -->
 	
 		</div>
 </div>
