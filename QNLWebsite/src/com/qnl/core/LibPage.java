@@ -63,10 +63,11 @@ public class LibPage implements Serializable {
 	//bi-directional many-to-one association to User
     @ManyToOne
 	private User user;
-    
+   
+   
     public LibPage() {
     }
-    
+   
     
     public String getContentFileinSelectedLanguage(int languageToUse){
     	// TODO

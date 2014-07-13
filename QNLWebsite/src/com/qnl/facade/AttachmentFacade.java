@@ -10,7 +10,7 @@ import com.qnl.core.Attachment;
 import com.qnl.dao.AttachmentDAO;
 import com.qnl.management.HelperFunctions;
 
-public class AttachmentFacade implements IUserInteractionFacade 
+public class AttachmentFacade extends QBaseFacade 
 {
 	AttachmentDAO aDAO = new AttachmentDAO();
 	Map<Integer, Attachment> attachments;
@@ -20,6 +20,30 @@ public class AttachmentFacade implements IUserInteractionFacade
 		attachments = new HashMap<Integer, Attachment>();
 		refresh();
 		
+	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	public Attachment findByID(int id)
@@ -112,14 +136,16 @@ public class AttachmentFacade implements IUserInteractionFacade
 	/**
 	 * @param extraInfo denotes the basePath
 	 */
-	public void delete(Object o, Object extraInfo) throws IOException
+	public String delete(Object o, Object extraInfo) throws IOException
 	{
-		aDAO.beginTransaction();		
-		try{			
+		String s = 	((Attachment)o).getId() + "";	
+		try{
+			aDAO.beginTransaction();
 			HelperFunctions.delete(extraInfo.toString() + ((Attachment)o).getSrc());
 			HelperFunctions.delete(extraInfo.toString() + ((Attachment)o).getSrcAr());
 			aDAO.delete((Attachment)o);
 			aDAO.commit();
+			return s;
 		}catch(IOException ioex)
 		{
 			aDAO.rollback();

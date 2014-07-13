@@ -10,7 +10,7 @@ import com.qnl.core.CustomUrl;
 import com.qnl.dao.CustomUrlDAO;
 
 
-public class CustomUrlFacade implements IUserInteractionFacade 
+public class CustomUrlFacade extends QBaseFacade 
 {
 	CustomUrlDAO cuDAO = new CustomUrlDAO();
 	Map<Integer, CustomUrl> customUrls;
@@ -92,14 +92,16 @@ public class CustomUrlFacade implements IUserInteractionFacade
 		}
 	}
 	
-	public void delete(Object o,  Object extraInfo) throws IOException
+	public String delete(Object o,  Object extraInfo) throws IOException
 	{
+		String s = ((CustomUrl)o).getId() + "";
 		try
 		{
 			cuDAO.beginTransaction();
 			cuDAO.delete((CustomUrl)o);
 			cuDAO.commit();
-		}
+			return s;
+		}		
 		catch(Exception ex)
 		{
 			cuDAO.rollback();
@@ -110,5 +112,28 @@ public class CustomUrlFacade implements IUserInteractionFacade
 	public void preUpdate(Object o,  Object extraInfo) throws IOException
 	{}
 	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return "LibMenu";
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub		
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -4,11 +4,10 @@
   <welcome-file-list>
     <welcome-file>IndexMobile3.jsp</welcome-file>
   </welcome-file-list>
-  
   <listener>
     <listener-class>
   			com.qnl.management.Initializer  			
-  	</listener-class>  	
+  	</listener-class>
   </listener>
   <servlet>
     <servlet-name>Login</servlet-name>
@@ -40,7 +39,7 @@
   </servlet>
   <servlet>
     <servlet-name>FileUpload</servlet-name>
-    <servlet-class>com.qnl.management.FileUpload</servlet-class>
+    <servlet-class>com.qnl.services.FileUpload</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UpdateMenuOrder</servlet-name>
@@ -78,7 +77,7 @@
     <servlet-name>FileUpload</servlet-name>
     <url-pattern>/FileUpload.do</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>UpdateMenuOrder</servlet-name>
     <url-pattern>/UpdateMenuOrder.do</url-pattern>
   </servlet-mapping>
@@ -90,7 +89,7 @@
   </filter>
   <filter-mapping>
     <filter-name>URLFilter</filter-name>
-    <url-pattern>/*</url-pattern>    
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
   <error-page>
     <location>/error.jsp</location>

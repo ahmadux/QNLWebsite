@@ -13,7 +13,7 @@ import com.qnl.core.LibTemplate;
 import com.qnl.dao.LibTemplateDAO;
 import com.qnl.management.HelperFunctions;
 
-public class LibTemplateFacade implements IUserInteractionFacade 
+public class LibTemplateFacade extends QBaseFacade 
 {
 	LibTemplateDAO libTemplateDAO = new LibTemplateDAO(); 
 		
@@ -88,14 +88,16 @@ public class LibTemplateFacade implements IUserInteractionFacade
 		} 
 	}
 	
-	public void delete(Object o,Object extraInfo) throws IOException
-	{
+	public String delete(Object o,Object extraInfo) throws IOException
+	{		
 		LibTemplate pgt = (LibTemplate)o;
+		String s = pgt.getId() + "";
 		libTemplateDAO.beginTransaction();		
 		try{
 			HelperFunctions.delete(extraInfo.toString()	+ File.separator + HelperFunctions.templateDirectory + File.separator + pgt.getContentFile());
 			libTemplateDAO.delete(pgt);
 			libTemplateDAO.commit();
+			return s;
 		}catch(IOException ioex)
 		{
 			libTemplateDAO.rollback();
@@ -107,5 +109,29 @@ public class LibTemplateFacade implements IUserInteractionFacade
 	
 	public void preUpdate(Object o, Object extraInfo) throws IOException
 	{}
-		
+	
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

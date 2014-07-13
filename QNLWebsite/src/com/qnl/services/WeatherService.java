@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class WeatherService 
 {
 	private static WeatherService w = null;
-	private Request request;
+	private ServiceRequest request;
 	private Current_Condition current_condition;
 	private List<Weather> weather = new ArrayList<Weather>();
 	
@@ -225,11 +225,11 @@ public class WeatherService
 	}
 	
 	/*************************************** Required by JAXB */
-	public Request getRequest() {
+	public ServiceRequest getRequest() {
 		return request;
 	}
 
-	public void setRequest(Request request) {
+	public void setRequest(ServiceRequest request) {
 		this.request = request;
 	}
 

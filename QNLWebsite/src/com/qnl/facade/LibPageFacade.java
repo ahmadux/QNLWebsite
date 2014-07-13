@@ -9,8 +9,8 @@ import com.qnl.core.LibPage;
 import com.qnl.dao.LibPageDAO;
 import com.qnl.management.HelperFunctions;
 
-public class LibPageFacade implements IUserInteractionFacade
-{
+public class LibPageFacade extends QBaseFacade
+{ 
 	LibPageDAO libPageDAO = new LibPageDAO();
 	Map<Integer,LibPage> libPages; 
 	
@@ -21,13 +21,8 @@ public class LibPageFacade implements IUserInteractionFacade
 	}
 		
 	public LibPage findByID(int id)
-	{
-		
-		return libPages.get(Integer.valueOf(id));
-		//libPageDAO.beginTransaction();
-		//lp = libPageDAO.findByID(id);
-		//libPageDAO.closeTransaction();
-		//return lp;
+	{		
+		return libPages.get(Integer.valueOf(id));	
 	}
 	
 	public List<LibPage> getLibPages()
@@ -39,9 +34,7 @@ public class LibPageFacade implements IUserInteractionFacade
 	public LibPage findByMenuID(int id)
 	{
 		LibPage lp = null;		
-		//libPageDAO.beginTransaction();
-		//lp = libPageDAO.findByMenuID(id);
-		//libPageDAO.closeTransaction();
+	
 		Iterator it = libPages.entrySet().iterator();
 	    while (it.hasNext()) {
 	        
@@ -53,23 +46,6 @@ public class LibPageFacade implements IUserInteractionFacade
 		return lp;	
 	}
 	
-	
-	//@SuppressWarnings("rawtypes")	
-	//public LibPage findByFriendlyName(String pName)
-	//{
-	//	LibPage lp = null;
-		//libPageDAO.beginTransaction();
-		//lp = libPageDAO.findByMenuID(id);
-		//libPageDAO.closeTransaction();
-	//	Iterator it = libPages.entrySet().iterator();
-	//    while (it.hasNext()) {
-	        
-	//		Map.Entry pairs = (Map.Entry)it.next();
-	//        if(((LibPage)pairs.getValue()).getFriendlyName().toLowerCase().equals(pName.toLowerCase()))
-	//        	lp = (LibPage)pairs.getValue();
-	//    }	
-	//	return lp;	
-	//}
 	
 	public List<LibPage> findByKeywords(String keys, boolean inArabic)
 	{
@@ -89,12 +65,9 @@ public class LibPageFacade implements IUserInteractionFacade
 		libPageDAO.closeTransaction();
 		
 		for(int i=0; i<lps.size();i++)
-			libPages.put(Integer.valueOf(lps.get(i).getId()), lps.get(i));
-				
-				
+			libPages.put(Integer.valueOf(lps.get(i).getId()), lps.get(i));			
 	}
 	
-
 	@Override
 	public String save(Object o, Object pgHTML, Object pgHTMLAR, Object extraInfo) throws IOException
 	{
@@ -106,7 +79,7 @@ public class LibPageFacade implements IUserInteractionFacade
 			HelperFunctions.writeFile(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + pg.getContentFileAr().toLowerCase(), pgHTMLAR.toString().split("\n"));
 			libPageDAO.commit();
 			return pg.getId() + "";
-			//libPages.put(pg.getId(),pg);
+			
 		} catch (IOException ioex) {
 			libPageDAO.rollback();
 			System.out.println("**************************ERROR: Could not save file. " + ioex.getMessage());
@@ -121,18 +94,16 @@ public class LibPageFacade implements IUserInteractionFacade
 		LibPage oldpg = findByID(pg.getId());
 		try {
 			libPageDAO.beginTransaction();
-			
-			//remove OLD files
-			//HelperFunctions.delete(oldpg.getImage(),HelperFunctions.AS_IMAGE, extraInfo);
 			HelperFunctions.delete(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + oldpg.getContentFile().toLowerCase());
 			HelperFunctions.delete(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + oldpg.getContentFileAr().toLowerCase());
+			
 			//Save NEW Files
 			HelperFunctions.writeFile(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + pg.getContentFile().toLowerCase(), pgHTML.toString().split("\n"));
 			HelperFunctions.writeFile(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + pg.getContentFileAr().toLowerCase(), pgHTMLAR.toString().split("\n"));
 			libPageDAO.update(pg);
 			libPageDAO.commit();
 			return pg.getId() + "";
-			//libPages.put(pg.getId(),pg);
+			
 		} catch (IOException ioex) {
 			libPageDAO.rollback();
 			System.out.println("**************************ERROR: Could not update file. " + ioex.getMessage());
@@ -141,16 +112,18 @@ public class LibPageFacade implements IUserInteractionFacade
 	}
 	
 	
-	public void delete(Object o, Object extraInfo) throws IOException
+	public String delete(Object o, Object extraInfo) throws IOException
 	{
-		LibPage pg = (LibPage)o;		
+		
+		LibPage pg = (LibPage)o;
+		String s = pg.getId() + "";
 		try{
 			libPageDAO.beginTransaction();
 			HelperFunctions.delete(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + pg.getContentFile().toLowerCase());
 			HelperFunctions.delete(extraInfo.toString() + File.separator + HelperFunctions.webPageDirectory + File.separator + pg.getContentFileAr().toLowerCase());
 			libPageDAO.delete(pg);
 			libPageDAO.commit();			
-			//libPages.remove(pg.getId());
+			return s;
 		}catch(IOException ioex)
 		{
 			libPageDAO.rollback();
@@ -162,5 +135,30 @@ public class LibPageFacade implements IUserInteractionFacade
 	
 	public void preUpdate(Object o, Object extraInfo) throws IOException
 	{}
+	
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return "CustomUrl";
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return "CustomUrl";
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

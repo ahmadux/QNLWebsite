@@ -20,12 +20,9 @@
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 <script src="../scripts/bootstrap.min.js"></script>
 
-
-
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
 <script src="../scripts/ckeditor/ckeditor.js"></script>
 <script src="../scripts/select2/select2.min.js"></script>
-
 
 <script src="../scripts/jquery.validate.min.js"></script>
 <link href="../scripts/select2/select2.css" rel="stylesheet" />
@@ -47,9 +44,9 @@
 
 	function getFileExt() {
 		var x = $("#imgFile").val();
-		//alert(x.substring(x.lastIndexOf(".") + 1));
+		
 	}
-
+	
 	$(function() {
 
 		$("#pg_Keywords").select2({
@@ -63,35 +60,38 @@
 			tokenSeparators : [ "," ]
 		});
 
-		$("#objLibMenu").select2();
+		//$("#objLibMenu").select2();		
 		//$("#objLibMenu").select2("val", "1");
-		$("#objLibTemplate").select2({
-			formatResult : format,
-			formatSelection : format,
-			escapeMarkup : function(m) {
-				return m;
-			}
-		});
-		$("#objLibTemplate").select2("val", "");
-		$("#setTitle").change(function() {
-			$("#setTitleAr").val($("#setTitle").val());
-			$("#setFriendlyName").val($("#setTitle").val().replace(" ", ""));
+		
+		$("#Page_setTitle").change(function() {
+			$("#Page_setTitleAr").val($("#Page_setTitle").val());
+			$("#CustomUrl_setFriendlyName").val($("#Page_setTitle").val().replace(" ", ""));
 		});
 	});
 
 	function createPage() {
-		//alert("Creating");
-		$("#x").val(getHTML("editor_EN"));
-		$("#xAR").val(getHTML("editor_AR"));
+		
+		$("#action").val("doRoute_Create");
+		$("#Page_x").val(getHTML("editor_EN"));
+		$("#Page_xAR").val(getHTML("editor_AR"));
 
-		$("#setSummary").val($("#pg_Summary").val());
-		$("#setSummaryAr").val($("#pg_SummaryAr").val());
-		$("#setKeywords").val($("#pg_Keywords").val());
-		$("#setKeywordsAr").val($("#pg_KeywordsAr").val());
+		$("#Page_setSummary").val($("#pg_Summary").val());
+		$("#Page_setSummaryAr").val($("#pg_SummaryAr").val());
+		$("#Page_setKeywords").val($("#pg_Keywords").val());
+		$("#Page_setKeywordsAr").val($("#pg_KeywordsAr").val());
+		
+		$("#CustomUrl_id").val($("#Page_objLibMenu :selected").attr("data-cUrlID"));		
+		
+		$("#Page_setContentFile").val($("#CustomUrl_setFriendlyName").val() + ".jsp");
+		$("#Page_setContentFileAr").val($("#CustomUrl_setFriendlyName").val() + "_ar.jsp");
+		
+		$("#CustomUrl_setUrl").val("pages/" + $("#Page_setContentFile").val());
+		$("#CustomUrl_setUrlAr").val("pages/" + $("#Page_setContentFileAr").val());
 
-		$("#setContentFile").val($("#setFriendlyName").val() + ".jsp");
-		$("#setContentFileAr").val($("#setFriendlyName").val() + "_ar.jsp");
-
+		$("#oName").val("LibPage");
+		
+		
+		
 		$.ajax({
 					type : "POST",
 					url : "../AjaxToDB.do",
@@ -99,81 +99,34 @@
 					dataType : "text",
 					async : false,
 					success : function(objID, status) {
-						//alert("Page ID: " + objID);
-						var oid = objID;
-						$.ajax({
-									type : "POST",
-									url : "../AjaxToDB.do",
-									async : false,
-									data : {
-										oName : "CustomUrl",
-										id : $("#objLibMenu option:selected")
-												.attr('data-cUrlID'),
-										setFriendlyName : $("#setFriendlyName").val(),
-										setUrl : "pages/"+ $("#setContentFile").val(),
-										setUrlAr : "pages/" + $("#setContentFileAr").val(),
-										objUser : $("#objUser").val()
-									},
-									async: false,
-									success : function(objID, status) {
-										
-										$.ajax({
-													type : "POST",
-													url : "../AjaxToDB.do",
-													async : false,
-													data : {
-														oName : "LibMenu",
-														id : $("#objLibMenu")
-																.val(),
-														setCustomUrl : objID,
-														objUser : $("#objUser")
-																.val()
-													},
-													async: false,
-													success : function() {
-														if($("input[type=file]").val() != "")
-														{
-															$("#rPath").val(location);
-															$("#imageFile").attr("action","../FileUpload.do?fid=" + oid);
-															$("#imageFile").submit();
-														}
-														
-														$.ajax({
-																	url : "../Reloader.do?o=LibMenu,LibPage,CustomUrl",
-																	success : function() {
-																		
-																	}
-																});
-														//alert("New Page created!");
-													}
-												});										
-
-									},
-									error : function() {
-										alert("Error in  saving Friendly Name while creating");
-									}
-								});
+						alert("Page item created!");
+						location.reload();
 					},
 					error : function() {
-						alert("Error in saving Page data while creating");
+						alert("Error in creating Page data!");
 					}
 				});
 	}
 
 	function updatePage() {
-		//alert("Updating");
-		$("#x").val(getHTML("editor_EN"));
-		$("#xAR").val(getHTML("editor_AR"));
+		$("#action").val("doRoute_Update");
+		$("#Page_x").val(getHTML("editor_EN"));
+		$("#Page_xAR").val(getHTML("editor_AR"));
 
-		$("#setSummary").val($("#pg_Summary").val());
-		$("#setSummaryAr").val($("#pg_SummaryAr").val());
-		$("#setKeywords").val($("#pg_Keywords").val());
-		$("#setKeywordsAr").val($("#pg_KeywordsAr").val());
-
-		$("#setContentFile").val($("#setFriendlyName").val() + ".jsp");
-		$("#setContentFileAr").val($("#setFriendlyName").val() + "_ar.jsp");
+		$("#Page_setSummary").val($("#pg_Summary").val());
+		$("#Page_setSummaryAr").val($("#pg_SummaryAr").val());
+		$("#Page_setKeywords").val($("#pg_Keywords").val());
+		$("#Page_setKeywordsAr").val($("#pg_KeywordsAr").val());
 		
-		var oid;
+		$("#CustomUrl_id").val($("#Page_objLibMenu :selected").attr("data-cUrlID"));
+		
+		$("#Page_setContentFile").val($("#CustomUrl_setFriendlyName").val() + ".jsp");
+		$("#Page_setContentFileAr").val($("#CustomUrl_setFriendlyName").val() + "_ar.jsp");
+		
+		$("#CustomUrl_setUrl").val("pages/" + $("#Page_setContentFile").val());
+		$("#CustomUrl_setUrlAr").val("pages/" + $("#Page_setContentFileAr").val());
+		
+		$("#oName").val("LibPage");
 		
 		$.ajax({
 			type : "POST",
@@ -182,53 +135,42 @@
 			dataType : "text",
 			async : false,
 			success : function(objID, status) {
-				oid = objID;
-				$.ajax({
-					type : "POST",
-					url : "../AjaxToDB.do",
-					async : false,
-					data : {
-						oName : "CustomUrl",
-						id : $("#objLibMenu option:selected").attr(
-								'data-cUrlID'),
-						setFriendlyName : $("#setFriendlyName").val(),
-						setUrl : "pages/"+ $("#setContentFile").val(),
-						setUrlAr : "pages/" + $("#setContentFileAr").val(),
-						objUser : $("#objUser").val()
-					},
-					async: false,
-					success : function() {	
-						if($("input[type=file]").val() != "")
-						{
-							$("#rPath").val(location);
-							$("#imageFile").attr("action","../FileUpload.do?fid=" + oid);
-							$("#imageFile").submit();
-						}
-						
-						$.ajax({
-							url : "../Reloader.do?o=CustomUrl,LibMenu,LibPage",
-							async : false,
-							success : function() {
-								location.reload();
-							}
-						});
-						//alert("Page Data updated!");
-					},
-					error : function() {
-						alert("Error in  saving Friendly Name while updating");
-					}
-				});
+				alert("Page item updated!");
+				location.reload();
 			},
 			error : function() {
-				alert("Error in saving Page data while updating");
+				alert("Error in updating Page data!");
 			}
 		});
 	}
 
+	function deletePage()
+	{
+		$("#action").val("doRoute_Delete");
+		
+		$("#oName").val("LibPage");
+		if(confirm("Are you sure you want to DELETE this page item?"))
+			$.ajax({
+				type : "POST",
+				url : "../AjaxToDB.do",
+				data : $("#pg").serialize(),
+				dataType : "text",
+				async : false,
+				success : function(objID, status) {
+					alert("Page item deleted!");
+					location = location.href.split("?")[0];
+				},
+				error : function() {
+					alert("Error in deleting Page data!");
+				}
+			});
+	}
+	
 	
 	function updateOrCreate()
 	{
-		if($('input[id=id]').val() == "")
+		
+		if($('#Page_id').val() == "")
 			createPage();
 		else
 			updatePage();
@@ -266,6 +208,7 @@
 			</div>
 		</form>
 		<form id="pg" name="pg" enctype="multipart/form-data" role="form">
+			<input type="hidden" name="action" id="action" value="">
 			<ul id="tabs" class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#tabs-1">Settings</a></li>
 				<li><a data-toggle="tab" href="#tabs-2">Optional Settings</a></li>
@@ -273,64 +216,51 @@
 			<div class="tab-content  black-form">
 				<!-- Tab Number 1 -->
 				<div id="tabs-1" class="tab-pane fade in active">
-					<input type="hidden" name="id" id="id" value="${lp.id}">
+					<input type="hidden" name="Page_id" id="Page_id" value="${lp.id}">
 					<input type="hidden" name="rPath" id="rPath" value="">
 					<input type="hidden" name="imageFile" id="imageFile" value="${lp.image}">
 					<div class="control-group">
-						<label class="control-label" for="setTitle">Title<font
+						<label class="control-label" for="Page_setTitle">Title<font
 							color="red">*</font></label>
 						<div class="controls">
-							<input required="required" type="text" id="setTitle"
-								class="form-control" name="setTitle" maxlength="255"
+							<input required="required" type="text" id="Page_setTitle"
+								class="form-control" name="Page_setTitle" maxlength="255"
 								placeholder="Title of the page" value="${lp.title}"
 								pattern="[A-Za-z]+([0-9]|\s|'|[A-Za-z])*" />
 						</div>
 					</div>
 
 					<div class="control-group">
-						<label class="control-label" for="setTitleAr"> Title
+						<label class="control-label" for="Page_setTitleAr"> Title
 							(Arabic)<font color="red">*</font>
 						</label>
 						<div class="controls">
-							<input required="required" type="text" id="setTitleAr"
-								class="form-control" value="${lp.titleAr}" name="setTitleAr"
+							<input required="required" type="text" id="Page_setTitleAr"
+								class="form-control" value="${lp.titleAr}" name="Page_setTitleAr"
 								maxlength="255" dir="rtl" />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="setFriendlyName">Friendly
+						<label class="control-label" for="CustomUrl_setFriendlyName">Friendly
 							Name<font color="red">*</font></label>
 						<div class="controls">
-							<input required="required" type="text" id="setFriendlyName"
-								class="form-control" name="setFriendlyName" maxlength="100"
+							<input required="required" type="text" id="CustomUrl_setFriendlyName"
+								class="form-control" name="CustomUrl_setFriendlyName" maxlength="100"
 								value="${lp.libMenu.customUrl.friendlyName}"
 								placeholder=""
 								pattern="[A-Za-z]+([0-9]|-}[A-Za-z])*" />
 						</div>
 					</div>					
-					<!-- <div class="control-group">
-						<label class="control-label" for="objLibTemplate">Template<font
-							color="red">*</font></label>
-						<div class="controls">
-							<select id="objLibTemplate" name="objLibTemplate"
-								style="width: 160px">
-								<c:forEach var="t"
-									items="${LibTemplateFacade.getAllTemplates()}">
-
-									<option value="${t.id}" data-img="${t.descImage}"
-										${(lp.libTemplate.id == t.id)?"selected":""}>${t.name}</option>
-
-								</c:forEach>
-							</select> <span class="help-inline">Select a <b>Look&Feel</b>
-								template for the page.
-							</span>
-						</div>
-					</div>
-					-->
+					
 					<div class="control-group">
-						<label class="control-label" for="objLibMenu">Menu</label>
+						<label class="control-label" for="Page_objLibMenu">Menu</label>
 						<div class="controls">
-							<select id="objLibMenu" name="objLibMenu" style="width: 200px">
+							<input type="hidden" name="CustomUrl_id" id="CustomUrl_id" value="">
+							<input type="hidden" name="CustomUrl_setUrl" id="CustomUrl_setUrl" value="">
+							<input type="hidden" name="CustomUrl_setUrlAr" id="CustomUrl_setUrlAr" value="">
+							
+							
+							<select id="Page_objLibMenu" name="Page_objLibMenu" style="width: 200px">
 								<c:forEach var="m"
 									items="${LibMenuFacade.getAllParentMenuItems(1,'MENU')}">
 									<option value="${m.id}" data-cUrlID="${m.customUrl.id}"
@@ -378,7 +308,7 @@
 						<label class="control-label" for="pg_Summary">Summary
 							(English)</label>
 						<div class="controls">
-							<textarea id="pg_Summary" name="pg_Summary" class="input-xxlarge"
+							<textarea id="pg_Summary" name="pg_Summary" class="col-xs-12"
 								rows="3">${lp.summary}</textarea>
 						</div>
 					</div>
@@ -387,7 +317,7 @@
 							(Arabic)</label>
 						<div class="controls">
 							<textarea id="pg_SummaryAr" name="pg_SummaryAr"
-								class="input-xxlarge" rows="3" dir="rtl">${lp.summaryAr}</textarea>
+								class="col-xs-12" rows="3" dir="rtl">${lp.summaryAr}</textarea>
 						</div>
 					</div>
 					<div class="control-group">
@@ -395,7 +325,7 @@
 							(English)</label>
 						<div class="controls">
 							<input type="text" class="input-xxlarge" id="pg_Keywords"
-								name="pg_Keywords" class="input-xxlarge" value="${lp.keywords}"
+								name="pg_Keywords" class="col-xs-12" value="${lp.keywords}"
 								maxlength="255" dir="rtl" />
 						</div>
 					</div>
@@ -404,7 +334,7 @@
 							(Arabic)</label>
 						<div class="controls">
 							<input type="text" class="input-xxlarge" id="pg_KeywordsAr"
-								name="pg_KeywordsAr" class="input-xxlarge"
+								name="pg_KeywordsAr" class="col-xs-12"
 								value="${lp.keywordsAr}" maxlength="255" dir="rtl" />
 						</div>
 					</div>
@@ -413,19 +343,24 @@
 			<br />
 			<div id="form-actions">
 				<input type="button" value="Ok" class="btn btn-primary" onclick="updateOrCreate();"> <input
-					type="button" value="Delete" class="btn btn-danger"> <input
+					type="button" value="Delete" class="btn btn-danger" onclick="deletePage();"> <input
 					type="button" value="Cancel" class="btn">
 			</div>
-			<input type="hidden" name="x" id="x" /> <input type="hidden"
-				name="xAR" id="xAR" /> <input type="hidden" name="id" id="id" /> <input
-				type="hidden" name="setContentFileAr" id="setContentFileAr" /> <input
-				type="hidden" name="setContentFile" id="setContentFile" /> <input
-				type="hidden" name="setSummary" id="setSummary" /> <input
-				type="hidden" name="setSummaryAr" id="setSummaryAr" /> <input
-				type="hidden" name="setKeywords" id="setKeywords" /> <input
-				type="hidden" name="setKeywordsAr" id="setKeywordsAr" /> <input
-				type="hidden" name="objUser" id="objUser" value="11" /> <input
-				type="hidden" name="oName" value="LibPage" id="oName" /> 
+			<input type="hidden" name="Page_x" id="Page_x" /> 
+			<input type="hidden" name="Page_xAR" id="Page_xAR" /> 
+			<input type="hidden" name="Page_id" id="Page_id" /> 
+			<input type="hidden" name="Page_setContentFileAr" id="Page_setContentFileAr" /> 
+			<input type="hidden" name="Page_setContentFile" id="Page_setContentFile" /> 
+			<input type="hidden" name="Page_setSummary" id="Page_setSummary" />
+			<input type="hidden" name="Page_setSummaryAr" id="Page_setSummaryAr" /> 
+			<input type="hidden" name="Page_setKeywords" id="Page_setKeywords" /> 
+			<input type="hidden" name="Page_setKeywordsAr" id="Page_setKeywordsAr" />
+			
+			<input type="hidden" name="Page_objUser" id="Page_objUser" value="11" />
+			<input type="hidden" name="Menu_objUser" id="Menu_objUser" value="11" />
+			<input type="hidden" name="CustomUrl_objUser" id="CustomUrl_objUser" value="11" />
+			
+			<input type="hidden" name="oName" value="" id="oName" /> 
 				
 				<input type="hidden" id="selectedFiles" name="selectedFiles" />
 		</form>
@@ -446,17 +381,17 @@
 				//form validation rules
 				$("#pg").validate({
 					rules : {
-						setTitle : "required",
-						setTitleAr : "required",
-						setFriendlyName : "required"
+						Page_setTitle : "required",
+						Page_setTitleAr : "required",
+						Page_setFriendlyName : "required"
 					},
 					messages : {
-						setTitle : "",
-						setTitleAr : "",
-						setFriendlyName : ""
+						Page_setTitle : "",
+						Page_setTitleAr : "",
+						Page_setFriendlyName : ""
 					},
 					submitHandler : function(form) {
-						if ($("#id").val() == "")
+						if ($("#Page_id").val() == "")
 							createPage();
 						else
 							updatePage();

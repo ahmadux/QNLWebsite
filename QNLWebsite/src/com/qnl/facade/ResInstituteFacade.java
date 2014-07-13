@@ -14,7 +14,7 @@ import java.util.Map;
 import com.qnl.core.ResInstitute;
 import com.qnl.dao.ResInstituteDAO;
 
-public class ResInstituteFacade implements IUserInteractionFacade {
+public class ResInstituteFacade extends QBaseFacade {
 	
 	ResInstituteDAO resInstDAO = new ResInstituteDAO();
 	Map<Integer, ResInstitute> resInsts;
@@ -94,13 +94,14 @@ public class ResInstituteFacade implements IUserInteractionFacade {
 	}
 
 	@Override
-	public void delete(Object o, Object extraInfo) throws IOException {
+	public String delete(Object o, Object extraInfo) throws IOException {
 		ResInstitute res = (ResInstitute)o;
-		
+		String s = res.getId() + "";
 		try{
 			resInstDAO.beginTransaction();
 			resInstDAO.delete(res);
-			resInstDAO.commit();			
+			resInstDAO.commit();	
+			return s;
 			//libPages.remove(pg.getId());
 		}catch(Exception ex)
 		{
@@ -116,4 +117,29 @@ public class ResInstituteFacade implements IUserInteractionFacade {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public String onCreate_Create() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onCreate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onUpdate_Update() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String onDelete_Delete() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
