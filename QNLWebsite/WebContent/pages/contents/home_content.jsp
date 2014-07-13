@@ -7,21 +7,20 @@
 		<span class="hidden-xs highSpaceTop"></span>
 		<div id="newsSlidr">
 			<div data-slidr="one" class="newsSlidr">
-
 				<span class="newsImage img" data-Image="images/news1.jpg"></span>
 				<span class="newsHeading textOutlined">Qatar National Library unveils new building</span>
 				<span class="newsDate">25 January	2014</span>
 				<span class="readmore archive"><a href="#">Read More</a></span>
 
 			</div>
-			<div data-slidr="two" class="newsSlidr">
+			<div data-slidr="two" class="newsSlidr inactive_slide">
 				<span class="newsImage img" data-Image="images/news2.jpg"></span>
 				<span class="newsHeading textOutlined">QNL as a center says Qatar Foundation</span>
 				<span class="newsDate">25 January 2014</span>
 				<span class="readmore archive"><a href="#">Read More</a></span>
 
 			</div>
-			<div data-slidr="three" class="newsSlidr">
+			<div data-slidr="three" class="newsSlidr inactive_slide">
 				<span class="newsImage img" data-Image="images/news3.jpg"></span>								
 				<span class="newsHeading textOutlined">Vision and Mission of Qatar National Library</span>
 				<span class="newsDate">25 January 2014</span>
@@ -31,8 +30,7 @@
 	</div>
 
 
-	<div
-		class="col-xs-12 col-md-4 col-md-offset-1 pull-left highSpaceTop nopadding">
+	<div class="col-xs-12 col-md-4 col-md-offset-1 pull-left highSpaceTop nopadding">
 		<h4 class="textOutlined hidden-xs">Calendar of Events</h4>
 		<div id="eventSlidr" class="fullWidth nopadding">
 			<div data-slidr="one" class="fullWidth nopadding">
@@ -54,7 +52,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-slidr="two" class="fullWidth nopadding">
+			<div data-slidr="two" class="fullWidth nopadding inactive_slide">
 				<div class="addthisevent semitransparent fullWidth nopadding">
 					<div class="date">
 						<span class="mon">MAR</span> <span class="day">15</span>
@@ -73,7 +71,7 @@
 					</div>
 				</div>
 			</div>
-			<div data-slidr="three" class="fullWidth nopadding">
+			<div data-slidr="three" class="fullWidth nopadding inactive_slide">
 				<div class="addthisevent semitransparent fullWidth nopadding">
 					<div class="date">
 						<span class="mon">MAR</span> <span class="day">21</span>
@@ -138,15 +136,10 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-
 	</div>
 
-	<div
-		class="loginBox semitransparent img-rounded col-xs-12 col-md-2 col-md-offset-1 pull-left highSpaceTop">
-
+	<div class="loginBox semitransparent img-rounded col-xs-12 col-md-2 col-md-offset-1 pull-left highSpaceTop">
 		<form role="form" action="" method="POST">
 			<h4 class="textOutlined">Login to QNL databases</h4>
 			<br />

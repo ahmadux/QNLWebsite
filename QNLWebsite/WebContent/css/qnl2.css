@@ -644,12 +644,29 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 		
 }
 
-.newsImage img
-{
+.newsImage img{
 	height:175px;
 	width:175px;
 	border: solid 1px #333;
 }
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/**+++++	Style to hide the inactive elements in the sliders  					 ++++**/
+.inactive_slide{
+	display:none;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*			Over ride the bootstrap class here												*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.center-block{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	float: none;
+}
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*			End over riding bootstrap classes												*/
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /******************************* Discover *************************/
 
@@ -882,6 +899,131 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	overflow:auto;
 	height: 500px;
 }
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/******************************* START: Teen page specific styles **********************************************/
+.teen-top-section{
+	min-height:55%;
+}
+.teen-bottom{
+	position:relative;
+	float:left;
+	width:100%;
+	height:auto;
+	overflow:none;
+	background:#FFFFFF;
+	margin:0px;
+	padding:50px;
+}
+
+.review_box{
+	border-radius:10px;
+	box-shadow: inset 0px 0px 2px 1px #6c0022;
+	background:#6C0022;
+	
+}
+.review_head{
+	border-radius:10px 10px 0px 0px;
+ 	background:#4c2200; 
+ 	padding:5px;
+	font-size:16px;
+	width:100%;
+	box-shadow: inset 0px 0px 2px 1px #6c0022;
+	font-weight:bold;
+	color:#FFFFFF;
+	
+}
+.review_book_image{
+	position:relative;
+	float:left;
+	clear:both;
+	width:100%;
+	height:auto;
+	padding:20px;
+}
+.review_book_image img{
+	width:200px;
+	height:240px;
+}
+.reviews_list{
+	padding:10px;
+}
+.reviews_list p{
+	font-size:16px;
+	color:#EEEEEE;
+	text-shadow: -1px 0 #6c6644, 0 1px #6c6644, 1px 0 #6c6644, 0 -1px #6c6644;
+	padding-left:5px;
+	padding-right:5px;	
+}
+.reviews_list p > span{
+	font-weight:bold;
+	padding:5px;
+	color:#CC9999;
+	text-shadow: -1px 0 #6c0000, 0 1px #6c0000, 1px 0 #6c0000, 0 -1px #6c0000;
+}
+.reviews_list p > span.author::before{
+	content: "--";
+}
+.reviews_list p > span.author{
+	font-style:italic;
+	color:#999999;
+	font-size:12px;
+	clear:both;
+	float:right;
+	text-shadow: 1px 0 #222222;
+}
+
+/****************************************** Flipping CSS starts here ******************************************/
+.flip-container {
+	perspective: 1000;
+	display:inline-block;
+	margin-left:20px;
+	margin-right:20px;
+	
+}
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 240px;
+	height: 320px;
+}
+
+/* flip speed goes here */
+.flipper{
+	transition: 0.9s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* 	hide back of pane during swap 			*/
+/* 	absolutely position to make it overlay 	*/ 
+.front,.back{
+	backface-visibility:hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform-style: preserve-3d;
+}
+
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+}
+.back{
+	z-index:1;
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+/****************************************** Flipping CSS Ends here ******************************************/
+
+/******************************* END: Teen page specific styles ************************************************/
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /******************************* Footer *************************/
 
@@ -1037,5 +1179,4 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 		margin-top: -71px !important;
 		
 	}
-	
 }
