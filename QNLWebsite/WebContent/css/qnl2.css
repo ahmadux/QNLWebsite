@@ -1014,14 +1014,15 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 .effects ul li.active {z-index: 10;-webkit-transform:rotateY(0deg) scale(1.2);-ms-transform: rotateY(0deg) scale(1.2);transform:rotateY(0deg) scale(1.2);}
  .effects ul li.active ~ li {-webkit-transform: rotateY(-60deg) scale(0.9);-ms-transform: rotateY(-60deg) scale(0.9);transform: rotateY(-60deg) scale(0.9);} 
 
-
+.col-centered{float: none;margin: 0 auto;}
 
 /****************************************** Flipping CSS starts here ******************************************/
 .flip-container {
 	perspective: 1000;
-	display:inline-block;
-	margin-left:20px;
-	margin-right:20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
 	
 }
 .flip-container:hover .flipper, .flip-container.hover .flipper {

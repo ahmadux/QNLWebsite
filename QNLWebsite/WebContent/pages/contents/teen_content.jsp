@@ -104,9 +104,9 @@
 		<div class="row teen-bottom" >
 		
 		
-		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
 			
-			<div class="flip-container">
+			<div class="flip-container col-centered">
 				<div class="flipper">
 					<div class="front review_box" >
 						<div class="review_head">Readers' Pick</div>
@@ -131,7 +131,7 @@
 		
 		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 		
-			<div class="flip-container">
+			<div class="flip-container col-centered">
 				<div class="flipper">
 					<div class="front review_box" >
 						<div class="review_head">Teen Pick</div>
@@ -153,9 +153,9 @@
 			
 			</div>
 			
-			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
 			
-			<div class="flip-container">
+			<div class="flip-container col-centered">
 				<div class="flipper">
 					<div class="front review_box" >
 						<div class="review_head">Readers' Pick</div>
@@ -178,7 +178,7 @@
 			
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 			
-			<div class="flip-container">
+			<div class="flip-container col-centered">
 				<div class="flipper">
 					<div class="front review_box" >
 						<div class="review_head">Staff Pick</div>
