@@ -23,7 +23,7 @@ import com.qnl.facade.NewsItemFacade;
 /**
  * Servlet implementation class FileUpload
  */
-@WebServlet("/FileUpload")
+
 @MultipartConfig
 public class FileUpload extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -902,7 +902,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /******************************* START: Teen page specific styles **********************************************/
 .teen-top-section{
-	min-height:55%;
+	min-height:28%;
 }
 .teen-bottom{
 	position:relative;
@@ -914,7 +914,18 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	margin:0px;
 	padding:50px;
 }
-
+.slide_book_image{
+	position:relative;
+	float:left;
+	clear:both;
+	width:100%;
+	height:230px;
+	padding:1px;
+}
+.slide_book_image img{
+	width:210px;
+	height: 235px;
+}
 .review_box{
 	border-radius:10px;
 	box-shadow: inset 0px 0px 2px 1px #6c0022;
@@ -971,6 +982,31 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	float:right;
 	text-shadow: 1px 0 #222222;
 }
+
+
+.wrap {position: relative;margin-top:0px;margin-bottom:0px;margin-left:auto;margin-right:auto;float:none;}
+/* Frame */
+.frame {height: 250px;line-height: 215px;overflow: hidden;}
+.frame ul {list-style: none;margin: 0; padding: 0;height: 100%;font-size: 50px;}
+.frame ul li {float: left;width: 227px;height: 250px;margin: 0 5px 0 5px; padding:5px;color: #ddd;text-align: center;cursor: pointer;}
+.frame ul li.active {color: #fff;background:#a03232;}
+
+/* Scrollbar */
+.scrollbar { margin: 0 0 1em 0;height: 2px; background: #ccc;line-height: 0; }
+.scrollbar .handle { width: 100px; height: 100%;background: #292a33;cursor: pointer;}
+.scrollbar .handle .mousearea {position: absolute; top: -9px;left: 0;width: 100%;height: 20px;}
+
+/* Pages */
+.pages {list-style: none;margin: 20px 0;padding: 0;text-align: center;}
+.pages li {display: inline-block;width: 14px;height: 14px;margin: 0 4px;text-indent: -999px;border-radius: 10px;cursor: pointer;overflow: hidden;background: #fff;box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);}
+.pages li:hover {background: #aaa;}
+.pages li.active { background: #666; }
+
+/* Controls */
+.controls { margin: 25px 0; text-align: center; }
+
+
+
 
 /****************************************** Flipping CSS starts here ******************************************/
 .flip-container {
