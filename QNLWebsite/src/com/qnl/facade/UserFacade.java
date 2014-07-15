@@ -161,4 +161,10 @@ public class UserFacade extends QBaseFacade
 		return null;
 	}
 	
+	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return User.class;
+	}
 }

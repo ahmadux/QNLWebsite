@@ -31,7 +31,20 @@
 
 <link href="../css/qnl2.css" rel="stylesheet" />
 </head>
-
+<script language="Javascript">
+	$('#').ready(function(){
+	  $('input[type="file"]').ajaxfileupload({
+	       'action': 'fileUpload.do',           
+	   'onComplete': function(response) {        
+	         $('#upload').hide();
+	         alert("File SAVED!!");
+	       },
+	       'onStart': function() {
+	         $('#upload').show();
+	       }
+	  });
+	});
+</script>
 <body>
 	<div class="col-xs-12 col-md-3 img-rounded semitransparent pull-left small_menu">		
 		<select class="form-control col-xs-12" id="listFilter1" name="listFilter1">

@@ -9,6 +9,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 
 
@@ -236,6 +239,28 @@ public class LibMenuFacade extends QBaseFacade
 		return childMenus;
 	}
 	
+	
+	public void openTransaction()
+	{	
+		lmDAO.beginTransaction();
+	}
+	
+	public void commitAndCloseTransaction()
+	{
+		lmDAO.commit();
+		closeTransaction();
+	}
+	
+	public void closeTransaction()
+	{		
+		lmDAO.closeTransaction();
+	}
+	
+	public void rollbackTransaction()
+	{
+		lmDAO.rollback();
+	}
+	
 	public String save(Object o,Object opt, Object optAR, Object extraInfo) throws IOException
 	{
 		try
@@ -319,6 +344,25 @@ public class LibMenuFacade extends QBaseFacade
 	public String onDelete_Delete() {
 		// TODO Auto-generated method stub
 		return "CustomUrl";
+	}
+	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return LibMenu.class;
+	}
+	
+	public void doRoute_saveNewMenuOrder(HttpServletRequest request, HttpServletResponse response, Map<String, String[]> optionalParams) throws Exception
+	{
+		//lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade");		
+		String[] menuIds = request.getParameter("mIs").split(",");
+		
+		for(int i=0; i<menuIds.length; i++)
+		{
+			LibMenu lm = this.findByID(Integer.parseInt(menuIds[i]));
+			lm.setOrder(i);
+			this.update(lm, null, null, null);
+		}		
 	}
 	
 }

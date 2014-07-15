@@ -15,30 +15,34 @@
 </head>
 <body>
 <div class="col-xs-12 libRegs" style="float: left;background-color: #111; overflow:hidden">	
-	<div id="menu" class="img-rounded  small_menu img-rounded semitransparent col-sm-4">
+    <span class="visible-xs"><button class="btn brandingButton" id="btn_hideMenu"><span class="glyphicon glyphicon-collapse-up"></span></button></span>
+	<div id="menu" class="img-rounded small_menu img-rounded semitransparent col-sm-4">
 		<a href="#">Academic Libraries</a><br />
 		<a href="#">Governmental Libraries</a><br />
 		<a href="#">Public Libraries</a><br />
 		<a href="#">School Libraries</a><br />
 		<a href="#">Special Libraries</a><br />
 		<hr />
-		<div class="img-rounded searchForm pull-left">			
-			<div class="form-group pull-left">
+		<div class="img-rounded searchForm pull-left">
+			<h3>Filter Libraries</h3>			
+			<div class="form-group pull-left col-xs-12">
 				<label class="col-xs-3 control-label">Name</label>
 				 <div class="col-xs-9">
 					<input id="lib_Name" type="text" class="form-control" maxlength="100" placeholder="Library Name" />
 				 </div>
 			</div>
-			<div class="form-group pull-left">
-				<label class="col-xs-12 control-label"><input type="checkbox" id="lib_Open" />&nbsp;&nbsp;Open to Public</label>				 
+			<div class="form-group pull-left col-xs-12">
+				<div class="col-xs-12">
+				<input type="checkbox" id="lib_Open" />&nbsp;&nbsp;Open to Public
+				</div>				 
 			</div> 
-			<div class="form-group pull-left">
+			<div class="form-group pull-left col-xs-12">
 				<label class="col-xs-3 control-label">Services</label>
 				 <div class="col-xs-9">
 					<input  type="text" class="form-control" maxlength="100" placeholder="ILL, audio-visual" id="lib_Services" />
 				 </div>
 			</div>
-			<div class="form-group pull-left">
+			<div class="form-group pull-left col-xs-12">
 				<label class="col-xs-3 control-label">Location</label>
 				 <div class="col-xs-9">
 					<input  type="text" class="form-control" maxlength="100" placeholder="Library Address" id="lib_Location"  />
@@ -50,10 +54,9 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-8 libList">
-		<span class="visible-xs"><button class="btn brandingButton" id="btn_hideMenu"><span class="glyphicon glyphicon-collapse-up"></span></button></span>
-		<br />
+		
 		<c:forEach var="l" items="${LibRegistrationFacade.getLibraryRegistrationsSortedByName()}">
-		<div class="libInfo" data_LibType="${l.libraryType}" data_LibName="${l.libraryName}" data_libServices="${l.libraryServices}" data_libLanguage="${l.libraryColLangs},${l.otherLanguages}">
+		<div class="libInfo pull-left" data_LibType="${l.libraryType}" data_LibName="${l.libraryName}" data_libServices="${l.libraryServices}" data_libLanguage="${l.libraryColLangs},${l.otherLanguages}">
 			<font class="head">${l.libraryName}</font><br />
 			<span class="small">
 				<c:if test="${l.libraryEmail.trim().length() > 0}">
@@ -70,112 +73,114 @@
 				</c:if>	
 			</span>
 			<br />																	
-			<table class="col-xs-12 dataTable">
-				<tr>
-					<td class="label col-xs-3">
-						<b>Affiliation</b>
-					</td>
-					<td class="col-xs-9">
-						${l.libraryAffOrganization}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
-						Address
-					</td>
-					<td class="col-xs-9">
-						${l.libraryPhyAddrress}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+			<div class="col-xs-12 dataTable pull-left">
+				
+				<div class="col-xs-12 pull-left">			
+				<div class="label col-xs-12 col-sm-3 pull-left">
+					<b>Affiliation</b>
+				</div>
+				<div class="col-xs-12 col-sm-9 data pull-left">
+					${l.libraryAffOrganization}
+				</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+				<div class="label col-xs-12 col-sm-3 pull-left">
+					Address
+				</div>
+				<div class="col-xs-12 col-sm-9 data pull-left ">
+					${l.libraryPhyAddrress}
+				</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Mailing address
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryMailAddress}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Contact Person(s)
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryContacts}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Open to public
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryPublicAccess==0?"No":"Yes"}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Phone
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryPhone}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">				
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Fax
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryFax}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Hours of Operations
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryOperationHours}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Special Collections
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.librarySpecialCols}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Print Collection Size
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryColSize}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Services
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryServices}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Primary Language(s) of Collection
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.libraryColLangs}
-					</td>
-				</tr>
-				<tr>
-					<td class="label col-xs-3">
+					</div>
+				</div>
+				<div class="col-xs-12 pull-left">
+					<div class="label col-xs-12 col-sm-3 pull-left">
 						Other Languages
-					</td>
-					<td class="col-xs-9">
+					</div>
+					<div class="col-xs-12 col-sm-9 data pull-left">
 						${l.otherLanguages}
-					</td>
-				</tr>
-			</table>
+					</div>
+				</div>
+			</div>			
 		</div>
 		</c:forEach>
 	</div>	
@@ -183,10 +188,11 @@
 </body>
 <script>
 $(function() {  
-    $("#btn_hideMenu").click(function() {  
-        $(".menu").toggleClass("menu_hide");
+    $("#btn_hideMenu").on('click',function() {
+    	
+        $("#menu").toggleClass("menu_hide");
         
-        if($(".menu").hasClass("menu_hide"))
+        if($("#menu").hasClass("menu_hide"))
         	$(this).html("<span class='glyphicon glyphicon-collapse-down'></span>");
         else
         	$(this).html("<span class='glyphicon glyphicon-collapse-up'></span>");

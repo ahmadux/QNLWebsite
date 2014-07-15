@@ -9,8 +9,9 @@ import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class QBaseFacade 
+public class QBaseFacade
 {
+			
 	public QBaseFacade()
 	{
 	
@@ -18,16 +19,16 @@ public class QBaseFacade
 	
 	public Class<?> getCoreClass() throws ClassNotFoundException
 	{
-		return Class.forName(getClass().toString().replace("class ","").replace(".facade", ".core").replace("Facade", ""));
+		throw new ClassNotFoundException("Error in getCoreClass(): Core class not found.\n Possible Cause: getCoreClass() function not implemented in " + this.getClass());
 	}
 	
 	//Overwrite in subClasses
 	public Object findByID(int i){ return null; };
 	
-	public void refresh(){ System.out.println("REFRESH not implemented for " + this.getClass().toString() ); }
-	public String save(Object o,Object opt, Object optAR, Object extraInfo) throws IOException{ System.out.println("SAVE not implemented for " + this.getClass().toString() ); return null;};
-	public String update(Object o, Object opt,  Object optAR, Object extraInfo) throws IOException{ preUpdate(o, extraInfo); System.out.println("UPDATE not implemented for " + this.getClass().toString() ); return null;};
-	public String delete(Object o,  Object extraInfo) throws IOException{ System.out.println("DELETE not implemented for " + this.getClass().toString() ); return null; };
+	public void refresh(){ System.out.println("Error: REFRESH not implemented for " + this.getClass().toString() ); }
+	public String save(Object o,Object opt, Object optAR, Object extraInfo) throws IOException{ System.out.println("Error: SAVE not implemented for " + this.getClass().toString() ); return null;};
+	public String update(Object o, Object opt,  Object optAR, Object extraInfo) throws IOException{ preUpdate(o, extraInfo); System.out.println("Error: UPDATE not implemented for " + this.getClass().toString() ); return null;};
+	public String delete(Object o,  Object extraInfo) throws IOException{ System.out.println("Error: DELETE not implemented for " + this.getClass().toString() ); return null; };
 	public void preUpdate(Object o,  Object extraInfo) throws IOException{  };
 	
 	public String onCreate_Create(){ return null; };
@@ -49,7 +50,7 @@ public class QBaseFacade
 		
 		System.out.println("********* Method Called: " + methodName);
 	}
-	
+		
 	public void doRoute_Delete(HttpServletRequest request, HttpServletResponse response, Map<String, String[]> optionalParams) throws NoSuchMethodException,Exception
 	{
 		String METHOD="Delete";
