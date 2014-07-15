@@ -1,46 +1,251 @@
-<div id="main_content"   style="background-image:url('${BaseServerPath}/images/large/main5.jpg')">
-			<div class="row pull-left">
-				<div class="sectionBox col-xs-12 col-md-2 col-md-offset-1 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-x img" data-Image="images/vision.png"></span>	
-					<span class="sectionHeading">Vision and Mission</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-				</div>	
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/board.png"></span>	
-					<span class="sectionHeading">Board of Directors</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+<div id="main_content" style="background-image:url('${BaseServerPath}/images/large/tm.jpg');">
+	<!-- row starts -->
+	<div class="row teen-top-section">
+	<div class="col-lg-12 col-md-12 col-ms-12 pull-left ">
+		<!--  Events Slider -->
+		<div class="col-lg-4 col-md-4 col-xs-12 center-block highSpaceTop nopadding">
+			<h4 class="textOutlined hidden-xs">Calendar of Events</h4>
+			<div id="eventSlidr" class="fullWidth nopadding">
+				<div data-slidr="one" class="fullWidth nopadding">
+					<div class="addthisevent semitransparent fullWidth nopadding">
+						<div class="date">
+							<span class="mon">FEB</span> <span class="day">12</span>
+							<div class="bdr1"></div>
+							<div class="bdr2"></div>
+						</div>
+						<div class="desc">
+							<div class="hed">
+								<strong>Car Safety Week @ QNL</strong>
+								<span class="des">Location:
+									QNL Building<br />When: 8 PM - 10 PM
+								</span>
+							</div>
+							<div class="img" data-Image="images/events-carsafety.jpg">
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/message.png"></span>	
-					<span class="sectionHeading">Director's Message</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+				<div data-slidr="two" class="fullWidth nopadding inactive_slide">
+					<div class="addthisevent semitransparent fullWidth nopadding">
+						<div class="date">
+							<span class="mon">MAR</span> <span class="day">15</span>
+							<div class="bdr1"></div>
+							<div class="bdr2"></div>
+						</div>
+						<div class="desc">
+							<div class="hed">
+								<strong>Gala Dinner</strong>
+								<span class="des">Location:
+									QNL Building<br />When: 8 PM - 10 PM
+								</span>
+							</div>
+							<div class="img" data-Image="images/events-galadinner.jpg">
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/children.jpg"></span>	
-					<span class="sectionHeading">About QNL</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+				<div data-slidr="three" class="fullWidth nopadding inactive_slide">
+					<div class="addthisevent semitransparent fullWidth nopadding">
+						<div class="date">
+							<span class="mon">MAR</span> <span class="day">21</span>
+							<div class="bdr1"></div>
+							<div class="bdr2"></div>
+						</div>
+						<div class="desc">
+							<div class="hed">
+								<strong>Fireworks display</strong>
+								<span class="des">Location:
+									QNL Building<br />When: 8 PM - 10 PM
+								</span>
+							</div>
+							<div class="img" data-Image="images/events-FIREWORKS.jpg">
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row pull-left">
-				<div class="sectionBox col-xs-12 col-md-2 col-md-offset-1 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/heritage.jpg"></span>	
-					<span class="sectionHeading">QNL Brochure</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-				</div>
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/partners.png"></span>	
-					<span class="sectionHeading">Partnerships</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-				</div>
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/teens.jpg"></span>	
-					<span class="sectionHeading">The Building</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-				</div>
-				<div class="sectionBox col-xs-12 col-md-2 img-rounded semitransparent highSpaceTop pull-left">						
-					<span class="sectionImage hidden-sm hidden-xs img" data-Image="images/main.jpg"></span>	
-					<span class="sectionHeading">Leaderships</span> 
-					<span class="sectionText">Some introductory text about this colleciton. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-				</div>
-			</div>	
 		</div>
+		<!-- End Event Slider -->
+		</div>
+		</div><!--  row ends  -->
+		
+		<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wrap center">
+			<h2>Featured Books</h2>
+			<div class="scrollbar">
+				<div class="handle"><div class="mousearea"></div></div>
+			</div>
+	
+			<div class="frame effects" id="centered">
+				<ul class="slidee">
+					<li><div class="slide_book_image"><p class="img" data-Image="images/lion_childres.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/teen-go-go-cover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/TeenConfessions.png" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/democracy-book-cover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/AssessmentCover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/harry_porter.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/lion_childres.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/teen-go-go-cover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/TeenConfessions.png" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/democracy-book-cover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/AssessmentCover.jpg" /></div></li>
+					<li><div class="slide_book_image"><p class="img" data-Image="images/harry_porter.jpg" /></div></li>
+				</ul>
+			</div>
+				
+			<div class="controls center">
+				<button class="btn prev"><i class="glyphicon glyphicon-chevron-left"></i> prev</button>
+				<button class="btn next">next <i class="glyphicon glyphicon-chevron-right"></i></button>
+			</div>
+		
+		</div>
+		</div>	
+		
+		<div class="row teen-bottom" >
+		
+		
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+			
+			<div class="flip-container col-centered">
+				<div class="flipper">
+					<div class="front review_box" >
+						<div class="review_head">Readers' Pick</div>
+						<div class="review_book_image"><p class="img" data-Image="images/teen-go-go-cover.jpg" /></div>
+					</div>
+					<div class="back review_box" >
+						<div class="review_head">Staff Pick Reviews</div>
+						<div class="reviews_list">
+							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
+							<p/>
+							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
+							<p/>
+							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+		
+		
+		
+		<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		
+			<div class="flip-container col-centered">
+				<div class="flipper">
+					<div class="front review_box" >
+						<div class="review_head">Teen Pick</div>
+						<div class="review_book_image"><p class="img" data-Image="images/TeenConfessions.png" /></div>
+					</div>
+					<div class="back review_box" >
+						<div class="review_head">Staff Pick Reviews</div>
+						<div class="reviews_list">
+							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
+							<p/>
+							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
+							<p/>
+							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			</div>
+			
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+			
+			<div class="flip-container col-centered">
+				<div class="flipper">
+					<div class="front review_box" >
+						<div class="review_head">Readers' Pick</div>
+						<div class="review_book_image"><p class="img" data-Image="images/lion_childres.jpg" /></div>
+					</div>
+					<div class="back review_box" >
+						<div class="review_head">Staff Pick Reviews</div>
+						<div class="reviews_list">
+							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
+							<p/>
+							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
+							<p/>
+							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+			
+			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+			
+			<div class="flip-container col-centered">
+				<div class="flipper">
+					<div class="front review_box" >
+						<div class="review_head">Staff Pick</div>
+						<div class="review_book_image"><p class="img" data-Image="images/democracy-book-cover.jpg" /></div>
+					</div>
+					<div class="back review_box" >
+						<div class="review_head">Staff Pick Reviews</div>
+						<div class="reviews_list">
+							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p>
+							<p/>
+							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p>
+							<p/>
+							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+			
+			
+			
+<!-- 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> -->
+			
+<!-- 			<div class="flip-container"> -->
+<!-- 				<div class="flipper"> -->
+<!-- 					<div class="front review_box" > -->
+<!-- 						<div class="review_head">Readers' Pick</div> -->
+<!-- 						<div class="review_book_image"><p class="img" data-Image="images/AssessmentCover.jpg" /></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="back review_box" > -->
+<!-- 						<div class="review_head">Staff Pick Reviews</div> -->
+<!-- 						<div class="reviews_list"> -->
+<!-- 							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			
+<!-- 			</div> -->
+			
+<!-- 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> -->
+			
+<!-- 			<div class="flip-container"> -->
+<!-- 				<div class="flipper"> -->
+<!-- 					<div class="front review_box" > -->
+<!-- 						<div class="review_head">Staff Pick</div> -->
+<!-- 						<div class="review_book_image"><p class="img" data-Image="images/harry_porter.jpg" /></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="back review_box" > -->
+<!-- 						<div class="review_head">Staff Pick Reviews</div> -->
+<!-- 						<div class="reviews_list"> -->
+<!-- 							<p><span>5/5</span> This book was an extra ordinary piece of work<span class="author">Boy scout</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>5/5</span> I loved reading it <span class="author">Usman</span></p> -->
+<!-- 							<p/> -->
+<!-- 							<p><span>4/5</span>it is ok ok , little bit dry read <span class="author">Althaf</span></p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			
+<!-- 			</div> -->
+	
+		</div>
+</div>
