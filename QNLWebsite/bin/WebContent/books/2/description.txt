@@ -1,0 +1,1 @@
+HEIGHT:400;WIDTH:300;SPINE:40;AUTHOR:Usman Ahmad;PUBDATE:12 April 2013;EDITION:2nd;PUBLISHER:Bloomsbery;TITLE:The Little Pirates;DESCRIPTION:<p>Some text in a paragraph.</p>;ISBN:110-0092-667534;

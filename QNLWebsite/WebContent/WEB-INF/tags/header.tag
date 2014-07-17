@@ -44,7 +44,7 @@
 			          </ul>
 			        </li>								
 					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/discover.jsp">Collections</a></li>
-					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/children.jsp">Children's Section</a></li>
+					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/childrenSection.jsp">Children's Section</a></li>
 					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/teens.jsp">Teen's Section</a></li>
 					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/heritage.jsp">Heritage	Collection</a></li>
 					<li><a class="load_and_slide_left" href="${BaseServerPath}/pages/programs_services.jsp">Programs &amp; Services</a></li>

@@ -38,6 +38,22 @@ public class LibMenuFacade extends QBaseFacade
 		// lmDAO.closeTransaction();
 		return libMenus.get(Integer.valueOf(id));
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public LibMenu findByCustomURLID(int id) {
+		LibMenu l = null;		
+		
+		Iterator it = libMenus.entrySet().iterator();
+	    while (it.hasNext()) {	        
+			Map.Entry pairs = (Map.Entry)it.next();
+			if((((LibMenu)pairs.getValue()).getCustomUrl().getId() == id))
+			{
+				l = (LibMenu)pairs.getValue();			
+				break;
+			}
+	    }
+			return l;
+	}
 
 	public String getBreadCrumbs(int id, String urlModifier) {
 		String retVal = "";
@@ -291,7 +307,7 @@ public class LibMenuFacade extends QBaseFacade
 	
 	private String getURL(LibMenu lm)
 	{
-		 String url = (lm.getCustomUrl().getUrl()!=null)?lm.getCustomUrl().getFriendlyName():lm.getExtra2();
+		 String url = lm.getCustomUrl().getFriendlyName();//   (lm.getCustomUrl().getUrl()!=null)?lm.getCustomUrl().getFriendlyName():lm.getExtra2();
 		 if(url == null)
 			 url = "javascript:void(0);";
 		 return url;

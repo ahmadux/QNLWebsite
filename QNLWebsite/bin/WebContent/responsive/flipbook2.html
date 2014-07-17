@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Brochure</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="../scripts/magazines/turn.min.js"></script>
+<style>
+	div.center
+	{
+		  /* flexbox, por favor */
+		  display: -webkit-box;
+		  -webkit-box-orient: horizontal;
+		  -webkit-box-pack: center;
+		  -webkit-box-align: center;
+		 
+		  display: -moz-box;
+		  -moz-box-orient: horizontal;
+		  -moz-box-pack: center;
+		  -moz-box-align: center;
+		  
+		  display: box;
+		  box-orient: horizontal;
+		  box-pack: center;
+		  box-align: center;
+	}
+</style>
+</head>
+<body>
+<div class="center">
+<div id="flipbook">
+	<div class="hard"><img src="pages/1.jpg" width="380" height="481" alt="" title="" /></div>	
+	<div><img src="pages/1.jpg" alt="" title="" width="380" height="481" /></div>
+	<div><img src="pages/1.jpg" alt="" title="" width="380" height="481" /></div>
+	<div><img src="pages/1.jpg" alt="" title="" width="380" height="481" /></div>
+	<div><img src="pages/1.jpg" alt="" title="" width="380" height="481" /></div>	
+	<div class="hard"><img src="pages/1.jpg" width="380" height="481" alt="" title="" /></div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+	$("#flipbook").turn({
+		width: 760,
+		height: 481,
+		autoCenter: true
+	});
+</script>
+</html>

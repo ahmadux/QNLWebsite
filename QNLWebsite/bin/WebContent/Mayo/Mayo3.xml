@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Mayo.xsl"?>
+<Article xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="article.xsd">
+<Meta>
+<Attribution Url="http://www.mayoclinic.org">Content provided by MayoClinic.org</Attribution><ContentType>Article</ContentType><CopyrightOwner DocID="Mayo Copyright">2ff58aea-95d2-414e-a14e-a5b6878502e1</CopyrightOwner><DocID>ART-20043967</DocID><BusinessSubtype>None</BusinessSubtype><OriginalURL>http://www.mayoclinic.org/healthy-living/infant-and-toddler-health/in-depth/stroller-safety/art-20043967</OriginalURL><UpdateDate>2012-06-28</UpdateDate><PublicationDate>2012-06-28</PublicationDate><ControlWords><Category Title="Infants and toddlers" MCVID="3747"><Keyword Title="Infant and toddler health" MCVID="3748" /></Category><Category Title="Child" MCVID="1118"><Keyword Title="00 birth to 01 month newborn" MCVID="1119" /></Category><Category Title="Child" MCVID="1118"><Keyword Title="02 months to 2 years infant/toddler" MCVID="1120" /></Category><Category Title="Child" MCVID="1118"><Keyword Title="03 to 5 years preschool" MCVID="1121" /></Category><Category Title="Condition management" MCVID="6064"><Keyword Title="Lifestyle and home remedies" MCVID="1223" /></Category></ControlWords><ObjectID>06676bc1-6b32-484a-a186-bab8801a5429</ObjectID><MayoVersion>4</MayoVersion><MetaKeywords /><HasFlash>0</HasFlash><Source /><TermsOfUse DocID="POC-10009901" />
+</Meta>
+
+<Body>
+	<Section>
+		<HTML>&lt;p&gt;
+If you're like most parents, you'll want to get at least one stroller for your baby. With so many designs and types of strollers, however, how do you choose?
+&lt;/p&gt;
+&lt;p&gt;
+Understand how to pick the best stroller for your baby and important stroller safety tips. 
+&lt;/p&gt;
+		</HTML>
+	</Section>
+	<Section>
+		<SectionHead>What should I consider when looking for a stroller?</SectionHead>
+		<HTML>&lt;p&gt;
+When looking at strollers for your baby, consider: 
+&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;&lt;strong&gt;Your location.&lt;/strong&gt; If you live in or near a city, you'll likely need to be able to maneuver your stroller along crowded sidewalks and down narrow store aisles. You might also need to be able to collapse your stroller in a pinch to get on a bus or down stairs to the subway. Suburban parents, on the other hand, might want to look for a stroller that's easy to fold and fits into the trunk of a vehicle.&lt;/li&gt;
+	&lt;li&gt;&lt;strong&gt;Your family.&lt;/strong&gt; If you have twins or an older child, you might consider getting a double stroller or a stroller with an attachment that allows your older child to stand or sit in the rear. If you're planning to use an attachment for your older child, be sure to read the manufacturer's weight guidelines.&lt;/li&gt;
+	&lt;li&gt;&lt;strong&gt;Your lifestyle.&lt;/strong&gt; Frequent travelers might want a collapsible umbrella stroller &amp;mdash; either in addition to a sturdier stroller or as the primary stroller. An umbrella stroller can also be useful during errands. Plan to take your baby along on your runs? You might look for a jogging stroller, too.&lt;/li&gt;
+	&lt;li&gt;&lt;strong&gt;Accessories.&lt;/strong&gt; Do you want your baby's stroller to have certain features or accessories, such as a storage basket, rain cover, blanket, sun shade or cup holder? Often, accessories are sold separately. Some strollers aren't compatible with certain accessories.&lt;/li&gt;
+&lt;/ul&gt;
+		</HTML>
+	</Section>
+</Body>
+<Title>Stroller safety: Tips for parents</Title>
+<Abstract>Stroller safety &amp;mdash; Find out how to choose and safely use your baby's stroller.</Abstract>
+<BenefitSummary>Stroller safety starts with choosing the right stroller for your baby. Know what to consider when looking for a stroller and how to keep your baby safe on the go.
+</BenefitSummary>
+
+<RelatedLinksBox>
+	<LinkItem Url="http://www.mayoclinic.org/healthy-living/infant-and-toddler-health/expert-answers/flu-shots/faq-20058448" LinkType="Internal" ContentType="Answer" DocID="FAQ-20058448" ObjectID="1783e5fa-cd11-4ce5-a06f-61b8fe083c8f" Title="Flu shots for kids: Does my child need a flu shot?"></LinkItem>
+	<LinkItem Url="http://www.mayoclinic.org/healthy-living/infant-and-toddler-health/multimedia/baby-rashes/sls-20076668" LinkType="Internal" ContentType="SlideShow" DocID="SLS-20076668" ObjectID="e8051670-db9a-48dd-9085-81aff5600bb9" Title="Slide show: Common baby rashes"></LinkItem>
+
+</RelatedLinksBox>
+</Article>

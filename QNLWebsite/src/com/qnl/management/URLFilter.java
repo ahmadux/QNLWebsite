@@ -1,6 +1,8 @@
 package com.qnl.management;
 
 import java.io.IOException;
+
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,8 +13,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.qnl.core.CustomUrl;
+import com.qnl.core.LibMenu;
+import com.qnl.core.LibPage;
 import com.qnl.facade.CustomUrlFacade;
+import com.qnl.facade.LibMenuFacade;
+import com.qnl.facade.LibPageFacade;
+
 
 /**
  * Servlet Filter implementation class URLFilter
@@ -46,6 +53,8 @@ public class URLFilter implements Filter {
 		request.getServletContext().setAttribute("BaseServerPath", request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getServletContext().getContextPath());
 		// pass the request along the filter chain
 		System.out.println("Filtering...");
+		CustomUrl cU;
+		String urlAddon = "";
 		if(((HttpServletRequest)request).getRequestURI().toString().contains("/management/"))
 				if(((HttpServletRequest)request).getSession().getAttribute("loggedInUser")==null)
 				{
@@ -62,17 +71,40 @@ public class URLFilter implements Filter {
 		else
 		{
 			CustomUrlFacade cUFacade = (CustomUrlFacade)request.getServletContext().getAttribute("CustomUrlFacade");
-			String url = cUFacade.findByFriendlyName(getURLEnd((HttpServletRequest) request)).getUrl();
-			System.out.println("Forwarding to: " + url + ((url.contains("?"))?"&":"?") + ((HttpServletRequest) request).getQueryString()!=null?((HttpServletRequest) request).getQueryString():"");
+			cU = cUFacade.findByFriendlyName(getURLEnd((HttpServletRequest) request));
+			String url = cU.getUrl();
+			urlAddon = ((HttpServletRequest)request).getQueryString()!=null?((url.contains("?"))?"&":"?") + ((HttpServletRequest)request).getQueryString():"";
+			System.out.println("Forwarding to: " + url);
+			
 			if(url.contains("/management/"))
 			{
 				if(((HttpServletRequest)request).getSession().getAttribute("loggedInUser")==null)
 				{
 					request.setAttribute("forwardURL", url);
 					request.getRequestDispatcher("login.jsp").forward(request, response);
+					return;
 				}			
 			}
-			((HttpServletResponse)response).sendRedirect(url + ((url.contains("?"))?"&":"?") + ((HttpServletRequest) request).getQueryString());					
+			if(url.contains("pages/"))
+			{
+				LibMenu lm = null;
+				LibMenuFacade lmf = (LibMenuFacade)request.getServletContext().getAttribute("LibMenuFacade");
+				LibPageFacade lpf = (LibPageFacade)request.getServletContext().getAttribute("LibPageFacade");
+				String bImage = "";
+				
+				lm = lmf.findByCustomURLID(cU.getId());
+				bImage = lm!=null?((LibPage)lpf.findByMenuID(lm.getId())).getImage():"";
+				
+				request.setAttribute("BACKGROUNDIMAGE",bImage!=null?bImage:"");	
+				System.out.println("BackgroundIamge: " + bImage);	
+				
+				request.getRequestDispatcher(url + urlAddon).forward(request, response);
+				return;
+			}	
+			
+			
+			
+			((HttpServletResponse)response).sendRedirect(url + urlAddon);					
 		}		
 	}
 
