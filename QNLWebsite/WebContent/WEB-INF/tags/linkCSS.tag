@@ -11,6 +11,11 @@
 <% if(alsoInclude.toLowerCase().contains("fontawesome")) {%>
 <link	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 <%} %>
+
 <% if(alsoInclude.toLowerCase().contains("weather")) {%>
 <link rel="stylesheet" href="${BaseServerPath}/css/weather.css" />
 <%} %>
+
+<% if(alsoInclude.toLowerCase().contains("clndr")) {%>
+<link rel="stylesheet" href="${BaseServerPath}/css/clndr.css" /> 
+<%}%>

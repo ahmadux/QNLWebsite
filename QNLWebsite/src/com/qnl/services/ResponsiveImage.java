@@ -76,9 +76,10 @@ public class ResponsiveImage extends HttpServlet {
 		{
 			System.out.println("Not Found. Building Image...");
 			Image img = ImageLoader.fromFile(new File(fPath + File.separator +  fileName + fExt));
-			//TO DO:Resize the Image as necessary			
+			//Resize the Image as necessary. Unfortunately, only scales down and not up. :(			
 			//Save it for future use			
-			factor = ((double)yReq/(double)img.getHeight()) + 0.01;			
+			
+			factor = ((double)yReq/(double)img.getHeight()) + 0.01;
 			f = img.crop(wOff,yOff,img.getWidth(),img.getHeight()).getResizedToWidth(Integer.parseInt("" + Math.round(img.getWidth() * factor))).crop(0, 0, wReq, yReq).writeToFile(new File(fPath + File.separator +  fileName + fParams + fParamsOff +   fExt));
 			
 			img.dispose();

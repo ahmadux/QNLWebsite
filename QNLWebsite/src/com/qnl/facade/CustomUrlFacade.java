@@ -26,8 +26,7 @@ public class CustomUrlFacade extends QBaseFacade
 	{
 		return customUrls.get(Integer.valueOf(id));
 	}
-	
-	
+			
 	@SuppressWarnings("rawtypes")
 	public CustomUrl findByFriendlyName(String fName)
 	{
@@ -39,7 +38,7 @@ public class CustomUrlFacade extends QBaseFacade
 			Map.Entry pairs = (Map.Entry)it.next();
 			if(((CustomUrl)pairs.getValue()).getFriendlyName().toLowerCase().equals(fName.toLowerCase()))
 			{
-					cU = (CustomUrl)pairs.getValue();
+					cU = (CustomUrl)pairs.getValue();					
 					break;
 			}
 	    }	

@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Qatar National Library - Home Page</title>
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-<customTags:script alsoInclude="bootstrap, slidr"/>
-<customTags:linkCSS alsoInclude="bootstrap,fontawesome,weather" />
+<customTags:script alsoInclude="bootstrap,slidr,sly,clndr"/>
+<customTags:linkCSS alsoInclude="bootstrap,fontawesome,weather,clndr" />
 </head>
 <body class="en">
 	<div class="fullpage">

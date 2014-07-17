@@ -1,0 +1,71 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	font-size:11px;
+}
+
+div.pageMenu
+{
+	width:100%;
+}
+
+div.topMenu
+{
+	width:80%;
+	float:left;
+}
+
+div.userInfo
+{
+	width:19%;
+	float:right;
+}
+
+div.body
+{
+	background-color: #007a84;
+}
+
+div.body .heading
+{
+	color:#fff;
+	font-family: calibri, Tahoma, Verdana, Arial;
+	font-size: 32px;
+	-webkit-text-stroke: 1px black;
+	font-weight:bold;  
+   
+}
+
+
+
+
+/*************************************************************** For JQuery UI elements *************/
+
+.ui-menu:after 
+{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;    
+   }
+   
+   .ui-menu .ui-menu-item
+   {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+}
+
+.ui-menu .ui-menu-item .ui-menu
+{
+    list-style:none; padding: 2px; margin: 0 ; display:block; outline: none; position: absolute; width:200px
+}
+
+.ui-menu .ui-menu-item .ui-menu .ui-menu-item
+{
+     padding: 0; zoom: 1; width: 100%;
+}

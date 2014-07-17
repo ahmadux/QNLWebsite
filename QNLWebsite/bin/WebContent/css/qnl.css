@@ -1,0 +1,576 @@
+/******************************* Common*************************/
+
+@font-face {
+    font-family: "Weather Font";
+    src: url(../fonts/weather.ttf) format("truetype");
+}
+
+body
+{	
+	color: #fff;
+	
+}
+
+.separatedTop
+{
+	margin-top:5px
+}
+
+.highSpaceTop
+{
+	margin-top:10px;
+}
+
+.semitransparent, .nav-tabs li a
+{
+	background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(75,75,75,0.7)), color-stop(0.1, rgba(75,75,75,0.7)), color-stop(0.25, rgba(50,50,50,0.7)), color-stop(0.5, rgba(50,50,50,0.7)), color-stop(0.5, rgba(75,75,75,0.7)), color-stop(0.75, rgba(75,75,75,0.7)), color-stop(0.75, rgba(50,50,50,0.7)));
+	background-image: -webkit-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -moz-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -ms-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -o-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(75,75,75,0.7)ccc', endColorstr='rgba(50,50,50,0.7)bbb',GradientType=0 ); /* IE6-8 */
+	
+	background-image: linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-size: 5px 5px;
+	
+	border: solid 1px #444;	
+	color: #fff;
+}
+
+.empty
+{
+	color: #ddd;
+}
+
+
+.map
+{
+	margin-top: 5px;	
+	padding: 5px;	
+}
+
+#map
+{
+	background-image: url(../images/map.png);
+	background-repeat: no-repeat;
+}
+
+.archive a
+{
+	font-size: 0.91666em;
+	color: #fff;/*rgba(138,21,56,1);*/
+	text-shadow: none; /*-1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;*/	
+}
+
+.brandingButton
+{
+	background-color: #000;
+	border: solid 1px #000;
+	color: #fff;
+}
+
+.brandingButton:hover
+{
+	background-color: #444;
+	border: solid 1px #000;
+	color: #fff;
+}
+
+.nav-tabs
+{
+	border-bottom: solid 1px transparent;
+}
+
+.tab-content
+{
+	min-height: 75px;
+	padding-top: 30px;
+}
+
+.tab-pane
+{
+	padding-bottom:25px;
+}
+
+.nav-tabs li a
+{   	
+	background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(75,75,75,0.5)), color-stop(0.1, rgba(75,75,75,0.5)), color-stop(0.25, rgba(50,50,50,0.5)), color-stop(0.5, rgba(50,50,50,0.5)), color-stop(0.5, rgba(75,75,75,0.5)), color-stop(0.55, rgba(75,75,75,0.5)), color-stop(0.55, rgba(50,50,50,0.5)));
+	background-image: -webkit-linear-gradient(left bottom, rgba(75,75,75,0.5) 0%, rgba(75,75,75,0.5) 25%, rgba(50,50,50,0.5) 25%, rgba(50,50,50,0.5) 50%, rgba(75,75,75,0.5) 50%, rgba(75,75,75,0.5) 75%, rgba(50,50,50,0.5) 75%);
+	background-image: -moz-linear-gradient(left bottom, rgba(75,75,75,0.5) 0%, rgba(75,75,75,0.5) 25%, rgba(50,50,50,0.5) 25%, rgba(50,50,50,0.5) 50%, rgba(75,75,75,0.5) 50%, rgba(75,75,75,0.5) 75%, rgba(50,50,50,0.5) 75%);
+	background-image: -ms-linear-gradient(left bottom, rgba(75,75,75,0.5) 0%, rgba(75,75,75,0.5) 25%, rgba(50,50,50,0.5) 25%, rgba(50,50,50,0.5) 50%, rgba(75,75,75,0.5) 50%, rgba(75,75,75,0.5) 75%, rgba(50,50,50,0.5) 75%);
+	background-image: -o-linear-gradient(left bottom, rgba(75,75,75,0.5) 0%, rgba(75,75,75,0.5) 25%, rgba(50,50,50,0.5) 25%, rgba(50,50,50,0.5) 50%, rgba(75,75,75,0.5) 50%, rgba(75,75,75,0.5) 75%, rgba(50,50,50,0.5) 75%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(75,75,75,0.5)ccc', endColorstr='rgba(50,50,50,0.5)bbb',GradientType=0 ); /* IE6-8 */
+	
+	background-image: linear-gradient(left bottom, rgba(75,75,75,0.5) 0%, rgba(75,75,75,0.5) 25%, rgba(50,50,50,0.5) 25%, rgba(50,50,50,0.5) 50%, rgba(75,75,75,0.5) 50%, rgba(75,75,75,0.5) 75%, rgba(50,50,50,0.5) 75%);
+	background-size: 5px 5px;
+	color: #fff;
+	border: solid 1px #444;
+	font-size: 0.9em;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus , .nav-tabs > li > a:hover
+{	
+	background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(75,75,75,0.7)), color-stop(0.1, rgba(75,75,75,0.7)), color-stop(0.25, rgba(50,50,50,0.7)), color-stop(0.5, rgba(50,50,50,0.7)), color-stop(0.5, rgba(75,75,75,0.7)), color-stop(0.75, rgba(75,75,75,0.7)), color-stop(0.75, rgba(50,50,50,0.7)));
+	background-image: -webkit-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -moz-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -ms-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-image: -o-linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(75,75,75,0.7)ccc', endColorstr='rgba(50,50,50,0.7)bbb',GradientType=0 ); /* IE6-8 */
+	
+	background-image: linear-gradient(left bottom, rgba(75,75,75,0.7) 0%, rgba(75,75,75,0.7) 25%, rgba(50,50,50,0.7) 25%, rgba(50,50,50,0.7) 50%, rgba(75,75,75,0.7) 50%, rgba(75,75,75,0.7) 75%, rgba(50,50,50,0.7) 75%);
+	background-size: 5px 5px;
+	color: orange;
+	border: solid 1px #444;	
+	background-color: transparent;
+	font-size: 0.9em;	
+}
+
+.links
+{
+	text-align: left;
+	vertical-align: top;	
+}
+
+.links a 
+{
+	color: #00c3ff;
+	font-family: 'Source Sans Pro';	
+	font-size: 1em;
+}
+
+.time, .date, .salah
+{
+	padding-top: 15px;
+}
+
+.time, .date, .temp, .salah
+{
+	font-family: 'Source Sans Pro';	
+	text-align: center;	
+	
+	height:70px;
+	overflow: hidden;		
+}
+
+.time,  .temp .tempNow, .salah
+{
+	font-size: 2.3333em;
+}
+
+
+.temp .tempLimit
+{
+	display:block;
+	font-size: 1.0833em;
+	width:50%;
+	float:right;
+	text-align:left;
+}
+
+.temp .tempNow
+{
+	display:block;
+	width:50%;	
+	float:right;
+	text-align:left;
+}
+
+.salahName
+{
+	padding-right: 10px;
+}
+
+.weather
+{
+	font-family: 'Weather Font';
+	font-weight: bold;
+	color: orange;
+	font-size: 3em;
+	padding-left: 22px;
+	padding-right: 22px;
+	width:50%;
+	float:left;
+	text-align:right;
+}
+
+.helpLinks
+{
+	text-align: center;
+		
+}
+
+.helpLinks a 
+{
+	color: orange;
+	font-family: 'Source Sans Pro';	
+	font-size: 0.8em;
+}
+
+.landing
+{
+	margin-top: -21px;
+	position:relative;
+	min-height:450px;
+}
+/*************************************** Typography **********************************************/
+
+.textOutlined
+{
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fullWidth
+{
+	width: 100%;
+}
+
+.nopadding
+{
+	padding: 0px !important;	
+}
+
+.textDark
+{
+	color: #222;	
+}
+
+.textLight
+{
+	color: #fff;
+}
+
+.centered
+{
+	margin: auto;
+}
+
+.heading
+{
+	font-family: 'Source Sans Pro';
+	font-weight: normal;	
+}
+
+.borderRight
+{
+	border-right: solid 1px #ddd;
+}
+
+.borderLeft
+{
+	border-right: solid 1px #fff;
+}
+
+
+.darkgrey
+{
+	background-color: #222;
+}
+
+.thinline
+{
+	height:9px;
+	width:100%;
+	margin-bottom:2px;
+}
+
+.thickline
+{
+	height:30px;
+	width:100%;
+}
+
+.shadowed
+{
+	box-shadow: 0px 0px 2px 1px #888;
+}
+
+/******************************* Full Page *************************/
+
+.fullpage
+{
+	overflow: hidden;		
+}
+
+/******************************* Head *************************/
+
+.logoRow
+{
+	height:80px;		
+	background-color: #fff;
+	padding: 0px;
+	margin: 0px;
+}
+
+.logo
+{
+	background-image: url(../images/logo_small.png);
+	background-repeat: no-repeat;
+	height: 80px;	
+}
+
+
+.topLinks
+{
+	height: 80px;
+	text-align: right;	 		
+}
+
+.topLinks a
+{
+	padding-left: 7px;
+	padding-right: 7px;
+	font-size: 0.8em;
+	color: rgba(138,21,56,1);
+	text-shadow: none;
+	font-family: 'Source Sans Pro';
+}
+
+.topLinks .top
+{
+    vertical-align: top;
+    height: 60px;	
+}
+	
+.topLinks .bottom
+{
+    vertical-align: bottom;
+    height: 20px;	    	
+}
+
+/******************************* Home ***************************/
+
+.home
+{
+	background-image: url(../images/large/main3.jpg);
+	background-position:left top;
+	background-repeat: no-repeat;
+}
+
+.loginBox
+{
+	/*background-color: rgba(50,50,50,0.4);*/
+	
+	min-height:300px;
+	padding-bottom:5px;
+	margin-bottom: 5px;
+	color:#fff;
+	float:right;
+}
+
+.searchBox
+{	 
+	margin-bottom: 3px;
+	margin-top: 15px;
+}
+
+aside 
+{
+	top: 0px !important;;
+	margin-top: -5px !important;	
+	margin-right: 1px !important;	
+}
+
+aside .slidr-breadcrumbs
+{
+	margin-top:-25px;
+}
+
+aside .slidr-control.up, aside .slidr-control.down
+{
+	left: 45% !important;
+}
+
+aside .slidr-control.left, aside .slidr-control.right
+{
+	display: none !important;
+}
+
+.addthisevent
+{
+	float:right;
+	width: 100%;
+	height: 75px;	
+}
+
+.addthisevent .date
+{
+	float:left;
+	width:20%;
+	margin:auto;
+}
+
+.addthisevent .desc
+{
+	float:right;
+	width:80%;
+	text-align:left;
+	padding-left: 5px;
+	padding-top: 10px;
+}
+
+.addthisevent .date .mon
+{
+	display: block;
+	color:orange;	
+}
+
+.addthisevent .date .day
+{
+	display: block;
+	font-size: 2.5em;
+	margin-top: -10px;	
+}
+
+.addthisevent .desc .hed
+{
+	display: block;
+	font-size: 1.3333em;	
+}
+
+.addthisevent .desc .des
+{
+	display: block;
+	font-size: 0.75em;	
+}
+
+.newsHeading
+{
+	display: block;
+}
+
+.newsDate
+{
+	display: block;
+	color:orange;
+	font-size: 0.75em;
+}
+
+.archive
+{	
+	font-size: 0.75em;
+}
+
+.readmore
+{
+	display: block;
+}
+
+.newsItem
+{
+	margin-bottom: 3px;
+	padding: 5px;
+	
+	-moz-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;	
+	transition: all 0.5s ease-out;
+	
+}
+
+.newsItem:hover
+{
+	border: solid 1px #fff;
+	
+}
+
+/******************************* Footer *************************/
+
+.bottomLinks
+{
+	text-align: right;	
+	padding:4px;
+	font-size: 0.8em;	
+}
+
+.bottomLinks a:visited, .bottomLinks a 
+{
+	color: #fff;
+	text-decoration: none;
+	margin-right: 10px;	
+}
+
+.bottomLinks a:hover 
+{
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	margin-right: 10px;	
+}
+
+.linkRow
+{
+	display: block;
+}
+
+.copyrights
+{
+	text-align: left;
+	color: #999;
+	font-size:0.75em;	
+}
+
+/******************************* Media Queries ******************/
+
+@media (min-width: 980px)
+{
+	.logoRow
+	{
+		height:100px;		
+		background-color: #fff;
+		padding: 0px;
+		margin: 0px;
+	}
+	
+	.logo
+	{
+		background-image: url(../images/logo_large.png);
+		background-repeat: no-repeat;
+		height: 100px;	
+	}
+	
+	.topLinks
+	{
+		height: 100px;
+		text-align: right;	 		
+	}
+	
+	.topLinks a
+	{		
+		padding-left: 7px;
+		padding-right: 7px;
+		font-size: 1.1em;
+		color: rgba(138,21,56,1);
+		text-shadow: none;
+		font-family: 'Source Sans Pro';					
+	}
+	
+	.topLinks .top
+	{
+	    vertical-align: top;
+	    height: 80px;	
+	}
+	
+	.topLinks .bottom
+	{
+	    vertical-align: bottom;
+	    height: 20px;	    	
+	}
+	
+	.highSpaceTop
+	{
+		margin-top:50px;
+	}
+	
+	.linkRow
+	{
+		display: inline;
+	}
+
+	.bottomLinks
+	{
+		text-align: right;	
+		padding:4px;
+		font-size: 1em;	
+	}
+}

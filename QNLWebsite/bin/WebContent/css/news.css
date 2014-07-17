@@ -1,0 +1,19 @@
+div.topStories .storyText
+{
+	font-size:11px;
+	color:#212121;
+	font-family: Tahoma, Verdana, arial;
+	padding-bottom:10px;
+	width:100%;
+}
+
+div.topStories .storyText .storyHeadline
+{
+	font-weight:bold;
+	width:100%;
+}
+
+div.topStories .storyText .storyContent
+{
+	width:100%;
+}
