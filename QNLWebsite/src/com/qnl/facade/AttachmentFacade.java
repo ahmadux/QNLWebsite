@@ -171,4 +171,10 @@ public class AttachmentFacade extends QBaseFacade
 			throw new IOException(ioex.getMessage());
 		}
 	}
+	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return Attachment.class;
+	}
 }

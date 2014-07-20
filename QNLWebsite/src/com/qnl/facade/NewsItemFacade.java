@@ -199,4 +199,11 @@ public class NewsItemFacade extends QBaseFacade
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return NewsItem.class;
+				
+	}
 }

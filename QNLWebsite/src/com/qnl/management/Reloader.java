@@ -13,7 +13,7 @@ import com.qnl.facade.CustomUrlFacade;
 import com.qnl.facade.LibMenuFacade;
 import com.qnl.facade.LibPageFacade;
 import com.qnl.facade.LibRegistrationFacade;
-import com.qnl.facade.LibTemplateFacade;
+
 import com.qnl.facade.NewsCategoryFacade;
 import com.qnl.facade.NewsItemFacade;
 import com.qnl.facade.RoleFacade;
@@ -73,9 +73,9 @@ public class Reloader extends HttpServlet {
 				case "Attachment":
 					((AttachmentFacade)request.getServletContext().getAttribute("AttachmentFacade")).refresh();
 					break;
-				case "LibTemplate":
-					((LibTemplateFacade) request.getServletContext().getAttribute("LibTemplateFacade")).refresh();
-					break;
+				//case "LibTemplate":
+				//	((LibTemplateFacade) request.getServletContext().getAttribute("LibTemplateFacade")).refresh();
+				//	break;
 				case "NewsItem":
 					((NewsItemFacade)request.getServletContext().getAttribute("NewsItemFacade")).refresh();
 					break;

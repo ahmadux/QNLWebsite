@@ -7,17 +7,17 @@
 
 @font-face {
 	font-family: "ArabicLight";
-	src:url("../fonts/GE_SS_Text_Light.eot?") format("eot"),url("../fonts/GE_SS_Text_Light.woff") format("woff"),url("../fonts/GE_SS_Text_Light.ttf") format("truetype"),url("../fonts/GE_SS_Text_Light.svg#GESSTextLight-Light") format("svg");
+	src:url("../fonts/HelveticaNeueLTArabic-Light.ttf") format("truetype");
 }
 
 @font-face {
 	font-family: "ArabicMedium";
-	src:url("../fonts/GE_SS_Text_Medium.eot?") format("eot"),url("../fonts/GE_SS_Text_Medium.woff") format("woff"),url("../fonts/GE_SS_Text_Medium.ttf") format("truetype"),url("../fonts/GE_SS_Text_Medium.svg#GESSTextMedium-Medium") format("svg");
+	src:url("../fonts/HelveticaNeueLTArabic-Roman.ttf") format("truetype");
 }
 
 @font-face {
-	font-family: "Arabic";
-	src:url("../fonts/GE_SS_Two_Medium.otf") format("opentype");
+	font-family: "ArabicBold";
+	src:url("../fonts/HelveticaNeueLTArabic-Bold.ttf") format("truetype");
 }
 
 body
@@ -35,9 +35,26 @@ body
 
 .ar
 {	
-	font-family: 'Arabic';
+	font-family: 'ArabicLight';
 	direction: rtl;
-	text-align: right;	
+	text-align: right;
+	font-size: 36;	
+}
+
+.ar_Medium
+{	
+	font-family: 'ArabicMedium';
+	direction: rtl;
+	text-align: right;
+	font-size: 36;	
+}
+
+.ar_Bold
+{	
+	font-family: 'ArabicBold';
+	direction: rtl;
+	text-align: right;
+	font-size: 36;	
 }
 
 .disabled
@@ -784,7 +801,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	float: left; 
 	margin-top:5px;
 	font-size: .8em;
-	
+	margin-bottom: 10px;
 	-webkit-transition: all 2s ease;  
     -moz-transition: all 2s ease;  
     -o-transition: all 2s ease;  
@@ -822,14 +839,15 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 {
 	height:700px; 
 	background-color:#222;
-	margin-top: 3px;
+	margin-top: 5px;
 	overflow:auto;
-	margin-bottom:10px;
+	margin-bottom:10px;	
 }
 
 .libInfo
 {
-	padding-top: 40px;
+	margin-top: 40px;
+	
 }
 
 .head
@@ -851,7 +869,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 .dataTable
 {
 	font-size: 1em;
-	
+	color: #ddd;
 }
 
 .label
@@ -861,6 +879,13 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	
 	text-align: left;	
 }
+
+
+.data:before
+{
+	content:"\00a0 ";
+}
+
 
 .small_menu a:link, .small_menu a:hover, .small_menu a:visited, .small_menu a:active
 {
@@ -975,63 +1000,6 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	width: 120px;
 	height: 140px;
 }
-.review_box{
-	border-radius:10px;
-	box-shadow: inset 0px 0px 2px 1px #6c0022;
-	background:#6C0022;
-	
-}
-.review_head{
-	border-radius:10px 10px 0px 0px;
- 	background:#4c2200; 
- 	padding:5px;
-	font-size:16px;
-	width:100%;
-	box-shadow: inset 0px 0px 2px 1px #6c0022;
-	font-weight:bold;
-	color:#FFFFFF;
-	
-}
-.review_book_image{
-	position:relative;
-	float:left;
-	clear:both;
-	width:100%;
-	height:auto;
-	padding:20px;
-}
-.review_book_image img{
-	width:200px;
-	height:240px;
-}
-.reviews_list{
-	padding:10px;
-}
-.reviews_list p{
-	font-size:16px;
-	color:#EEEEEE;
-	text-shadow: -1px 0 #6c6644, 0 1px #6c6644, 1px 0 #6c6644, 0 -1px #6c6644;
-	padding-left:5px;
-	padding-right:5px;	
-}
-.reviews_list p > span{
-	font-weight:bold;
-	padding:5px;
-	color:#CC9999;
-	text-shadow: -1px 0 #6c0000, 0 1px #6c0000, 1px 0 #6c0000, 0 -1px #6c0000;
-}
-.reviews_list p > span.author::before{
-	content: "--";
-}
-.reviews_list p > span.author{
-	font-style:italic;
-	color:#999999;
-	font-size:12px;
-	clear:both;
-	float:right;
-	text-shadow: 1px 0 #222222;
-}
-
 
 .wrap {position: relative;margin-top:0px;margin-bottom:0px;margin-left:auto;margin-right:auto;float:none;}
 /* Frame */
@@ -1075,7 +1043,10 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
        
 }
 .flip-container:hover .flipper, .flip-container.hover .flipper {
-	transform: rotateY(180deg);
+       -webkit-transform: rotateY(180deg);
+       -moz-transform: rotateY(180deg);
+       -o-transform: rotateY(180deg);
+       transform: rotateY(180deg);
 }
 
 .flip-container, .front, .back {
@@ -1090,29 +1061,29 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
        position: relative;
 }
 
-/* 	hide back of pane during swap 			*/
-/* 	absolutely position to make it overlay 	*/ 
+/*     hide back of pane during swap                   */
+/*     absolutely position to make it overlay   */ 
 .front,.back{
-	
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-ms-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transition: 0.6s;
-	-webkit-transform-style: preserve-3d;
-	-moz-transition: 0.6s;
-	-moz-transform-style: preserve-3d;
-	-o-transition: 0.6s;
-	-o-transform-style: preserve-3d;
-	-ms-transition: 0.6s;
-	-ms-transform-style: preserve-3d;
-	transition: 0.6s;
-	transform-style: preserve-3d;
-	
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform-style: preserve-3d;
+       
+       -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+       -ms-backface-visibility: hidden;
+       backface-visibility: hidden;
+       -webkit-transition: 0.6s;
+       -webkit-transform-style: preserve-3d;
+       -moz-transition: 0.6s;
+       -moz-transform-style: preserve-3d;
+       -o-transition: 0.6s;
+       -o-transform-style: preserve-3d;
+       -ms-transition: 0.6s;
+       -ms-transform-style: preserve-3d;
+       transition: 0.6s;
+       transform-style: preserve-3d;
+       
+       position: absolute;
+       top: 0;
+       left: 0;
+       transform-style: preserve-3d;
 }
 
 
@@ -1121,12 +1092,12 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
        z-index: 2;
 }
 .back{
-	-webkit-transform: rotateY(-180deg);
-	-moz-transform: rotateY(-180deg);
-	-o-transform: rotateY(-180deg);
-	-ms-transform: rotateY(-180deg);
-	transform: rotateY(-180deg);
-	z-index:1;
+       -webkit-transform: rotateY(-180deg);
+       -moz-transform: rotateY(-180deg);
+       -o-transform: rotateY(-180deg);
+       -ms-transform: rotateY(-180deg);
+       transform: rotateY(-180deg);
+       z-index:1;
 }
 
 /* back, initially hidden pane */
@@ -1499,4 +1470,125 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 		margin-top: -71px !important;
 		
 	}
+	
+	
+	/**************************************************************** News and news Items *************************/
+	
+	#newsItemList
+	{	
+		padding: 3px;
+	}
+	
+	.newsItemListItem
+	{
+		border: solid 1px #666;
+		padding: 3px;
+		margin-bottom: 3px;
+		margin-left: 3px;
+		z-index: 101;
+	}
+	
+	.newsItemListItem .nImg
+	{
+		vertical-align: middle;
+	}
+	
+	.newsItemListItem .nHeading
+	{
+		font-size: 2em;
+		color: #6c0022;
+		display: block;
+	}
+	
+	.newsItemListItem .nDate
+	{
+		display:block;
+		font-size: .75em;
+		color: #666;
+	}
+	
+	.newsItemListItemSelected
+	{
+		border-left: solid 1px #666;
+		border-top: solid 1px #666;
+		border-bottom: solid 1px #666;
+		padding: 3px;
+		margin-bottom: 3px;
+		margin-left: 3px;
+		background-color: #6c0022;
+		color: #fff
+	}
+	
+	.newsItemListItemSelected .nImg
+	{
+		vertical-align: middle;
+	}
+	
+	.newsItemListItemSelected .nHeading
+	{
+		font-size: 2em;
+		color: #fff;
+		display: block;
+	}
+	
+	.newsItemListItemSelected .nDate
+	{
+		display:block;
+		font-size: .75em;
+		color: #fff;
+	}
+	
+	.newsItemListItemSelected:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 226px;
+		left: 100%;
+		width: 0;
+		height: 0;
+		margin-left: -3px;
+		border-color: transparent transparent transparent #6c0022;
+		border-style: solid;
+		border-width: 53px;
+		z-index:100;
+	}
+	.newsItemListItemSelected:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 225px;
+		left: 100%;
+		margin-left: -3px;
+		width: 0;
+		height: 0;
+		border-color: transparent transparent transparent #6c0022;
+		border-style: solid;
+		border-width: 54px;
+		z-index:100;
+	}
+			
+	#newsItemFocus
+	{
+		z-index: 10;
+		padding-left: 25px;
+	}
+	
+	#newsItemFocus .nHeading
+	{
+		font-size: 2.25em;
+		color: #6c0022;
+		display: block;
+	}
+	
+	#newsItemFocus .nDate
+	{
+		display:block;
+		font-size: 1em;
+		color: #666;
+	}
+	
+	
+	
+	
+	
 }

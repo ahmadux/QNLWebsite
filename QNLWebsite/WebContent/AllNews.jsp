@@ -5,440 +5,213 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
 <script src="scripts/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/qatarNationalLibrary2.css" />
+
+<link rel="stylesheet" href="css/qnl2.css" />
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-	
-<link rel="stylesheet" href="css/customNavbars.css" />
-<link rel="stylesheet" href="css/weather.css" />
-<!-- <script type="text/javascript"	src="http://js.addthisevent.com/atemay.js"></script> -->
-<!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYVOugOA98uoJHx9YpG83ui_dga5K4nAo&sensor=false&extension=.js"></script> -->
-<script src="scripts/slidr.js"></script>
 
 <title>Qatar National Library - Home</title>
 
 </head>
 <body>
-	<div class="fullpage">
-		<div class="darkgrey thinline shadowed"></div>
-		<div class="logoRow col-xs-12">
-			<div class="col-xs-6 col-sm-9 col-md-10 nopadding logo" >				
+	<div class="news col-xs-12">
+		<div id="newsItemList" class="col-xs-12 col-md-5 pull-left">
+			<div class="newsItemListItem pull-left" data_itemNo="1">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>
+			</div>			
+			<div class="newsItemListItem pull-left" data_itemNo="2">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
 			</div>
-			<div class="col-xs-6 col-sm-3 col-md-2 nopadding" >							
-				<div class="topLinks">
-					<span class="large"><a href="">Subscribe to QNL's e-NewsLetter</a></span><br /><br /><span class="large"><a href="">e-Accessibility</a><a href="">عربى</a></span>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="3">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
 				</div>
 			</div>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="4">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
+			</div>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="5"> 
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
+			</div>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="6">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
+			</div>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="7">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
+			</div>
+			
+			<div class="newsItemListItem pull-left" data_itemNo="8">
+				<div class="nImg hidden-xs col-sm-4 col-md-2 pull-left">
+					<img src="images/news1.jpg" width="100px" alt="" title="" />
+				</div>			
+				<div class="col-xs-12 col-sm-8 col-md-10 pull-left">
+					<font class="nHeading">News Heading</font>
+					<font class="nDate">date</font>
+					
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+				 Nam eu mi convallis, bibendum tellus eget, commodo turpis.
+				</div>				
+			</div>
+			
 		</div>
-		<div style="width: 100%">
-			<nav class="navbar navbar-customBlack shadowed" role="navigation">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#home">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
+		<div id="newsItemFocus" class="col-xs-12 col-md-7 pull-right">
+			<font class="nHeading">News Heading</font>
+			<font class="nDate">date</font>
+			<br />
+			<div class="col-xs-12 col-sm-6 col-md-3 pull-left">
+				<img src="images/news1.jpg" width="200px" alt="" title="" />
 			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="home">
-				<ul class="nav navbar-nav" id="menu">
-					<li>
-						<a href="IndexNew2.jsp"><span class="glyphicon glyphicon-home"></span></a></li>
-					<li>
-						<a href="javascript:pageSlide('news');selectItem(1);">News</a></li>
-					<li>
-						<a href="javascript:pageSlide('events');selectItem(2);">Events</a></li>
-					<li>
-						<a href="javascript:pageSlide('inTheNews');selectItem(3);">QNL in the News</a></li>
-					<li>
-						<a href="javascript:pageSlide('trainings');selectItem(4);">Trainings</a></li>					
-				</ul>
-
-			</div>
-			</nav>
-		</div>						
-		<div id="pageSlidr" style="width: 100%">
-			<div data-slidr="news" style="width: 100%">				
-				<div  class="allNews homepage col-xs-12 pull-left">				
-				<div class="hidden-xs col-sm-3 newsList pull-left">
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded highlight">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-				</div>
-				<div class="img-rounded newsArticle col-xs-12 col-sm-8 pull-left">
-					<span class="aheading textOutlined">Qatar National Library unveils it's new building</span>
-					<span class="adate">25 January 2014</span>
-					<br />
-					<span class="atext">
-					<span class="aimage pull-left">
-						<img src="images/main.jpg" alt="" />
-					</span>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque fermentum orci, 
-					in malesuada erat rutrum ac. Nam euismod sodales quam, sed malesuada lacus laoreet sit amet. 
-					Curabitur eget gravida mauris. Cum sociis natoque penatibus et magnis dis parturient montes, 
-					nascetur ridiculus mus. Sed enim erat, sodales sit amet scelerisque nec, adipiscing ac arcu. 
-					Praesent imperdiet vitae eros nec mollis. Proin posuere auctor ipsum, nec posuere tortor consectetur 
-					et. Ut vel nisl justo. Praesent ac egestas felis.
-					</p>
-					<p>
-					Proin eget massa eget metus rhoncus vehicula in id mi. Pellentesque vel suscipit libero. Quisque egestas 
-					sit amet felis eu dictum. Etiam ultricies posuere eros. Ut accumsan orci id porttitor pellentesque. 
-					Nulla ullamcorper non urna quis dictum. Integer nec vehicula turpis. Interdum et malesuada fames ac ante 
-					ipsum primis in faucibus. Curabitur eget nisl odio. Vestibulum molestie dignissim nulla eget cursus. 
-					Sed tempor nulla ut lectus molestie varius.
-					</p>
-					<p>
-					Duis vulputate mollis facilisis. In vestibulum convallis elit, eget molestie augue consectetur quis. 
-					Quisque eget tortor ut nulla egestas dictum. Integer facilisis volutpat lobortis. Donec vel faucibus lacus. 
-					Ut hendrerit placerat molestie. Quisque a mi eu velit fringilla sagittis sed quis nisl. In sit amet lacus 
-					placerat, ornare tortor sed, lobortis mi. Quisque viverra sit amet nibh eget interdum. Duis ac leo at 
-					ligula posuere consequat. Maecenas suscipit sagittis dui at pulvinar. Sed in dignissim nibh. Quisque 
-					convallis lacus in vestibulum vestibulum. Phasellus interdum arcu quis vehicula pulvinar. Nunc ac urna nec 
-					mi accumsan eleifend.
-					</p> 
-					</span>
-				</div>
-			</div>
-		</div>
-		<div data-slidr="events" style="width: 100%">				
-				<div  class="events homepage col-xs-12 pull-left">				
-				<div class="hidden-xs col-sm-3 eventsList pull-left">
-					<div class="addthisevent img-rounded ev">
-						<div class="date">
-							<span class="mon">FEB</span> <span class="day">12</span>
-							<div class="bdr1"></div>
-							<div class="bdr2"></div>
-						</div>
-						<div class="desc">
-							<p>
-								<strong class="hed">Grand Tour</strong> <span class="des">Location:
-									QNL Building<br />When: 12 PM - 1 PM
-								</span>
-							</p>
-						</div>									
-					</div>
-					<div class="addthisevent img-rounded ev">
-						<div class="date">
-							<span class="mon">FEB</span> <span class="day">12</span>
-							<div class="bdr1"></div>
-							<div class="bdr2"></div>
-						</div>
-						<div class="desc">
-							<p>
-								<strong class="hed">Grand Tour</strong> <span class="des">Location:
-									QNL Building<br />When: 12 PM - 1 PM
-								</span>
-							</p>
-						</div>									
-					</div>
-					<div class="addthisevent img-rounded ev">
-						<div class="date">
-							<span class="mon">FEB</span> <span class="day">12</span>
-							<div class="bdr1"></div>
-							<div class="bdr2"></div>
-						</div>
-						<div class="desc">
-							<p>
-								<strong class="hed">Grand Tour</strong> <span class="des">Location:
-									QNL Building<br />When: 12 PM - 1 PM
-								</span>
-							</p>
-						</div>									
-					</div>
-					<div class="addthisevent img-rounded highlight ev">
-						<div class="date">
-							<span class="mon">FEB</span> <span class="day">12</span>
-							<div class="bdr1"></div>
-							<div class="bdr2"></div>
-						</div>
-						<div class="desc">
-							<p>
-								<strong class="hed">Grand Tour</strong> <span class="des">Location:
-									QNL Building<br />When: 12 PM - 1 PM
-								</span>
-							</p>
-						</div>									
-					</div>
-					<div class="addthisevent img-rounded ev">
-						<div class="date">
-							<span class="mon">FEB</span> <span class="day">12</span>
-							<div class="bdr1"></div>
-							<div class="bdr2"></div>
-						</div>
-						<div class="desc">
-							<p>
-								<strong class="hed">Grand Tour</strong> <span class="des">Location:
-									QNL Building<br />When: 12 PM - 1 PM
-								</span>
-							</p>
-						</div>									
-					</div>
-				</div>
-				<div class="img-rounded newsArticle col-xs-12 col-sm-8 pull-left">
-					<span class="aheading textOutlined">Qatar National Library unveils it's new building</span>
-					<span class="adate">25 January 2014</span>
-					<br />
-					<span class="atext">
-					<span class="aimage pull-left">
-						<img src="images/main.jpg" alt="" />
-					</span>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque fermentum orci, 
-					in malesuada erat rutrum ac. Nam euismod sodales quam, sed malesuada lacus laoreet sit amet. 
-					Curabitur eget gravida mauris. Cum sociis natoque penatibus et magnis dis parturient montes, 
-					nascetur ridiculus mus. Sed enim erat, sodales sit amet scelerisque nec, adipiscing ac arcu. 
-					Praesent imperdiet vitae eros nec mollis. Proin posuere auctor ipsum, nec posuere tortor consectetur 
-					et. Ut vel nisl justo. Praesent ac egestas felis.
-					</p>
-					<p>
-					Proin eget massa eget metus rhoncus vehicula in id mi. Pellentesque vel suscipit libero. Quisque egestas 
-					sit amet felis eu dictum. Etiam ultricies posuere eros. Ut accumsan orci id porttitor pellentesque. 
-					Nulla ullamcorper non urna quis dictum. Integer nec vehicula turpis. Interdum et malesuada fames ac ante 
-					ipsum primis in faucibus. Curabitur eget nisl odio. Vestibulum molestie dignissim nulla eget cursus. 
-					Sed tempor nulla ut lectus molestie varius.
-					</p>
-					<p>
-					Duis vulputate mollis facilisis. In vestibulum convallis elit, eget molestie augue consectetur quis. 
-					Quisque eget tortor ut nulla egestas dictum. Integer facilisis volutpat lobortis. Donec vel faucibus lacus. 
-					Ut hendrerit placerat molestie. Quisque a mi eu velit fringilla sagittis sed quis nisl. In sit amet lacus 
-					placerat, ornare tortor sed, lobortis mi. Quisque viverra sit amet nibh eget interdum. Duis ac leo at 
-					ligula posuere consequat. Maecenas suscipit sagittis dui at pulvinar. Sed in dignissim nibh. Quisque 
-					convallis lacus in vestibulum vestibulum. Phasellus interdum arcu quis vehicula pulvinar. Nunc ac urna nec 
-					mi accumsan eleifend.
-					</p> 
-					</span>
-				</div>
-			</div>
-		</div>
-		<div data-slidr="inTheNews" style="width: 100%">				
-				<div  class="inTheNews homepage col-xs-12 pull-left">				
-				<div class="hidden-xs col-sm-3 newsList pull-left">
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded highlight">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-				</div>
-				<div class="img-rounded newsArticle col-xs-12 col-sm-8 pull-left">
-					<span class="aheading textOutlined">Qatar National Library unveils it's new building</span>
-					<span class="adate">25 January 2014</span>
-					<br />
-					<span class="atext">
-					<span class="aimage pull-left">
-						<img src="images/main.jpg" alt="" />
-					</span>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque fermentum orci, 
-					in malesuada erat rutrum ac. Nam euismod sodales quam, sed malesuada lacus laoreet sit amet. 
-					Curabitur eget gravida mauris. Cum sociis natoque penatibus et magnis dis parturient montes, 
-					nascetur ridiculus mus. Sed enim erat, sodales sit amet scelerisque nec, adipiscing ac arcu. 
-					Praesent imperdiet vitae eros nec mollis. Proin posuere auctor ipsum, nec posuere tortor consectetur 
-					et. Ut vel nisl justo. Praesent ac egestas felis.
-					</p>
-					<p>
-					Proin eget massa eget metus rhoncus vehicula in id mi. Pellentesque vel suscipit libero. Quisque egestas 
-					sit amet felis eu dictum. Etiam ultricies posuere eros. Ut accumsan orci id porttitor pellentesque. 
-					Nulla ullamcorper non urna quis dictum. Integer nec vehicula turpis. Interdum et malesuada fames ac ante 
-					ipsum primis in faucibus. Curabitur eget nisl odio. Vestibulum molestie dignissim nulla eget cursus. 
-					Sed tempor nulla ut lectus molestie varius.
-					</p>
-					<p>
-					Duis vulputate mollis facilisis. In vestibulum convallis elit, eget molestie augue consectetur quis. 
-					Quisque eget tortor ut nulla egestas dictum. Integer facilisis volutpat lobortis. Donec vel faucibus lacus. 
-					Ut hendrerit placerat molestie. Quisque a mi eu velit fringilla sagittis sed quis nisl. In sit amet lacus 
-					placerat, ornare tortor sed, lobortis mi. Quisque viverra sit amet nibh eget interdum. Duis ac leo at 
-					ligula posuere consequat. Maecenas suscipit sagittis dui at pulvinar. Sed in dignissim nibh. Quisque 
-					convallis lacus in vestibulum vestibulum. Phasellus interdum arcu quis vehicula pulvinar. Nunc ac urna nec 
-					mi accumsan eleifend.
-					</p> 
-					</span>
-				</div>
-			</div>
-		</div>
-		<div data-slidr="trainings" style="width: 100%">				
-				<div  class="trainings homepage col-xs-12 pull-left">				
-				<div class="hidden-xs col-sm-3 trainingsList pull-left">
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded ">							
-						<span class="heading ">Qatar National Library unveils it's new building</span>
-						<span class="date ">25 January 2014</span>
-						<span class="readmore archive "><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded highlight">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-					<div class="img-rounded">							
-						<span class="heading">Qatar National Library unveils it's new building</span>
-						<span class="date">25 January 2014</span>
-						<span class="readmore archive"><a href="#">Read More</a></span>
-					</div>
-				</div>
-				<div class="img-rounded newsArticle col-xs-12 col-sm-8 pull-left">
-					<span class="aheading textOutlined">Qatar National Library unveils it's new building</span>
-					<span class="adate">25 January 2014</span>
-					<br />
-					<span class="atext">
-					<span class="aimage pull-left">
-						<img src="images/main.jpg" alt="" />
-					</span>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam scelerisque fermentum orci, 
-					in malesuada erat rutrum ac. Nam euismod sodales quam, sed malesuada lacus laoreet sit amet. 
-					Curabitur eget gravida mauris. Cum sociis natoque penatibus et magnis dis parturient montes, 
-					nascetur ridiculus mus. Sed enim erat, sodales sit amet scelerisque nec, adipiscing ac arcu. 
-					Praesent imperdiet vitae eros nec mollis. Proin posuere auctor ipsum, nec posuere tortor consectetur 
-					et. Ut vel nisl justo. Praesent ac egestas felis.
-					</p>
-					<p>
-					Proin eget massa eget metus rhoncus vehicula in id mi. Pellentesque vel suscipit libero. Quisque egestas 
-					sit amet felis eu dictum. Etiam ultricies posuere eros. Ut accumsan orci id porttitor pellentesque. 
-					Nulla ullamcorper non urna quis dictum. Integer nec vehicula turpis. Interdum et malesuada fames ac ante 
-					ipsum primis in faucibus. Curabitur eget nisl odio. Vestibulum molestie dignissim nulla eget cursus. 
-					Sed tempor nulla ut lectus molestie varius.
-					</p>
-					<p>
-					Duis vulputate mollis facilisis. In vestibulum convallis elit, eget molestie augue consectetur quis. 
-					Quisque eget tortor ut nulla egestas dictum. Integer facilisis volutpat lobortis. Donec vel faucibus lacus. 
-					Ut hendrerit placerat molestie. Quisque a mi eu velit fringilla sagittis sed quis nisl. In sit amet lacus 
-					placerat, ornare tortor sed, lobortis mi. Quisque viverra sit amet nibh eget interdum. Duis ac leo at 
-					ligula posuere consequat. Maecenas suscipit sagittis dui at pulvinar. Sed in dignissim nibh. Quisque 
-					convallis lacus in vestibulum vestibulum. Phasellus interdum arcu quis vehicula pulvinar. Nunc ac urna nec 
-					mi accumsan eleifend.
-					</p> 
-					</span>
-				</div>
-			</div>
+			 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula volutpat metus, et accumsan leo auctor non. 
+			 Nam eu mi convallis, bibendum tellus eget, commodo turpis. Mauris ante turpis, molestie et ante quis, feugiat adipiscing nibh. 
+			 Aliquam rutrum, diam sit amet pharetra tincidunt, velit dolor dapibus diam, eu cursus dui lacus mollis lectus. Suspendisse 
+			 tincidunt, sapien et sagittis convallis, nibh nunc congue risus, quis sodales libero lectus eget urna. Vestibulum fringilla 
+			 gravida leo, sit amet euismod turpis interdum ut. Quisque mattis semper aliquet. Sed iaculis condimentum fringilla. Vestibulum 
+			 a nisi vel erat vulputate auctor. Maecenas commodo tellus ornare, auctor tellus ut, fringilla diam. Nullam dui libero, 
+			 venenatis at scelerisque molestie, vehicula sit amet diam. Aliquam accumsan, dolor sit amet ornare mattis, leo ligula dictum 
+			 lectus, nec fringilla eros felis eget turpis.
+			 </p>
+<p>
+Nullam porttitor urna vel interdum faucibus. Fusce facilisis, metus et egestas pellentesque, neque mauris vehicula odio, in bibendum odio 
+orci vitae odio. Quisque porttitor mi ac orci dignissim, in hendrerit elit pretium. Mauris commodo tincidunt dolor, in mollis leo mollis et.
+Aliquam ut nibh auctor, suscipit elit vitae, ultrices elit. Donec libero nisl, scelerisque ac ligula sit amet, sagittis blandit massa. 
+Mauris ac nulla quis sapien ullamcorper ornare. Duis ornare aliquam quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac 
+consequat ipsum, et tempor nisi. In hac habitasse platea dictumst. Maecenas non egestas risus. Nullam accumsan ligula ligula, vitae hendrerit 
+mauris venenatis sit amet. Etiam id ornare augue. Aliquam eget augue id neque placerat mollis vitae eget augue.
+</p>
+<p>
+Integer id cursus diam. Mauris bibendum justo vitae tristique tincidunt. Ut dapibus aliquet ligula at tempus. Sed at volutpat urna. Nam 
+tincidunt nunc tortor, in pharetra magna semper at. In mattis urna ac est facilisis, non vestibulum orci lacinia. Fusce nec mauris eget nibh
+ pharetra consectetur. Donec elit nisl, sagittis quis lectus eu, volutpat facilisis felis.
+</p>
+<p>
+Sed euismod, lorem sit amet facilisis adipiscing, urna ante dapibus felis, a mattis augue metus at metus. Sed viverra venenatis fermentum. 
+Suspendisse vehicula nibh mattis orci lobortis, at tempus elit placerat. Nulla dictum faucibus pellentesque. Lorem ipsum dolor sit amet, 
+consectetur adipiscing elit. Pellentesque sit amet condimentum enim, mattis pretium arcu. Morbi sit amet nulla sit amet arcu laoreet laoreet 
+id et purus. Donec bibendum porttitor magna sed malesuada. Nulla posuere ligula in orci ornare ornare. Integer eget fringilla neque. Morbi 
+cursus in ligula vel fringilla. Quisque in interdum elit. Vestibulum quis ligula eget velit cursus condimentum. Nulla eros nibh, ornare ut 
+lacinia eu, molestie mattis orci. 
+</p>		
 		</div>		
-		</div>			
-		<footer class="darkgrey">
-		<div class="bottomLinks col-xs-12">
-			<a href="#">Terms of use</a> <a href="#">Sitemap</a> <a href="#">Contact
-				Us</a> <a href="#"><i class="fa fa-youtube-square fa-2x"></i></a> <a
-				href="#"><i class="fa fa-facebook-square fa-2x"></i></a> <a href="#"><i
-				class="fa fa-twitter-square fa-2x"></i></a> <a href="#"><i
-				class="fa fa-linkedin-square fa-2x"></i></a> <a href="#"><i
-				class="fa fa-rss-square fa-2x"></i></a>
-		</div>
-		<div class="copyrights col-xs-12">Copyrights © 2014 Qatar
-			National Library. All rights reserved.</div>
-		</footer>
 	</div>
 </body>
 <script>
-	var currentSlide = 1;
-	$(document).ready(function() {
-
-		resetSize();
+$(function() {  
+	$(".newsItemListItem").on('click',function(){
 		
-		window.onresize = function() {
-			resetSize();
-		}
+		$(".newsItemListItemSelected").addClass("newsItemListItem");
+		$(".newsItemListItemSelected").removeClass("newsItemListItemSelected");
 		
-		selectItem(1);
-	
-	});
-	
-	
-	function resetSize() {
-
-		var h = ($(window).height() - ($('#logo').height() + 211));
+		$(this).addClass("newsItemListItemSelected");
+		$(this).removeClass("newsItemListItem");
 		
-		if (h > 481) 
-			$('.homepage').height(h);
-	}
+		var t1 = $(this).attr("data_itemNo") - 1;
+		//alert($('head').html());
+		
+		//$('head').append("<style>newsItemListItemSelected:before {" + getBeforeStyle(3 + (t1 * 111)) + "} newsItemListItemSelected:after {" + getAfterStyle(4 + (t1 * 111)) + "}</style>");
+		//$('head').remove("<style>");
+		updateTriangleStyle(t1);
+		
+		//alert($('head').html());
+		
+		});
+});
 
-	var pageSlider = slidr.create('pageSlidr', {
-		breadcrumbs : false,
-		controls : 'none',
-		direction : 'horizontal',
-		fade : true,
-		overflow : true,
-		theme : '#fff',
-		timing : {
-			'linear' : '0.5s ease-in'
-		},
-		touch : false
-	});
-	pageSlider
-			.add(
-					'h',
-					[ 'news', 'events',  'inTheNews', 
-							'trainings' ]).start();
+var style = null;
 
-	function pageSlideDir(dir) {
-		pageSlider.slide(dir);
-	}
+function updateTriangleStyle(tp)
+{
+	if(style != null)
+		style.remove();
+	
+	style = $("<style />", {
+        id  : 'myStyleTag',
+        type: 'text/css',
+        html: getBeforeStyle(3 + (tp * 111)) + getAfterStyle(4 + (tp * 111))
+	}).appendTo("head");	
+}
 
-	function pageSlide(slideID) {
-		pageSlider.slide(slideID);		
-	}
 
-	function selectItem(num) {		
-		$("#menu li:nth-child(" + (currentSlide+1) + ")" ).removeClass("active");
-		currentSlide = num;		
-		$("#menu li:nth-child(" + (currentSlide +1) + ")" ).addClass("active");
-	}
+
+
+function getAfterStyle(tp)
+{
+	return ".newsItemListItemSelected:after {content: '';display: block;position: absolute;top:" + tp + "px;left: 100%;width: 0;height: 0;margin-left: -3px;border-color: transparent transparent transparent #6c0022;border-style: solid;border-width: 53px;z-index:100;}";
+
+}
+
+function getBeforeStyle(tp)
+{
+	return ".newsItemListItemSelected:before {content: '';display: block;position: absolute;top:" + tp + "px;left: 100%;margin-left: -3px;width: 0;height: 0;border-color: transparent transparent transparent #6c0022;border-style: solid;border-width: 54px;z-index:100;}";
+}
 
 </script>
-
 </html>

@@ -135,4 +135,32 @@ public class CustomUrlFacade extends QBaseFacade
 		return null;
 	}
 	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return CustomUrl.class;
+	}
+	
+	
+	
+	public void openTransaction()
+	{	
+		cuDAO.beginTransaction();
+	}
+	
+	public void commitAndCloseTransaction()
+	{
+		cuDAO.commit();
+		closeTransaction();
+	}
+	
+	public void closeTransaction()
+	{		
+		cuDAO.closeTransaction();
+	}
+	
+	public void rollbackTransaction()
+	{
+		cuDAO.rollback();
+	}
 }

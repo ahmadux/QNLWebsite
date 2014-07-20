@@ -142,4 +142,10 @@ public class ResInstituteFacade extends QBaseFacade {
 		return null;
 	}
 	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return ResInstitute.class;
+	}
+	
 }

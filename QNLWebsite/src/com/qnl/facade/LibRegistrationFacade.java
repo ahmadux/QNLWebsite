@@ -188,4 +188,10 @@ public class LibRegistrationFacade extends QBaseFacade {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return LibRegistration.class;
+	}
 }

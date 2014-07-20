@@ -161,4 +161,10 @@ public class LibPageFacade extends QBaseFacade
 		return null;
 	}
 	
+	@Override
+	public Class<?> getCoreClass()
+	{
+		return LibPage.class;
+	}
+	
 }
