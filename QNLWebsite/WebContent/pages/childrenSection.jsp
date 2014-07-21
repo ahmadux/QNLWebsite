@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../includes/common_header.jsp" />
 <div class="body_slider active ">
-<script>
-	
-</script>
 	<div id="main_content" style="background-image: url(${BACKGROUNDIMAGE});">
 	<!-- row starts -->
 	<div class="row children-top-section">
