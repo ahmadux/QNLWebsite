@@ -3,6 +3,40 @@
 <div class="body_slider active ">
 	<div id="main_content"  style="background-image:url('../images/backgrounds/librarycorner.jpg')">
 	<div class="row newhome-top-section">
+		<div class="col-xs-12 col-md-3 services pull-right">
+			<div class="col-xs-4 nopadding time">				
+				<span class="time" data-serverTime='${TimeService.getFormattedTime("dd/MM/yyyy hh:mm")}'></span>
+				<span class="greg ">${TimeService.getFormattedTime("E, dd MMM yyyy")}</span>
+				<span class="hijri ">${SalahService.getHijri()}</span>
+			</div>	
+			<div class="col-xs-4">
+				<div class="col-xs-6 weather">
+					${WeatherService.getWeatherCode()}
+				</div>
+				
+				<div class="col-xs-6 temp">
+					<span class="high">${WeatherService.getMaxTempC(0).intValue()}°C</span>
+					<span class="low">${WeatherService.getMinTempC(0).intValue()}°C</span>
+				</div>
+			</div>
+			<div class="salah col-xs-4" id="salahSlidr">
+				<div data-slidr="one">
+					<span class="salahName">Fajr</span> <span class="salahTime">${SalahService.getFajr()}</span>
+				</div>
+				<div data-slidr="two">
+					<span class="salahName">Dhuhr</span> <span class="salahTime">${SalahService.getDhuhr()}</span>
+				</div>
+				<div data-slidr="three">
+					<span class="salahName">Asr</span> <span class="salahTime">${SalahService.getAsr()}</span>
+				</div>
+				<div data-slidr="four">
+					<span class="salahName">Maghrib</span> <span class="salahTime">${SalahService.getMaghrib()}</span>
+				</div>
+				<div data-slidr="five">
+					<span class="salahName">Isha</span> <span class="salahTime">${SalahService.getIsha()}</span>
+				</div>
+			</div>
+		</div>
 		<div class="col-xs-12 col-md-6 col-md-offset-2 pull-left highSpaceTop nopadding">
 		<h4 class="textOutlined hidden-xs">Calendar of Events<span class="archive"><a href="" class="headingLink">See all events</a></span></h4>		
 		<div id="eventSlidr" class="fullWidth nopadding">

@@ -242,60 +242,53 @@ font.large
 	font-size: 1em;
 }
 
-.time, .date, .salahTime
+.services
 {
-	color: #fff;	
-	text-align: center;	
-	overflow: hidden;
-	font-size: 2em;	
-}
-
-.time, .salahTime
-{
-	color: orange;
 	
+	/*background-color: rgba(255,255,255,0.3);*/
+	color: rgba(255,255,255,0.3);	
 }
 
-.service1, .service2, .service3
+.services .time .time
 {
-	height: 50px;
+	font-size: 3em;
+	display:block;
 }
 
-.service1, .service2
+.services .time .greg
 {
-	border-right: solid 1px #fff;	
+	font-size: 0.75em;
+	display: block;
+	margin-top: -15px;
 }
 
- .salahName, .greg, .hijri
+.services .time .hijri
 {
-	color: #fff;
-	font-size: 0.8em;
+	font-size: 0.75em;
 	display: block;
 }
 
-.greg, .salahName
+
+ .services .salah
 {
-	margin-bottom: -12px;
+	font-size: 1em;
 }
 
-.hijri
+.services .salah .salahTime
 {
-	margin-top: -12px;
+	font-size: 3em;
 }
 
-.weather
+.services .weather
 {
 	font-family: 'Weather Font';
-	font-weight: bold;
-	color: orange;
-	font-size: 2em;
-	
-	text-align:right;
+	font-size: 3em;	
 }
 
-.temp
+.services .temp .high, .services .temp .low
 {
-	color: #fff;
+	font-size: 1.5em;
+	padding-top: 15px;
 }
 
 .helpLinks

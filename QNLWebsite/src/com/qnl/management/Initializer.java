@@ -69,14 +69,14 @@ public class Initializer implements ServletContextListener {
 		System.out.println("**************** Start Init");
 		try
 		{
-			//WeatherService ws = WeatherService.getInstance();
-			//SalahService ss = SalahService.getInstance();
-			//TimeService ts = TimeService.getInstance();
+			WeatherService ws = WeatherService.getInstance();
+			SalahService ss = SalahService.getInstance();
+			TimeService ts = TimeService.getInstance();
 			//SyndFeed feeds = RSSAtomFeedService.readFeed("http://cs.gulf-times.com/GulfTimesNewsWebsite/rss.aspx?PortalName=Gulftimes&SectionName=Qatar&NewsCat=178"); 
 			
-			//sce.getServletContext().setAttribute("WeatherService",ws);			
-			//sce.getServletContext().setAttribute("SalahService",ss);			
-			//sce.getServletContext().setAttribute("TimeService",ts);			
+			sce.getServletContext().setAttribute("WeatherService",ws);			
+			sce.getServletContext().setAttribute("SalahService",ss);			
+			sce.getServletContext().setAttribute("TimeService",ts);			
 			//sce.getServletContext().setAttribute("GulfTimesNewsFeeds",feeds);
 				
 			//lif.loadImages("images");
