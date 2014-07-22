@@ -1,13 +1,14 @@
 package com.qnl.exceptions;
+/**
+ * @author akoya
+ */
+public class QPageNotFoundException extends QBaseRTException {
+	
+	public QPageNotFoundException() {
+		super( new String[]{"Mailer","Logger"});
+	}
 
-public class QPageNotFoundException extends RuntimeException {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	public void notifyAdmin(){
-		
-	}
+	
 }
