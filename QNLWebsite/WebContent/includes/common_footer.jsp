@@ -96,7 +96,7 @@ $(document).ready(function() {
 	
 	//Set time and Weather
 	serverTime = new Date($('.time').attr('data-serverTime')).getTime();
-	updateTime();
+	//updateTime();
 	setInterval(updateTime,10000);
 	insertWeatherIcon();
 	

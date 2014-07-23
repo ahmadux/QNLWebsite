@@ -22,8 +22,12 @@
 
 body
 {	
-	/*color: #fff;*/
-		
+	/*color: #fff;*/		
+}
+
+img.bordered
+{
+	border: solid 1px #6c0000;
 }
 
 .en
@@ -89,6 +93,11 @@ body
 	
 }
 
+h4
+{
+	color: #fff;
+}
+
 font.large
 {
 	font-size: 1.2em;
@@ -141,8 +150,10 @@ font.large
 .archive a
 {
 	font-size: 0.91666em;
-	color: #fff;/*rgba(138,21,56,1);*/
-	text-shadow: none; /*-1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;*/	
+	color: rgba(138,21,56,1);
+	text-shadow: none; /*-1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;*/
+	margin-left: 5px;
+	margin-right: 5px;	
 }
 
 .brandingButton
@@ -231,60 +242,53 @@ font.large
 	font-size: 1em;
 }
 
-.time, .date, .salahTime
+.services
 {
-	color: #fff;	
-	text-align: center;	
-	overflow: hidden;
-	font-size: 2em;	
-}
-
-.time, .salahTime
-{
-	color: orange;
 	
+	/*background-color: rgba(255,255,255,0.3);*/
+	color: rgba(255,255,255,0.3);	
 }
 
-.service1, .service2, .service3
+.services .time .time
 {
-	height: 50px;
+	font-size: 3em;
+	display:block;
 }
 
-.service1, .service2
+.services .time .greg
 {
-	border-right: solid 1px #fff;	
+	font-size: 0.75em;
+	display: block;
+	margin-top: -15px;
 }
 
- .salahName, .greg, .hijri
+.services .time .hijri
 {
-	color: #fff;
-	font-size: 0.8em;
+	font-size: 0.75em;
 	display: block;
 }
 
-.greg, .salahName
+
+ .services .salah
 {
-	margin-bottom: -12px;
+	font-size: 1em;
 }
 
-.hijri
+.services .salah .salahTime
 {
-	margin-top: -12px;
+	font-size: 3em;
 }
 
-.weather
+.services .weather
 {
 	font-family: 'Weather Font';
-	font-weight: bold;
-	color: orange;
-	font-size: 2em;
-	
-	text-align:right;
+	font-size: 3em;	
 }
 
-.temp
+.services .temp .high, .services .temp .low
 {
-	color: #fff;
+	font-size: 1.5em;
+	padding-top: 15px;
 }
 
 .helpLinks
@@ -546,7 +550,7 @@ font.large
 	margin-bottom: 5px;
 	color:#fff;
 	float:right;
-	z-index: 50;
+	z-index: 50;	
 }
 
 .searchBox
@@ -582,7 +586,8 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 
 .addthisevent
 {
-	float:right;		
+	float:right;	
+		
 }
 
 .addthisevent .date
@@ -631,8 +636,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 }
 
 .addthisevent .desc .img
-{
-	 
+{	 
 	float:left; 
 	margin-top: -10px;
 	overflow: hidden;	
@@ -641,7 +645,7 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 .addthisevent .desc .img img
 {
 	 height: 100px; 
-	 width: 250px; 
+	 /*width: 250px;*/ 
 }
 
 .newsHeading
@@ -685,6 +689,141 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	height:175px;
 	width:175px;
 	border: solid 1px #333;
+}
+
+/********************** For newhome page ***************************/
+
+.newhome .addthisevent .date
+{
+	padding-top: 25px;
+}
+
+.newhome .addthisevent .date
+{
+	float:left;
+	width:20%;
+	margin:auto;
+	height: 150px;;
+	background-color: #6c0022;
+}
+
+.newhome .addthisevent .desc
+{	
+	background-color: #fff;
+}
+
+.newhome .addthisevent .desc .img img
+{
+	 height: 150px;	
+	 width: 503px;  
+}
+
+
+.newhome aside[id="eventSlidr-control"] .slidr-control.up, aside[id="eventSlidr-control"] .slidr-control.down
+{
+	left: 0% !important;	
+}
+
+.newhome .addthisevent
+{	
+	border: solid 1px #6c0000;	
+}
+
+
+.newhome .addthisevent .desc .des
+{
+		display: block; 		
+}
+
+.boldColor
+{
+	background-color: #6c0000;
+}
+
+.newhome-top-section{
+	min-height:20%;
+}
+
+.newhome-bottom{
+	position:relative;
+	float:left;
+	width:100%;
+	height:auto;
+	overflow:none;
+	background:#FFFFFF;
+	margin:0px;
+	padding:50px;
+	padding-top: 20px;
+}
+
+.newhome-bottom .newsSection
+{
+	border-right: solid 2px #6c0000;
+}
+
+.newhome-bottom h4
+{
+	color: #333;
+}
+
+.newhome .newsSlidr
+{
+	width:100%;
+	display: block;	
+}
+
+.newhome .newsSlidr .newsImage
+{	
+	display:block;
+	text-align:left;		
+}
+
+.newhome .newsSlidr .newsImage img
+{
+	width: 250px;
+	height: 175px;
+	border: solid 1px #333;
+}
+
+.newhome .newsSlidr .newsHeading
+{
+	color: #6c0000;
+}
+
+.newhome .newsSlidr .newsDate
+{
+	color: #333;
+}
+
+.newhome .newsSlidr .newsText
+{
+	color: #333;
+}
+
+.newhome-bottom .quickLinksSection a
+{
+	display:block;
+	color: #6c0000;
+	text-decoration: none;
+}
+
+.newhome-bottom .loginBox
+{
+	margin-top: -250px;
+	display:block;
+	color:#fff;
+	
+}
+
+.newhome-bottom .loginBox h4
+{
+	color:#fff;
+}
+
+.newhome-bottom .ask
+{
+	display:block;
+	
 }
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /**+++++	Style to hide the inactive elements in the sliders  					 ++++**/
@@ -1391,6 +1530,11 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 		
 	}
 	
+	.medSpaceTop
+	{
+		margin-top:30px;
+	}
+	
 	.highSpaceTop
 	{
 		margin-top:50px;
@@ -1471,7 +1615,12 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 		
 	}
 	
+	.newhome aside[id="newsSlidr-control"] .slidr-control.left, aside[id="newsSlidr-control"] .slidr-control.right
+	{
+		color: #6c0000;		
+	}
 	
+}
 	/**************************************************************** News and news Items *************************/
 	
 	#newsItemList
@@ -1591,4 +1740,4 @@ aside[id="newsSlidr-control"] .slidr-control.up, aside[id="newsSlidr-control"] .
 	
 	
 	
-}
+
